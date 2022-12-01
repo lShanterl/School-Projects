@@ -1,0 +1,68 @@
+.heroWrapper{
+    background:  url(../images/klimczokHero.jpg) no-repeat center center !important;
+    background-size: cover !important;
+    height: 100vh auto;
+    width: 100%;
+    position: relative;
+    filter:blur(0px);
+    box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.5);
+
+}
+
+.aboutWrapper
+{
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    filter:blur(0px);
+    background: #080d12;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.aboutWrapper .titles
+{
+    color: white;
+    font-size: 2.0rem;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 2rem;
+
+}
+.aboutWrapper .titles span
+{
+    color: #f7b500;
+    margin: 10vh;
+}
+
+
+.tab
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    background: #fff;
+}
+.tab .nav
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 2rem;
+
+}
+.tab .nav button
+{
+    background: #080d12;
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin: 0 1rem;
+    cursor: pointer;
+    transition: ease 0.5s;
+}
