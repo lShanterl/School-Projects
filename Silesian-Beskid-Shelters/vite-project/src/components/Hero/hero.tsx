@@ -4,6 +4,8 @@ import { render } from 'react-dom';
 import Navbar from '../Nav/navbar'
 import { useEffect } from 'react';
 import { useState } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Hero = (prop : {hero_image : string }) => {
 
@@ -14,15 +16,7 @@ const Hero = (prop : {hero_image : string }) => {
     const header = "Schroniska";
     const sub_header = "W Beskidzie Śląskim";
 
-    const [text , setText] = useState("");
     const [sub_text , setSubText] = useState("");
-    useEffect(() => {
-       const timeout = setTimeout(() => {
-            setText(header.slice(0, text.length + 1));
-       }, 125);
-       
-         return () => clearTimeout(timeout);
-    }, [text]);
 
     useEffect(() => {
         const timeout = setTimeout(() => {
@@ -31,6 +25,9 @@ const Hero = (prop : {hero_image : string }) => {
 
         return () => clearTimeout(timeout);
     }, [sub_text]);
+    useEffect(() => {
+        AOS.init({ duration: 2000 });
+        }, []);
 
 
     
@@ -39,7 +36,7 @@ return(
                 <Navbar />
                 <div className="hero">
                     <div className="heroText">
-                        <h1 className='header '>{text}</h1>
+                        <h1 className='header' data-aos="fade-in" data-aos-duration="1000">{header}</h1>
                         <h4 className ='blinking-cursor'>{sub_text}</h4>
                         <button className="btn">Zobacz więcej</button>
                     </div>

@@ -75,8 +75,6 @@ body{
     border-radius: 50%;
     background-color: var(--yellow);
     animation: blinking-cursor 1s infinite;
-    
-
 }
 
 .hero{
