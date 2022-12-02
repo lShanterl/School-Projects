@@ -1,34 +1,24 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
+import Hero from './components/Hero/hero'
+import HorizontalScroll from './components/Scrolling/horizontal'
 
-function App() { 
+
+const App = () => { 
   return (
 
     <div className="App">
-        <div className="heroWrapper">
-            <div className="navbar">
-            <div className="logo">
-              
-            </div>
-                <div className="menu">
-                    <ul>
-                        <li><a href="index.html">Strona Główna</a></li>
-    
-                        <li><a href="">Kontakt</a></li>
-                    </ul>
-                </div>
-               
-            </div>
-            <div className="hero">
-                <div className="heroText">
-                    <h1>Schroniska</h1>
-                    <h4>w Beskidzie Śląskim</h4>
-                    <button className="btn">Zobacz więcej</button>
-                </div>
-            </div>
-        </div>
-    
+        <Hero />
+        <HorizontalScroll  
+            Section = {() => {
+                return (
+                    
+                    <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam minima ea modi blanditiis aliquid eaque voluptatibus in facilis id et deleniti, dolores nemo maiores. Officia rerum quod consequuntur iure assumenda.</div>
+                )
+            }}
+
+        />
         <div className="contentWrapper">
             
             <div className="content">
