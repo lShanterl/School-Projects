@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import ScrollDown from './button';
 
 const Hero = (prop : {hero_image : string }) => {
 
@@ -38,7 +39,7 @@ return(
                     <div className="heroText">
                         <h1 className='header' data-aos="fade-in" data-aos-duration="1000">{header}</h1>
                         <h4 className ='blinking-cursor'>{sub_text}</h4>
-                        <button className="btn">Zobacz więcej</button>
+                        <ScrollDown />
                     </div>
                 </div>
     </div>
