@@ -1,7 +1,3 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { useRef, useEffect } from 'react'
-
 
 const Navbar = () =>{
     return(
@@ -16,7 +12,7 @@ const Navbar = () =>{
                         <li><a href="">Kontakt</a></li>
                     </ul>
                 </div>
-            </div>
+        </div>
     )
 }
 export default Navbar
