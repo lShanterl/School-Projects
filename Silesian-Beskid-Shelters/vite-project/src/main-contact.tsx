@@ -1,11 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import Contact from './components/contact/contact'
 import './index.css'
-import './klimczok.tsx'
-import Shelter from './klimczok'
+
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <Shelter />
+    <Contact />
   </React.StrictMode>
 )
+
+

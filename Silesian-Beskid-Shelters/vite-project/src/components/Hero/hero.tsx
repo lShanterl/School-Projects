@@ -30,8 +30,6 @@ const Hero = (prop : {hero_image : string }) => {
         AOS.init({ duration: 2000 });
         }, []);
 
-
-    
 return(
     <div className="heroWrapper" style={backgroundImage}>
                 <Navbar />

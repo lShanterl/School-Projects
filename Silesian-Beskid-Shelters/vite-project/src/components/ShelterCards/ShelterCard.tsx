@@ -26,7 +26,6 @@ const ShelterCard = (props: {image_url : string, text : string , shelter_name : 
 
             </div>
             <div className="card-text">
-                <span className="date"></span>
                 <h2>{shelter_name}</h2>
                 <p>{text}</p>
             </div>

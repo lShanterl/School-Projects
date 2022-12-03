@@ -10,6 +10,7 @@
     font-family: 'Montserrat', sans-serif;
     transition: 0.5s ease-in-out;
     scroll-behavior: smooth;
+    
 }
 ::-webkit-scrollbar
 {
@@ -31,12 +32,11 @@
 
 
 body{
-    background-color: var(--bgcol);
+    background-color: var(--darkGray);
     color: white;
     font-size: 1.2rem;
     line-height: 1.5;
     font-weight: 400;
-
 }
 
 .navbar
@@ -108,10 +108,7 @@ body{
     align-items: center;
     justify-content: center;
     text-align: center;
-    
     padding-bottom:10rem;
-    
-    
 }
 .hero button
 {
@@ -235,7 +232,80 @@ body{
     text-decoration: none;
   }
   
+.logoIcon:hover
+{
+    transform: scale(1.1);
+    transition: 0.5s ease-in-out;
+}
+.contact{
+    margin-top:10vh;
+    margin-bottom:10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
+    text-align: center;
+    padding: 0 10%;
+    min-height: 80vh;
+    height: 100vh auto;
+    background: var(--darkGray);
+    
+}
+.contact .contactText{
+    width: 100%;
+    height: 5rem auto;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #fff;
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    outline: none;
+    min-height: 5rem;
+}
+.contact input{
+    width: 100%;
+    height: 5rem;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #fff;
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    outline: none;
+}
+.contact textarea{
+    width: 100%;
+    height: 10rem;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #fff;
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    outline: none;
+    resize:none;
+}
+.contact #submit{
+    width: 100%;
+    height: 5rem;
+    background: none;
+    border: 1px solid #fff;
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.contact #submit:hover{
+    background: #fff;
+    color: #000;
+}
 .footer
 {
     background: #000;
@@ -248,10 +318,11 @@ body{
 .semifooter{
     background: #090f19;
     width:100%;
-    height:15vh;
+    height:15vh auto;
     display: flex;
     justify-content:center;
     align-items: center;
+
     
 }
 .semifooter .icon{
