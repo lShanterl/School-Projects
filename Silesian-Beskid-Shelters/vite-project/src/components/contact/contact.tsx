@@ -13,7 +13,6 @@ const Contact = () => {
                     name="contactv1"
                     method="post" 
                     data-netlify="true"
-                    onSubmit="submit"
                     >
                         <input type="text" id='name' placeholder="Imię" />
                         <input type="text" id='surname' placeholder="Nazwisko" />
