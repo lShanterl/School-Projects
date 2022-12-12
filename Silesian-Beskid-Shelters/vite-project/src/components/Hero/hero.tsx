@@ -8,14 +8,14 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import ScrollDown from './button';
 
-const Hero = (prop : {hero_image : string }) => {
+const Hero = (prop : {hero_image : string, header : string, sub_text : string }) => {
 
     const hero_image = prop.hero_image;
     const backgroundImage = {
         backgroundImage: `url(${hero_image})`,
     }
-    const header = "Schroniska";
-    const sub_header = "W Beskidzie Śląskim";
+    const header = prop.header;
+    const sub_header = prop.sub_text;
 
     const [sub_text , setSubText] = useState("");
 

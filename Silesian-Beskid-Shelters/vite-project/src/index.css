@@ -86,6 +86,7 @@ body{
     box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.5);
 }
 
+
 .blinking-cursor::after{
     content: '';
     display: inline-block;
@@ -327,18 +328,19 @@ body{
 }
 .semifooter .icon{
     margin:3rem;
-    background-color: var(--darkGray);
+    background-color: var();
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    filter:drop-shadow(0 0 0.1rem #fff);
 }
 .semifooter .icon:hover{
-    background-color: var(--yellow);
-    transition: 0.5s ease-in-out;
+    background-color: var(--lightGray);
+    transition: 0.33s ease-in-out;
+    cursor: pointer;
+    transform: scale(1.1);
 }
 .footer p
 {
@@ -378,4 +380,73 @@ body{
         height: 40%;
     }
 
+}
+.shelterDescription{
+    display: flex;
+
+    background: var(--darkGray);
+}
+.headerShelter{
+    margin-top:12vh;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.headerShelter h1{
+    font-size: 3.5rem;
+    font-weight: 600;
+    color: #fff;
+}
+.aboutShelter{
+    min-height: 100vh;
+    height: 100vh auto;
+    margin-top: 5vh;
+    display: flex;
+    justify-content: space-around;
+    height:100vh auto;
+    min-height: 60vh;
+}
+.aboutShelter .text{
+    padding: 15px;
+    width: 45%;
+    height: 25% auto;
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 400;
+    line-height: 1.8rem;
+    border: #fff 4px solid;
+    border-radius: 10px;
+    align-self: center;
+}
+.aboutShelter .image{
+    width: 650px;
+    height: 450px;
+    border: #fff 6px solid;
+    border-radius: 10px;
+    background-size: cover;
+    align-self: center;
+}
+.aboutShelter .text h4{
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--yellow);
+}
+.sWrapper{
+ 
+}
+.shelterContentWrap{
+    display: flex;
+    justify-content: space-around;
+}
+.aboutShelter .localization{
+    width: 250px;
+    height: 25% auto;
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 400;
+    line-height: 1.8rem;
+    border: #fff 4px solid;
+    border-radius: 10px;
+    align-self: center;
 }

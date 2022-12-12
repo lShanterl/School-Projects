@@ -9,14 +9,13 @@ const Contact = () => {
             <Navbar />
             <div className="contact">
                 <div className="contactText">
-                    <form action="contact" method="post" netlify netlify-honeypot="bot-field">
+                    <form action="contact" method="post">
                         <input type="text" id='name' placeholder="Imię" />
                         <input type="text" id='surname' placeholder="Nazwisko" />
                         <input type="text" id='email' placeholder="Email" />
                         <input type="text" id='topic 'placeholder="Temat" />
                         <textarea id='content'placeholder="Treść wiadomości"></textarea>
                         <input type="submit" value="Wyślij" id='submit' />
-                      
                     </form>
                 </div>
             </div>

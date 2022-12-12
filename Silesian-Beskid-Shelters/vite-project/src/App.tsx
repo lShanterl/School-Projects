@@ -6,7 +6,7 @@ import ShelterContent from './components/ShelterCards/ShelterContent'
 const App = () => { 
   return (
     <div className="App">
-        <Hero hero_image='src/assets/images/hero.jpg'/>
+        <Hero hero_image='src/assets/images/hero.jpg' header='Schroniska' sub_text='W Beskidzie Śląskim'/>
         <ShelterContent />
         <Footer />
     </div>
