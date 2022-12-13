@@ -4,7 +4,6 @@ import Navbar from '../Nav/navbar'
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { motion } from "framer-motion"
-import GoogleMap from './googleMap';
 
 
 
