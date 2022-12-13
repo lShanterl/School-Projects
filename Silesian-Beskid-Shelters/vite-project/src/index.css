@@ -314,7 +314,7 @@ body{
 }
 .footer
 {
-    background: #000;
+    background: #090907;
     color: #fff;
     display: flex;
     justify-content: center;
@@ -322,9 +322,9 @@ body{
 
 }
 .semifooter{
-    background: #090f19;
+    background: #090909;
     width:100%;
-    height:15vh auto;
+    height:13vh auto;
     display: flex;
     justify-content:center;
     align-items: center;
@@ -332,13 +332,13 @@ body{
     
 }
 .semifooter .icon{
-    margin:3rem;
+    margin: 2rem;
     background-color: var();
     width: 2rem;
     height: 2rem;
-    border-radius: 50%;
+    border-radius: 50px;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 }
 .semifooter .icon:hover{
@@ -375,6 +375,12 @@ body{
 }
 @media screen and (max-width: 768px)
 {
+    body{
+        overflow-x: hidden;
+    }
+    #card::hover{
+        transform: scale(1.01);
+    }
     .contentWrapper
     {
         padding: 0 5%;
@@ -384,6 +390,48 @@ body{
         width: 100%;
         height: 40%;
     }
+
+    .heroText{
+        font-size: 2rem;
+    }
+    .heroText h1{
+        font-size: 3.4rem;
+    }
+    .contentWrapper
+{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10%;
+    height:100vh auto;
+    background: var(--darkGray);
+    flex-wrap:wrap;
+    padding-bottom:6vh;
+    padding-top:6vh;
+
+}
+.navbar
+{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.navbar .menu
+{
+    display: flex;
+    align-items: center;
+
+}
+.navbar .menu li a
+{
+    color: white;
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: 500;
+    padding:1.5vh;
+    transition: ease 0.5s;
+
+}
 
 }
 .shelterDescription{

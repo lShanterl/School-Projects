@@ -4,8 +4,8 @@ import { render } from 'react-dom';
 import Navbar from '../Nav/navbar'
 import { useEffect } from 'react';
 import { useState } from 'react';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import { motion } from 'framer-motion';
+
 import ScrollDown from './button';
 
 const Hero = (prop : {hero_image : string, header : string, sub_text : string }) => {
@@ -26,16 +26,18 @@ const Hero = (prop : {hero_image : string, header : string, sub_text : string })
 
         return () => clearTimeout(timeout);
     }, [sub_text]);
-    useEffect(() => {
-        AOS.init({ duration: 2000 });
-        }, []);
 
 return(
     <div className="heroWrapper" style={backgroundImage}>
                 <Navbar />
                 <div className="hero">
                     <div className="heroText">
-                        <h1 className='header' data-aos="fade-in" data-aos-duration="1000">{header}</h1>
+                        <motion.h1 
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ anticipation: 0, duration: 0.8 }}
+                        viewport={{once:true}}
+                        className='header'>{header}</motion.h1>
                         <h4 className ='blinking-cursor'>{sub_text}</h4>
                         <ScrollDown />
                     </div>
