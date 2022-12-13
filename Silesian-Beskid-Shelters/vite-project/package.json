@@ -11,7 +11,7 @@
   "dependencies": {
     "@googlemaps/react-wrapper": "^1.1.35",
     "aos": "^3.0.0-beta.6",
-    "framer-motion": "^7.7.2",
+    "framer-motion": "^7.8.0",
     "locomotive-scroll": "^4.1.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

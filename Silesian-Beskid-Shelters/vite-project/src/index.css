@@ -30,6 +30,11 @@
     background: #777;
 }
 
+::selection
+{
+    background: var(--yellow);
+    color: #000;
+}
 
 body{
     background-color: var(--darkGray);
@@ -429,7 +434,7 @@ body{
 .aboutShelter .text h4{
     font-size: 2rem;
     font-weight: 600;
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
     color: var(--yellow);
 }
 .sWrapper{
@@ -450,3 +455,46 @@ body{
     border-radius: 10px;
     align-self: center;
 }
+@media screen and (max-width: 1250px)
+{
+    .shelterContentWrap{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .aboutShelter{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 4rem;
+    }
+    .aboutShelter .text{
+        width: 100%;
+        border-radius: 0px 0px 0px 0px;
+        font-size:  1.0rem;
+    }
+    .aboutShelter .image{
+        width: 100%;
+        border-radius: 0px 0px 0px 0px;
+    }
+}
+@media screen and (max-width: 768px)
+{
+    .aboutShelter{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .aboutShelter .text{
+        width: 80%;
+        height: 25% auto;
+        margin-bottom: 5rem;
+    }
+    .aboutShelter .image{
+        width: 80%;
+        height: 25% auto;
+    }
+
+}
+

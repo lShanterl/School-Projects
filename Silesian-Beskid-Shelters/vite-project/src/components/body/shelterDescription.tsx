@@ -25,28 +25,33 @@ const ShelterDescription = (prop : {shelter_image : string}) => {
                     <motion.div initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         transition={{ anticipation: 0.5, duration: 0.5 }}
+                        viewport={{once:true}}
                         className="image" style={backgroundImage}  />
                     <motion.div
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
-                        transition={{ anticipation: 0.5, duration: 0.5 }} className="text"><h4>Schronisko</h4> Skąd wzięła się nazwa Klimczok?
+                        transition={{ anticipation: 0.5, duration: 0.5 }}
+                        viewport={{once:true}} 
+                        className="text"><h4>Schronisko</h4> Skąd wzięła się nazwa Klimczok?
                             Klimczok przed latami zwany był również jako Klimczak, zatem dzisiejsza nazwa niespecjalnie różni się od poprzedniczki. A wzięła się stąd, że nzachodnich   zboczach szczytu, znajduje się kilka niewielkich jaskiń. Według podań ludowych, w jednej z nich skrywał się półlegendarny zbójnik Klimczok. to właśnie od     nazwiska słynnego zbójnika, który działał pod koniec XVII wieku na terenie dzisiejszego żywiecko-śląskiego pogranicza, w epoce romantyzmuprzylgnęła obecna nazwa    tego szczytu. Co prawda, jeszcze na początku XIX w. góra nazywana była Goryczną Skałką lub zwyczajnie Skałką.
                     </motion.div>
-                </div>
+                    </div>
                 </div>
                 <div className="aboutShelter">
                     <div className="shelterContentWrap">
                     <motion.div
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
-                        transition={{ anticipation: 0.5, duration: 0.5 }} className="text"><h4>Schronisko</h4> Skąd wzięła się nazwa Klimczok?
+                        transition={{ anticipation: 0.5, duration: 0.5 }}
+                        viewport={{once:true}}
+                         className="text"><h4>Schronisko</h4> Skąd wzięła się nazwa Klimczok?
                             Klimczok przed latami zwany był również jako Klimczak, zatem dzisiejsza nazwa niespecjalnie różni się od poprzedniczki. A wzięła się stąd, że nzachodnich   zboczach szczytu, znajduje się kilka niewielkich jaskiń. Według podań ludowych, w jednej z nich skrywał się półlegendarny zbójnik Klimczok. to właśnie od     nazwiska słynnego zbójnika, który działał pod koniec XVII wieku na terenie dzisiejszego żywiecko-śląskiego pogranicza, w epoce romantyzmuprzylgnęła obecna nazwa    tego szczytu. Co prawda, jeszcze na początku XIX w. góra nazywana była Goryczną Skałką lub zwyczajnie Skałką.
                     </motion.div>
                     <motion.div initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         transition={{ anticipation: 0.5, duration: 0.5 }}
+                        viewport={{once:true}}
                         className="image" style={backgroundImage}  />
-                    
                 </div>
                 </div>
                 <div className="aboutShelter">
