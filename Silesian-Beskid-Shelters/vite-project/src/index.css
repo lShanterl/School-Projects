@@ -30,6 +30,11 @@
     background: #777;
 }
 
+::selection
+{
+    background: var(--yellow);
+    color: #000;
+}
 
 body{
     background-color: var(--darkGray);
@@ -85,6 +90,7 @@ body{
     filter:blur(0px);
     box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.5);
 }
+
 
 .blinking-cursor::after{
     content: '';
@@ -182,7 +188,7 @@ body{
     box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
     font-family: roboto;
     text-align: center;
-    transition: 0.1s ease;
+    transition: 0.5s ease;
     margin:30px;
 }
 .card-image {
@@ -308,7 +314,7 @@ body{
 }
 .footer
 {
-    background: #000;
+    background: #090907;
     color: #fff;
     display: flex;
     justify-content: center;
@@ -316,9 +322,9 @@ body{
 
 }
 .semifooter{
-    background: #090f19;
+    background: #090909;
     width:100%;
-    height:15vh auto;
+    height:13vh auto;
     display: flex;
     justify-content:center;
     align-items: center;
@@ -326,19 +332,20 @@ body{
     
 }
 .semifooter .icon{
-    margin:3rem;
-    background-color: var(--darkGray);
+    margin: 2rem;
+    background-color: var();
     width: 2rem;
     height: 2rem;
-    border-radius: 50%;
+    border-radius: 50px;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    filter:drop-shadow(0 0 0.1rem #fff);
 }
 .semifooter .icon:hover{
-    background-color: var(--yellow);
-    transition: 0.5s ease-in-out;
+    background-color: var(--lightGray);
+    transition: 0.33s ease-in-out;
+    cursor: pointer;
+    transform: scale(1.1);
 }
 .footer p
 {
@@ -368,6 +375,12 @@ body{
 }
 @media screen and (max-width: 768px)
 {
+    body{
+        overflow-x: hidden;
+    }
+    #card::hover{
+        transform: scale(1.01);
+    }
     .contentWrapper
     {
         padding: 0 5%;
@@ -378,4 +391,158 @@ body{
         height: 40%;
     }
 
+    .heroText{
+        font-size: 2rem;
+    }
+    .heroText h1{
+        font-size: 3.4rem;
+    }
+    .contentWrapper
+{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10%;
+    height:100vh auto;
+    background: var(--darkGray);
+    flex-wrap:wrap;
+    padding-bottom:6vh;
+    padding-top:6vh;
+
 }
+.navbar
+{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.navbar .menu
+{
+    display: flex;
+    align-items: center;
+
+}
+.navbar .menu li a
+{
+    color: white;
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: 500;
+    padding:1.5vh;
+    transition: ease 0.5s;
+
+}
+
+}
+.shelterDescription{
+    display: flex;
+
+    background: var(--darkGray);
+}
+.headerShelter{
+    margin-top:12vh;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.headerShelter h1{
+    font-size: 3.5rem;
+    font-weight: 600;
+    color: #fff;
+}
+.aboutShelter{
+    min-height: 100vh;
+    height: 100vh auto;
+    margin-top: 5vh;
+    display: flex;
+    justify-content: space-around;
+    height:100vh auto;
+    min-height: 60vh;
+}
+.aboutShelter .text{
+    padding: 15px;
+    width: 45%;
+    height: 25% auto;
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 400;
+    line-height: 1.8rem;
+    border: #fff 4px solid;
+    border-radius: 10px;
+    align-self: center;
+}
+.aboutShelter .image{
+    width: 650px;
+    height: 450px;
+    border: #fff 6px solid;
+    border-radius: 10px;
+    background-size: cover;
+    align-self: center;
+}
+.aboutShelter .text h4{
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 3rem;
+    color: var(--yellow);
+}
+.sWrapper{
+ 
+}
+.shelterContentWrap{
+    display: flex;
+    justify-content: space-around;
+}
+.aboutShelter .localization{
+    width: 250px;
+    height: 25% auto;
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 400;
+    line-height: 1.8rem;
+    border: #fff 4px solid;
+    border-radius: 10px;
+    align-self: center;
+}
+@media screen and (max-width: 1250px)
+{
+    .shelterContentWrap{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .aboutShelter{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 4rem;
+    }
+    .aboutShelter .text{
+        width: 100%;
+        border-radius: 0px 0px 0px 0px;
+        font-size:  1.0rem;
+    }
+    .aboutShelter .image{
+        width: 100%;
+        border-radius: 0px 0px 0px 0px;
+    }
+}
+@media screen and (max-width: 768px)
+{
+    .aboutShelter{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .aboutShelter .text{
+        width: 80%;
+        height: 25% auto;
+        margin-bottom: 5rem;
+    }
+    .aboutShelter .image{
+        width: 80%;
+        height: 25% auto;
+    }
+
+}
+
