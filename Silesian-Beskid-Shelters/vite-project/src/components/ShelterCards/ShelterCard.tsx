@@ -18,7 +18,7 @@ const ShelterCard = (props: {image_url : string, text : string , shelter_name : 
       <a href={link}> 
         <motion.div initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
-                        transition={{ anticipation: 0.5, duration: 0.5 }} className="card" id="card">
+                        transition={{ anticipation: 0.5, duration: 0.6 }} className="card" id="card">
             <div className="card-image" style={backgroundImage}/>
             <div className="card-text">
                 <h2>{shelter_name}</h2>

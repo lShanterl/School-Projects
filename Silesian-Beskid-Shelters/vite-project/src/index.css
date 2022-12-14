@@ -536,12 +536,9 @@ body{
     }
     .aboutShelter .text{
         width: 80%;
-        height: 25% auto;
-        margin-bottom: 5rem;
     }
     .aboutShelter .image{
         width: 80%;
-        height: 25% auto;
     }
 
 }
