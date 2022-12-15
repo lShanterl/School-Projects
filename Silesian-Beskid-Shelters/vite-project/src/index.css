@@ -262,7 +262,6 @@ body{
     height: 5rem auto;
     background: none;
     border: none;
-    border-bottom: 1px solid #fff;
     color: #fff;
     font-size: 1.4rem;
     font-weight: 500;
@@ -458,6 +457,7 @@ body{
     justify-content: space-around;
     height:100vh auto;
     min-height: 60vh;
+    margin-bottom: 5vh;
 }
 .aboutShelter .text{
     padding: 15px;
@@ -491,6 +491,11 @@ body{
 .shelterContentWrap{
     display: flex;
     justify-content: space-around;
+    width:100%;
+}
+.galleryWrap
+{
+    
 }
 .aboutShelter .localization{
     width: 250px;
@@ -543,3 +548,4 @@ body{
 
 }
 
+  

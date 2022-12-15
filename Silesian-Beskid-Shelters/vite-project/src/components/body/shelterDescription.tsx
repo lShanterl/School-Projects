@@ -4,7 +4,6 @@ import Navbar from '../Nav/navbar'
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { motion } from "framer-motion"
-import { Gallery } from "../body/gallery"
 
 
 const ShelterDescription = (prop : {shelter_image : string}) => {
@@ -54,13 +53,11 @@ const ShelterDescription = (prop : {shelter_image : string}) => {
                         className="image" style={backgroundImage}  />
                 </div>
                 </div>
-                <div className="aboutShelter">
-                    <div className="shelterContentWrap">
-                    <div className="gallery"></div>
-                    
+                {/* <div className="aboutShelter">
+                    <div className="galleryWrap">
+                   
                 </div>
-            </div>
-            <Gallery />
+            </div> */}
         </div>
 
     )
