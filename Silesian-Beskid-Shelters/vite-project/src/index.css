@@ -467,14 +467,15 @@ body{
     font-size: 1.3rem;
     font-weight: 400;
     line-height: 1.8rem;
-    border: #fff 4px solid;
+    border: #fff 2px solid;
     border-radius: 10px;
     align-self: center;
+    word-spacing: 0.25rem;
 }
 .aboutShelter .image{
     width: 650px;
     height: 450px;
-    border: #fff 6px solid;
+    border: #DDD 3px solid;
     border-radius: 10px;
     background-size: cover;
     align-self: center;
@@ -482,7 +483,8 @@ body{
 .aboutShelter .text h4{
     font-size: 2rem;
     font-weight: 600;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
+    margin-top: 0.5rem;
     color: var(--yellow);
 }
 .sWrapper{
