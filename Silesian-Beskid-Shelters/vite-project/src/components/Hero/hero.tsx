@@ -37,7 +37,8 @@ return(
                         whileInView={{ opacity: 1 }}
                         transition={{ anticipation: 0, duration: 0.8 }}
                         viewport={{once:true}}
-                        className='header'>{header}</motion.h1>
+                        className='header'>{header}
+                        </motion.h1>
                         <h4 className ='blinking-cursor'>{sub_text}</h4>
                         <ScrollDown />
                     </div>
