@@ -548,5 +548,35 @@ body{
     }
 
 }
+@media screen and (max-width: 500px)
+{
+    .navbar .menu ul li a{
+        font-size: 1.35rem;
+    }
+    .aboutShelter{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0rem;
+        margin-bottom:5rem;
+        margin-top:5rem;
+    }
+    .shelterContentWrap{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .aboutShelter .text{
+        width: 95%;
+        padding:15px;
+
+
+    }
+    .aboutShelter .image{
+        width: 95%;
+        padding:15px;
+    }
+}
 
   
