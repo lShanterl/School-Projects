@@ -4,15 +4,20 @@ import './index.css'
 import Hero from './components/Hero/hero'
 import Footer from './components/Footer/footer'
 import ShelterDescription from './components/body/shelterDescription'
+import ResetScrollPosition from './components/body/resetScroll'
 
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <Hero hero_image='src/assets/images/szyndzielniaHero.jpg' header='Schronisko' sub_text='Szyndzielnia'/>
+
+const MainSzyndzielnia = () => {
+
+  return (
+    <div>
+    <ResetScrollPosition />
+    <Hero hero_image='assets/szyndzielniaHero.jpg' header='Schronisko' sub_text='Szyndzielnia'/>
     <ShelterDescription 
-    shelter_image='src/assets/images/stozek.jpg' 
-    image1='src/assets/images/szyndzielnia1.jpg'
-    image2='src/assets/images/skrzyczne2.jpg' 
+    shelter_image='assets/stozek.jpg' 
+    image1='assets/szyndzielnia1.jpg'
+    image2='assets/skrzyczne2.jpg' 
     head1='Najstarsze schronisko w Beskidach' 
     head2='Najpopularniejsze schronisko w Beskidach' 
     text1='Budowę murowano-drewnianego schroniska na wzór alpejski zainicjowała sekcja niemieckiej organizacji turystyki górskiej, Beskidenverein. Budowa miała miejsce w latach 1896-1897. Zajęła się tym firma żydowskiego architekta, Karla Korna z Bielska. Na wzór alpejski budynek posiada charakterystyczną wieżyczkę.
@@ -22,5 +27,6 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     />
 
     <Footer />
-  </React.StrictMode>
-)
+    </div>
+)};
+export default MainSzyndzielnia;

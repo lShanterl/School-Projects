@@ -1,4 +1,5 @@
 import { FaHome } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 
 const Navbar = () =>{
@@ -9,9 +10,9 @@ const Navbar = () =>{
             </div>
                 <div className="menu">
                     <ul>
-                        <li><a href="index.html">Strona Główna</a></li>
+                        <li><Link to='/'>Strona Główna</Link></li>
     
-                        <li><a href="contact.html">Kontakt</a></li>
+                        <li><Link to='/contact'>Kontakt</Link></li>
                     </ul>
                 </div>
         </div>

@@ -4,6 +4,7 @@ import Navbar from '../Nav/navbar'
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { motion } from "framer-motion"
+import { AnimatePresence } from 'framer-motion';
 
 
 const ShelterDescription = (prop : {shelter_image : string, image1 : string, image2 : string, head1 : string, head2 : string, text1 : string, text2 : string, secondText : boolean}) => {
@@ -25,7 +26,11 @@ const ShelterDescription = (prop : {shelter_image : string, image1 : string, ima
     const head2 = prop.head2;
     const text1 = prop.text1;
     const text2 = prop.text2;
-    
+
+    let iteration = 0;
+    let flag = true;
+    if(iteration > 1)
+        flag = false;
 
     if(secondText)
     {
@@ -33,44 +38,27 @@ const ShelterDescription = (prop : {shelter_image : string, image1 : string, ima
             <div className="sWrapper">
                     <div className="headerShelter"><h1>O Schronisku</h1></div>
                     <div className="aboutShelter">
-                        <div className='shelterContentWrap'>
-                        <motion.div initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            transition={{ anticipation: 0.5, duration: 0.5 }}
-                            viewport={{once:true}}
-                            className="image" style={backgroundImage1}  />
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            transition={{ anticipation: 0.5, duration: 0.5 }}
-                            viewport={{once:true}} 
-                            className="text"><h4>{head1}</h4> 
-                                                     {text1}
+                        <motion.div className='shelterContentWrap'
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ anticipation: 0.5, duration: 0.5 }}>
+                            <div className="image" style={backgroundImage1}  />
+                        <div className="text"><h4>{head1}</h4>{text1} </div>
                         </motion.div>
-                        </div>
                     </div>
                     <div className="aboutShelter">
-                        <div className="shelterContentWrap">
-                        <motion.div
+                        <motion.div className='shelterContentWrap'
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
-                            transition={{ anticipation: 0.5, duration: 0.5 }}
-                            viewport={{once:true}}
+                            transition={{ anticipation: 0.5, duration: 0.5 }}>
+                        <div
                              className="text"><h4>{head2}</h4> 
                                 {text2}
-                        </motion.div>
-                        <motion.div initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            transition={{ anticipation: 0.5, duration: 0.5 }}
-                            viewport={{once:true}}
+                        </div>
+                        <div 
                             className="image" style={backgroundImage2}  />
+                    </motion.div>
                     </div>
-                    </div>
-                    {/* <div className="aboutShelter">
-                        <div className="galleryWrap">
-                       
-                    </div>
-                </div> */}
             </div>
         )
     }else{
@@ -81,21 +69,15 @@ const ShelterDescription = (prop : {shelter_image : string, image1 : string, ima
         <div className="sWrapper" style={additionalStyle}>
                     <div className="headerShelter"><h1>O Schronisku</h1></div>
                     <div className="aboutShelter">
-                        <div className='shelterContentWrap'>
-                        <motion.div initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            transition={{ anticipation: 0.5, duration: 0.5 }}
-                            viewport={{once:true}}
-                            className="image" style={backgroundImage1}  />
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            transition={{ anticipation: 0.5, duration: 0.5 }}
-                            viewport={{once:true}} 
-                            className="text"><h4>{head1}</h4> 
-                                                     {text1}
-                        </motion.div>
+                        <motion.div className='shelterContentWrap'
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ anticipation: 0.5, duration: 0.5 }}>
+                        <div className="image" style={backgroundImage1}  />
+                        <div
+                            className="text"><h4>{head1}</h4>{text1}
                         </div>
+                        </motion.div>
                     </div>
         </div>
         )

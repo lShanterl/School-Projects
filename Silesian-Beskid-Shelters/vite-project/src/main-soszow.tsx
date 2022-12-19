@@ -4,14 +4,19 @@ import './index.css'
 import Hero from './components/Hero/hero'
 import Footer from './components/Footer/footer'
 import ShelterDescription from './components/body/shelterDescription'
+import ResetScrollPosition from './components/body/resetScroll'
 
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <Hero hero_image='src/assets/images/soszowHero.jpg' header='Schronisko' sub_text='Soszów'/>
+
+const MainSoszow = () => {
+
+  return (
+    <div>
+    <ResetScrollPosition />
+    <Hero hero_image='assets/soszowHero.jpg' header='Schronisko' sub_text='Soszów'/>
     <ShelterDescription 
     shelter_image='src/assets/images/klimczok.jpg' 
-    image1='src/assets/images/soszow1.jpeg'
+    image1='assets/soszow1.jpeg'
     image2='' 
     head1='Historia' 
     head2='' 
@@ -24,5 +29,6 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     secondText = {false}
     />
     <Footer />
-  </React.StrictMode>
-)
+  </div>
+)};
+export default MainSoszow

@@ -4,15 +4,20 @@ import './index.css'
 import Hero from './components/Hero/hero'
 import Footer from './components/Footer/footer'
 import ShelterDescription from './components/body/shelterDescription'
+import ResetScrollPosition from './components/body/resetScroll'
 
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <Hero hero_image='src/assets/images/stozekHero.jpg' header='Schronisko' sub_text='Stożek'/>
+
+const MainStozek = () => {
+
+  return (
+    <div>
+    <ResetScrollPosition />
+    <Hero hero_image='assets/stozekHero.jpg' header='Schronisko' sub_text='Stożek'/>
     <ShelterDescription 
-    shelter_image='src/assets/images/stozek.jpg' 
-    image1='src/assets/images/stozek1.jpg'
-    image2='src/assets/images/klimczok2.jpg' 
+    shelter_image='assets/stozek.jpg' 
+    image1='assets/stozek1.jpg'
+    image2='assets/klimczok2.jpg' 
     head1='1 Polskie Schronisko Górskie w Beskidzie' 
     head2='Wnętrze Schroniska' 
     text1='Było to pierwsze polskie schronisko w Beskidzie Śląskim. O jego budowie zadecydowali w 1919 r. członkowie zarządu cieszyńskiego oddziału Polskiego Towarzystwa Tatrzańskiego. Budowę rozpoczęto w maju 1920 r. według projektu Stanisława Chorubskiego, który wykorzystał elementy architektoniczne zarówno miejscowe, jak i podhalańskie.'
@@ -21,5 +26,6 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     />
 
     <Footer />
-  </React.StrictMode>
-)
+  </div>
+)};
+export default MainStozek;
