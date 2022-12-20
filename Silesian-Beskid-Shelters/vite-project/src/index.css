@@ -81,7 +81,6 @@ body{
 
 
 .heroWrapper{
-    background:  url(../images/hero.jpg) no-repeat center center;
     background-size: cover;
     min-height: 100vh;
     height: 100vh auto;
@@ -180,6 +179,7 @@ body{
     justify-content: center;
     text-align: center;
 }
+
 .card {
     display: grid;
     grid-template-columns: 300px;
@@ -191,7 +191,7 @@ body{
     font-family: roboto;
     text-align: center;
     transition: 0.5s ease;
-    margin:30px;
+    margin: 30px;
 }
 .card-image {
     grid-area: image;
@@ -575,12 +575,23 @@ body{
 
         padding:15px;
     }
+    .hero button{
+        font-size: 1.2rem;
+    }
 
 }
 @media screen and (max-width: 500px)
 {
+    .card{
+        margin: 0px;
+        margin-bottom:30px;
+    }
+    .hero button{
+        font-size: 1.1rem;
+    }
+
     .navbar .menu ul li a{
-        font-size: 1.35rem;
+        font-size: 1.40rem;
     }
     .aboutShelter{
         flex-direction: column;
@@ -608,4 +619,25 @@ body{
     }
 }
 
+@media screen and (max-width: 485px)
+{
+    .navbar .menu ul li a{
+        font-size: 1.30rem;
+    }
+    .navbar{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap:wrap;
+
+    }
+    .navbar .menu li{
+        display: flex;
+        justify-content: center;
+    }
+    
+
+    
+}
   

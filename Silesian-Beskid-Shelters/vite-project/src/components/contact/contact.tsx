@@ -11,10 +11,11 @@ const Contact = () => {
             <div className="contact">
                 <div className="contactText">
                     <form 
-                    name="contactv1"
+                    name="contact"
                     method="post" 
                     data-netlify="true"
                     >
+                        <input type='hidden' name='form-name' value='contact' />
                         <motion.input 
                         initial={{ x : -3000}}
                         whileInView={{ opacity: 1 }}
@@ -22,42 +23,48 @@ const Contact = () => {
                         transition={{ duration: 0.6}}
                         viewport={{once:true}}
                         
-                        type="text" id='name' placeholder="Imię" />
+                        type="text" name='name' placeholder="Imię" />
                         <motion.input 
                         initial={{ x : -3000}}
                         whileInView={{ opacity: 1 }}
                         animate={{ x: 0 }}
                         transition={{duration: 0.7}}
                         viewport={{once:true}}
-                        type="text" id='surname' placeholder="Nazwisko" />
+                        type="text" name='surname' placeholder="Nazwisko" />
                         <motion.input 
                         initial={{ x : -3000}}
                         whileInView={{ opacity: 1 }}
                         animate={{ x: 0 }}
                         transition={{duration: 0.8}}
                         viewport={{once:true}}
-                        type="text" id='email' placeholder="Email" />
+                        type="text" name='email' placeholder="Email" 
+                        required
+                        />
                         <motion.input 
                         initial={{ x : -3000}}
                         whileInView={{ opacity: 1 }}
                         animate={{ x: 0 }}
                         transition={{duration: 0.9}}
                         viewport={{once:true}}
-                        type="text" id='topic 'placeholder="Temat" />
+                        type="text" name='topic'placeholder="Temat" 
+                        required
+                        />
                         <motion.textarea
                         initial={{ x : -3000}}
                         whileInView={{ opacity: 1 }}
                         animate={{ x: 0 }}
                         transition={{duration: 1.0}}
                         viewport={{once:true}}
-                        id='content'placeholder="Treść wiadomości"></motion.textarea>
+                        name='message'placeholder="Treść wiadomości"
+                        required
+                        ></motion.textarea>
                         <motion.input 
                         initial={{ x : -3000}}
                         whileInView={{ opacity: 1 }}
                         animate={{ x: 0 }}
                         transition={{duration: 1.1}}
                         viewport={{once:true}}
-                        type="submit" value="Wyślij" id='submit' />
+                        type="submit" value="Wyślij" name='submit'  id='submit'/>
                       
                     </form>
                 </div>

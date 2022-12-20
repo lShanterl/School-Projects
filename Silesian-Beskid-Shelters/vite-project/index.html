@@ -10,4 +10,11 @@
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
+  <form name="contact" method="POST" netlify netlify-honeypot="bot-field" hidden>
+    <input type="text" name="name" />
+    <input type="text" name="surname" />
+    <input type="email" name="email" />
+    <input type="text" name="topic" />
+    <textarea name="message"></textarea>
+  </form>
 </html>
