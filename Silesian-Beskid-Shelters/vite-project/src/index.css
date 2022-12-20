@@ -568,9 +568,12 @@ body{
     }
     .aboutShelter .text{
         width: 80%;
+        padding:15px;
     }
     .aboutShelter .image{
         width: 80%;
+
+        padding:15px;
     }
 
 }
