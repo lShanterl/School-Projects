@@ -22,7 +22,7 @@
         </div>
     </nav>
     <main>
-        <section id="section-1" style="background-image: url(https://wallpaper.dog/large/20467759.jpg) ;">
+        <section id="section-1" style="background-image: url(https://htmlcolorcodes.com/assets/images/colors/gray-color-solid-background-1920x1080.png) ;">
             <div id="hero-wrapper">
                 <div id="hero">
                     <div id="hero-text">
@@ -41,24 +41,24 @@
                 <img src="https://img.icons8.com/ios/50/000000/chevron-left.png"/>
             </button>
             <div class="card">
-                <img src="https://fwcdn.pl/fpo/72/84/747284/7814053.3.jpg" alt="">
-                <h3>The Crown</h3>
+                <img src="https://htmlcolorcodes.com/assets/images/colors/gray-color-solid-background-1920x1080.png" alt="">
+                <h3>Sit</h3>
             </div>
             <div class="card">
-                <img src="https://fwcdn.pl/fpo/72/84/747284/7814053.3.jpg" alt="">
-                <h3>The Crown</h3>
+                <img src="https://htmlcolorcodes.com/assets/images/colors/gray-color-solid-background-1920x1080.png" alt="">
+                <h3>Dolor</h3>
             </div>
             <div class="card">
-                <img src="https://fwcdn.pl/fpo/72/84/747284/7814053.3.jpg" alt="">
-                <h3>The Crown</h3>
+                <img src="https://htmlcolorcodes.com/assets/images/colors/gray-color-solid-background-1920x1080.png" alt="">
+                <h3>Ipsum</h3>
             </div>
             <div class="card">
-                <img src="https://fwcdn.pl/fpo/72/84/747284/7814053.3.jpg" alt="">
-                <h3>The Crown</h3>
+                <img src="https://htmlcolorcodes.com/assets/images/colors/gray-color-solid-background-1920x1080.png" alt="">
+                <h3>Lorem</h3>
             </div>
             <div class="card">
-                <img src="https://fwcdn.pl/fpo/72/84/747284/7814053.3.jpg" alt="">
-                <h3>The Crown</h3>
+                <img src="https://htmlcolorcodes.com/assets/images/colors/gray-color-solid-background-1920x1080.png" alt="">
+                <h3>Lorem</h3>
             </div>
             <button id="scroll-right">
                 <img src="https://img.icons8.com/ios/50/000000/chevron-right.png"/>

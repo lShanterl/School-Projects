@@ -76,8 +76,10 @@
                 exit();
             }
         }
-        setcookie("email", $email, time() + (86400 * 30), "/");
-        setcookie("password", $password, time() + (86400 * 30), "/");
+        /*
+        TODO: 
+            Authorization and logging in the user
+        */
         
     }
 
