@@ -1,0 +1,31 @@
+@import url('variables.css');
+@import url('navbar.css');
+@import url('hero.css');
+@import url('movies.css');
+
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800");
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body{
+  background-color: var(--primary-color-dark);
+  overflow-x: hidden;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--primary-color);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color-dark);
+}
+::selection {
+  background: var(--primary-color);
+  color: var(--secondary-text-color);
+}

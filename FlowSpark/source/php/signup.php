@@ -1,19 +1,22 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Theather</title>
-    <link rel="stylesheet" href="style.css">
+    <title>FlowSpark</title>
+    <link rel="stylesheet" href="../css/app.css">
+    <link rel="stylesheet" href="../css/sign.css">
 </head>
 <body>
-    <div class="sign_up">
+<div class="wrapper">
+    <div class="logbox">
+        
         <h1>Sign Up</h1>
-        <form action="sign_up_check.php" method="post">
+        <form action="create_account.php" method="post">
 
             <?php if (isset($_GET['error'])) { ?>
-                 <p><?php echo $_GET['error']; ?></p>
+                 <p class='error-message'><?php echo $_GET['error']; ?></p>
             <?php }?>
 
           <label>Name</label>
@@ -64,8 +67,13 @@
 
             <input type="submit" value="Sign Up">
             <input type="reset" value="Reset">
+            <a href="./login.php" class="create-login">log in instead?</a>
+
         </form>
-        already a member? <a href="sign_in.php">Sign In</a>
     </div>
+
+</div>
+
+    <script src="../js/reset_form.js"></script>
 </body>
 </html>
