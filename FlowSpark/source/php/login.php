@@ -21,7 +21,7 @@
 
           <label>Email</label>
           <?php if (isset($_GET['email'])) { ?>
-               <input type="text" 
+               <input type="email" 
                       name="email" 
                       placeholder="email"
                       value="<?php echo $_GET['email']; ?>">

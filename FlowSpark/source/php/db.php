@@ -11,5 +11,6 @@
     if ($conn->connect_error) {
         die('Connection failed: ' . $conn->connect_error);
     }
+    $cookie = isset($_COOKIE["email"]);
     
 ?>
