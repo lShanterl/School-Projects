@@ -1,5 +1,21 @@
 <?php
     include 'db.php';
+
+    $email = $_COOKIE["email"];
+
+    $sql = "SELECT * FROM users WHERE email like '$email'";
+
+    $result = mysqli_query($conn, $sql);
+    
+    $row = mysqli_fetch_assoc($result);
+ 
+    if($row == null)
+    {
+        header("Location: ./index.php");
+        exit();
+    }
+    $name = $row['name'];
+    $surname = $row['surname'];
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +53,18 @@
 
     <div class="settings-wrapper">
         <div class="settings">
-            a
+            <div class="user_details">
+                <h1>Your Account</h1>
+                <form action="" method="post">
+                    <span>
+                        <label for="name">Your name</label>
+                        <input type="text" name="" value='<?php echo $name ?>'>
+                    </span>
+                </form>
+            </div>
+            <div class="menu">
+
+            </div>
         </div>
 
     </div>
