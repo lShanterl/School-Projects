@@ -16,6 +16,7 @@
     }
     $name = $row['name'];
     $surname = $row['surname'];
+    $email = $row['email'];
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +30,7 @@
     <link rel="stylesheet" href="../css/app.css">
 </head>
 <body>
-    <nav class="navbar sticky"> 
+    <nav class="navbar"> 
             <div class="left">
                 <a href="">Popular</a>
                 <a href="">New</a>
@@ -56,13 +57,29 @@
             <div class="user_details">
                 <h1>Your Account</h1>
                 <form action="" method="post">
-                    <span>
-                        <label for="name">Your name</label>
-                        <input type="text" name="" value='<?php echo $name ?>'>
+                    <span class="form-wrapper">
+                        <span class='value-wrap'>
+                            <label for="name">Your name</label>
+                            <input type="text" name="" value='<?php echo $name ?>'>
+                        </span>
+                        <span class='value-wrap'>
+                            <label for="name">Your Surname</label>
+                            <input type="text" name="" value='<?php echo $surname ?>'>
+                        </span>
                     </span>
+                    <span class='value-wrap'>
+                        <label for="name">Your Email</label>
+                        <input type="text" name="" value='<?php echo $email ?>'disabled>
+                    </span>
+                    <div class='change'>
+                        <input type="submit" value="Save">
+                </div>
                 </form>
             </div>
             <div class="menu">
+                <img class='avatar' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtEbTLfMii3TQW5ambR0PD6FlRMPcUFzDy_g&usqp=CAU" alt="">
+                <button class="account-details active">Account details</button>
+                <button class="password">Password</button>
 
             </div>
         </div>
