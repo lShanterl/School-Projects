@@ -32,8 +32,8 @@
 <body>
     <nav class="navbar"> 
             <div class="left">
+                <a href="./index.php">FlowSpark</a>
                 <a href="">Popular</a>
-                <a href="">New</a>
                 <?php if($cookie){ ?>
                     <a href="./watchlist.php">Your Watchlist</a>
                 <?php } ?>
@@ -54,22 +54,22 @@
 
     <div class="settings-wrapper">
         <div class="settings">
-            <div class="user_details">
+            <div class="user_details" id='ud'>
                 <h1>Your Account</h1>
-                <form action="" method="post">
+                <form action="update_settings.php" method="post" class=''>
                     <span class="form-wrapper">
                         <span class='value-wrap'>
                             <label for="name">Your name</label>
-                            <input type="text" name="" value='<?php echo $name ?>'>
+                            <input type="text" name="name" value='<?php echo $name ?>'>
                         </span>
                         <span class='value-wrap'>
                             <label for="name">Your Surname</label>
-                            <input type="text" name="" value='<?php echo $surname ?>'>
+                            <input type="text" name="surname" value='<?php echo $surname ?>'>
                         </span>
                     </span>
                     <span class='value-wrap'>
                         <label for="name">Your Email</label>
-                        <input type="text" name="" value='<?php echo $email ?>'disabled>
+                        <input type="text" name="email" value='<?php echo $email ?>'disabled>
                     </span>
                     <div class='change'>
                         <input type="submit" value="Save">
@@ -77,7 +77,7 @@
                 </form>
             </div>
             <div class="menu">
-                <img class='avatar' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtEbTLfMii3TQW5ambR0PD6FlRMPcUFzDy_g&usqp=CAU" alt="">
+                <img class='avatar-setting' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtEbTLfMii3TQW5ambR0PD6FlRMPcUFzDy_g&usqp=CAU" alt="">
                 <button class="account-details active">Account details</button>
                 <button class="password">Password</button>
 
@@ -85,5 +85,6 @@
         </div>
 
     </div>
+    <script src='../js/change_settings.js'></script>
 </body>
 </html>

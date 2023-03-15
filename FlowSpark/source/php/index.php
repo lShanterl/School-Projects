@@ -15,8 +15,8 @@
 <body>
     <nav class="navbar" > 
         <div class="left">
+            <a href="./index.php">FlowSpark</a>
             <a href="">Popular</a>
-            <a href="">New</a>
             <?php if($cookie){ ?>
                 <a href="./watchlist.php">Your Watchlist</a>
             <?php } ?>
