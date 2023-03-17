@@ -9,8 +9,13 @@
         $target = $target . $filename;
 
         if (move_uploaded_file($_FILES['avatar']['tmp_name'], $target)){
-            $status = "The file " . basename($_FILES['avatar']['name']) . " has been uploaded";
-            echo $status;
-        }   
+            header("Location: ../php/settings.php?avatar=success");
+        } 
+        else {
+            header("Location: ../php/settings.php?avatar=error");
+        }
+    }
+    else {
+        header("Location: ../php/settings.php");
     }
 ?>

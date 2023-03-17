@@ -44,7 +44,7 @@
             <div class="right">
                 <?php if($cookie){ ?>
                     <a href="./logout.php"><button class='login'>Log out</button></a>
-                    <a href="./settings.php"><img class='avatar' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtEbTLfMii3TQW5ambR0PD6FlRMPcUFzDy_g&usqp=CAU" alt=""></a>
+                    <a href="./settings.php"><img class='avatar' src="<?php echo GetIcon()?>" alt=""></a>
                 <?php }else{ ?>
                     <a href="./login.php"><button class='login'>Log in</button></a>
                     <a href="./signup.php"><button class='login'>Sign up</button></a>
@@ -77,10 +77,16 @@
                 </form>
             </div>
             <div class="menu">
-                <img class='avatar' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtEbTLfMii3TQW5ambR0PD6FlRMPcUFzDy_g&usqp=CAU" alt="">
-                <button class="account-details active">Account details</button>
-                <button class="password">Password</button>
+                <img class='avatar' src=<?php echo GetIcon() ?> alt="">
+                <form action="./upload.php" method="post" enctype="multipart/form-data">
+                    <label for="">
+                        <input type="file" class='custom-file-input' name="avatar">
 
+                    </label>
+                    <input type="submit" value="Upload Image">
+                </form>
+                <button class="menu-button account-details active">Account details</button>
+                <button class="menu-button password">Password</button>
             </div>
         </div>
 
