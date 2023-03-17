@@ -46,7 +46,7 @@
     align-items: center;
     justify-content: center;
 }
-.settings .menu button{
+.settings .menu button.menu-button{
     width: 90%;
     height: 40px auto;
     min-height: 40px;
@@ -79,13 +79,18 @@
     font-size: clamp(30px, 2.8vw, 150px);
     text-align: center;
 }
-.settings form{
+form{
     display: flex;
     flex-direction: column;
     gap: clamp(25px, 5.8vh, 10vh);
 }
 .settings label{
     font-size: clamp(18px, 1.5vw, 150px);
+}
+.menu form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .settings form input{
     height: 100%;
@@ -111,7 +116,6 @@
     align-items: center;
     gap: 25px;
     width:100%;
-
 }
 .change input{
     display: flex;
@@ -130,3 +134,4 @@
     visibility: hidden;
     opacity: 0;
 }
+

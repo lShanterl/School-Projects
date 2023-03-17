@@ -66,3 +66,12 @@
 .sticky{
     position: sticky;
 }
+img.avatar{
+    border-radius: 50%;
+    height: clamp(50px, 6vh, 25vh);
+    width: clamp(50px, 6vh, 25vh);
+    transition: ease-in-out 0.3s;
+}
+  img.avatar:hover{
+    cursor: pointer;
+}
