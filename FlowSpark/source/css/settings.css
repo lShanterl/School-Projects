@@ -28,6 +28,7 @@
     flex-direction: row;
     justify-content: center;
     gap: clamp(25px, 5.8vh, 10vh);
+    align-items: center;
 }
 .settings .user_details{
     display: flex;
@@ -45,8 +46,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 25px;
+
 }
-.settings .menu button.menu-button{
+.settings .menu button{
     width: 90%;
     height: 40px auto;
     min-height: 40px;
@@ -62,6 +65,19 @@
     cursor: pointer;
     margin: 2vh;
 }
+.settings .menu input, .settings .menu label{
+    width: 90%;
+    background: var(--primary-color-dark);
+    border: solid 2px var(--secondary-text-color);
+    border-radius: 5px;
+    color: var(--secondary-text-color);
+    font-size: clamp(18px, 1.2vw, 150px);
+    transition: ease-in-out 0.3s;
+
+    background: var(--primary-color-dark);
+    color: var(--secondary-text-color);
+    cursor: pointer;
+}
 .settings .menu button.active{
     background: var(--secondary-text-color);
     color: var(--primary-color);
@@ -72,37 +88,45 @@
     color: var(--primary-color);
 }
 .avatar-setting{
-    margin: 25px auto;
     border-radius: 5px;
+    width: 175px;
+    height: 175px;
 }
 .user_details h1{
     font-size: clamp(30px, 2.8vw, 150px);
     text-align: center;
 }
-form{
+.settings form{
     display: flex;
     flex-direction: column;
     gap: clamp(25px, 5.8vh, 10vh);
 }
-.settings label{
+.user_details label{
     font-size: clamp(18px, 1.5vw, 150px);
 }
-.menu form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+input[type='file']{
+    height: 0% !important;
 }
-.settings form input{
-    height: 100%;
+.user_details form input{
     border: 2px solid var(--secondary-text-color);
     border-radius: 5px;
-    padding: 15px 50px;
+    padding: 20px 50px;
     font-weight: 400;
     background-color: var(--primary-color-dark);
     color: var(--secondary-text-color);
     font-size: 0.6em;
     text-align:center;
     width:100%;
+}
+.settings .menu label, .settings .menu input{
+    border: 2px solid var(--secondary-text-color);
+    border-radius: 5px;
+    padding: 10px 10px;
+    font-weight: 400;
+    background-color: var(--primary-color-dark);
+    color: var(--secondary-text-color);
+    font-size: 1.2em;
+    text-align:center;
 }
 .settings form span.value-wrap{
     display:flex;
@@ -134,4 +158,12 @@ form{
     visibility: hidden;
     opacity: 0;
 }
+.menu form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.menu{
 
+}

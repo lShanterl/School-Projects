@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="../css/app.css">
 </head>
 <body>
-    <nav class="navbar"> 
+    <nav class="navbar sticky"> 
             <div class="left">
                 <a href="./index.php">FlowSpark</a>
                 <a href="">Popular</a>
@@ -44,7 +44,7 @@
             <div class="right">
                 <?php if($cookie){ ?>
                     <a href="./logout.php"><button class='login'>Log out</button></a>
-                    <a href="./settings.php"><img class='avatar' src="<?php echo GetIcon()?>" alt=""></a>
+                    <a href="./settings.php"><img class='avatar' src=<?php echo GetIcon() ?> alt=""></a>
                 <?php }else{ ?>
                     <a href="./login.php"><button class='login'>Log in</button></a>
                     <a href="./signup.php"><button class='login'>Sign up</button></a>
@@ -77,12 +77,10 @@
                 </form>
             </div>
             <div class="menu">
-                <img class='avatar' src=<?php echo GetIcon() ?> alt="">
+                <img class='avatar-setting' src=<?php echo GetIcon() ?> alt="">
                 <form action="./upload.php" method="post" enctype="multipart/form-data">
-                    <label for="">
-                        <input type="file" class='custom-file-input' name="avatar">
-
-                    </label>
+                    <input type="file" name='avatar' id='avatar' class='hidden'/>
+                    <label for="avatar">Select file</label>
                     <input type="submit" value="Upload Image">
                 </form>
                 <button class="menu-button account-details active">Account details</button>

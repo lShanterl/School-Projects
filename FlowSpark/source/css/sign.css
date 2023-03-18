@@ -66,3 +66,16 @@ form input[type="submit"]:hover, form input[type="reset"]:hover{
     text-align: center;
     margin-top: 20px;
 }
+.back_wrap{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+}
+.back_wrap a{
+    color: var(--secondary-text-color);
+    font-size: 1.0em;
+    font-weight: 400;
+    transition: ease-in-out 0.3s;
+
+}

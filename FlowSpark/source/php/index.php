@@ -27,7 +27,7 @@
         <div class="right">
             <?php if($cookie){ ?>
                 <a href="./logout.php"><button class='login'>Log out</button></a>
-                <a href="./settings.php"><img class='avatar' src=<?php echo GetIcon() ?> alt=""></a>
+                <a href="./settings.php"><img class='avatar' src=<?php echo GetIcon()?> alt=""></a>
             <?php }else{ ?>
                 <a href="./login.php"><button class='login'>Log in</button></a>
                 <a href="./signup.php"><button class='login'>Sign up</button></a>

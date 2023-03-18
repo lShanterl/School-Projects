@@ -4,7 +4,7 @@
     $server = 'localhost';
     $user   = 'root';
     $pass   = '';
-    $db     = 'FlowSpark';
+    $db     = 'flowspark';
 
     $conn = new mysqli($server, $user, $pass, $db);
 
