@@ -60,7 +60,7 @@
         <div class="movies-wrapper">
                 <?php 
 
-                    $rand = array_rand($available_movies, 5);
+                    $rand = array_rand($available_movies, 4);
 
                     foreach($rand as $value)
                     {

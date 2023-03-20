@@ -41,6 +41,38 @@
                 <?php } ?>
             </div>
     </nav>
+    <div class="hero-movie" style="background-image:url(<?php echo $movie['hero_path']?>)">
+        <div class="filter-movie">
+            <div class="hero-text-wrapper-movie">
+                <div class="hero-text-movie">
+                    <div>
+                    <h1><?php echo $movie['title']?></h1>
+                    <p class='summary'><?php echo $movie['short_summary']?></p>
+                    <div class="attributes-wrap">
+                        <p class="categories">
+                            <?php
+                                $categories = explode(",", $movie['categories']);
+                                foreach($categories as $category){
+                                    echo "<span class='category'>".$category."</span>";
+                                }
+                            ?>
+                        </p>
+                        <div class="data_wrap">
+                            <div class="duration">1h 52m</div>
+                            <div class='release_date'><?php echo $movie['release_date']?></div> 
+                            <div class="rating"> <img src="../../resources/images/fullstar.svg" alt=""> <?php echo $movie['rating']?></div>
+                        </div>
+                        <div class="buttons">
+                            <a href="" target='_blank'><button>Watch Trailer</button></a>
+                            <a href="addto_watchlist.php?id=<?php echo $movie['id']?>"><button>Add to Watchlist</button></a>
+                            <a href=""><button>Buy Tickets</button></a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
