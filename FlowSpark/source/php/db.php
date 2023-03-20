@@ -12,7 +12,11 @@
         die('Connection failed: ' . $conn->connect_error);
     }
     $cookie = isset($_COOKIE["email"]);
-    
+    $sql = "SELECT isAdmin FROM users WHERE email like '".$_COOKIE['email']."';";
+    $result = mysqli_query($conn, $sql);
+
+    $admin = $result->fetch_assoc()['isAdmin'];
+
     function GetIcon()
     {
         global $conn;

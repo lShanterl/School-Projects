@@ -12,6 +12,8 @@
             $available_movies[] = $row;
         }
     }
+    $searchTerm = $_GET['search'];
+    
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +29,9 @@
     <nav class="navbar" > 
         <div class="left">
             <a href="./index.php">FlowSpark</a>
-            <a href="">Popular</a>
+            <?php if($cookie){ ?>
+                    <a href="./tickets.php">Your Tickets</a>
+                <?php } ?>
             <?php if($cookie){ ?>
                 <a href="./watchlist.php">Your Watchlist</a>
             <?php } ?>
@@ -36,13 +40,21 @@
             <!-- Mobile navbar part -->
         </div>
         <div class="right">
+            <form action="" method='get' id='search'>
+                <input type="text" name="search" id="search-input" placeholder="Search..." onkeyup="showResult(this.value)">
+                <div id="livesearch"></div> 
+            </form>
             <?php if($cookie){ ?>
                 <a href="./logout.php"><button class='login'>Log out</button></a>
+                <?php if($admin == 1){ ?>
+                        <a href="./adminpanel.php"><button class='login'>Admin</button></a>
+                <?php } ?>
                 <a href="./settings.php"><img class='avatar' src=<?php echo GetIcon()?> alt=""></a>
             <?php }else{ ?>
                 <a href="./login.php"><button class='login'>Log in</button></a>
                 <a href="./signup.php"><button class='login'>Sign up</button></a>
             <?php } ?>
+            
         </div>
     </nav>
     <div class="hero">
@@ -75,18 +87,10 @@
                                     <a href=./movie.php?id=".$movie['id']."><button class='info'>more information</button></a>
                                 </div>
                             </div>";
-                    }   
-                    // if(isset($_POST['load'])) {
-                    //     echo "amogus";
-                    // }              
+                    }           
                 ?>
-
         </div>
-        <!-- <form action="" method='POST' id='load-more-form'>
-            <input type="number" name="load" id="load" style='visibility:hidden' value="1">
-            <button id="load-more" name='load-more' type='submit'>Load more</button>
-        </form> -->
     </div>
-    <!-- <script src='../js/form-handler.js'></script> -->
+
 </body>
 </html>

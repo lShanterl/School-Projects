@@ -23,7 +23,9 @@
     <nav class="navbar" > 
             <div class="left">
                 <a href="./index.php">FlowSpark</a>
-                <a href="">Popular</a>
+                <?php if($cookie){ ?>
+                    <a href="./tickets.php">Your Tickets</a>
+                <?php } ?>
                 <?php if($cookie){ ?>
                     <a href="./watchlist.php">Your Watchlist</a>
                 <?php } ?>
@@ -34,6 +36,9 @@
             <div class="right">
                 <?php if($cookie){ ?>
                     <a href="./logout.php"><button class='login'>Log out</button></a>
+                    <?php if($admin == 1){ ?>
+                        <a href="./adminpanel.php"><button class='login'>Admin</button></a>
+                    <?php } ?>
                     <a href="./settings.php"><img class='avatar' src=<?php echo GetIcon()?> alt=""></a>
                 <?php }else{ ?>
                     <a href="./login.php"><button class='login'>Log in</button></a>
@@ -63,7 +68,7 @@
                             <div class="rating"> <img src="../../resources/images/fullstar.svg" alt=""> <?php echo $movie['rating']?></div>
                         </div>
                         <div class="buttons">
-                            <a href="" target='_blank'><button>Watch Trailer</button></a>
+                            <a href="<?php echo $movie['trailer_link']?>" target='_blank'><button>Watch Trailer</button></a>
                             <a href="addto_watchlist.php?id=<?php echo $movie['id']?>"><button>Add to Watchlist</button></a>
                             <a href=""><button>Buy Tickets</button></a>
                         </div>
