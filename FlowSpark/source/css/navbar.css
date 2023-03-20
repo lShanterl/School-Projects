@@ -34,7 +34,16 @@
 .navbar .left:first-child{
     margin-left: clamp(50px, 100px, 300px);
 }
-
+img.avatar{
+    border-radius: 50%;
+    height: clamp(50px, 6vh, 25vh);
+    width: clamp(50px, 6vh, 25vh);
+    transition: ease-in-out 0.3s;
+}
+img.avatar:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+}
 .navbar a{
     text-decoration: none;
     color: var(--secondary-text-color);

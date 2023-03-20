@@ -2,6 +2,7 @@
 @import url('navbar.css');
 @import url('hero.css');
 @import url('movies.css');
+@import url('popular_movies.css');
 
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800");
 *{
@@ -29,13 +30,7 @@ body{
   background: var(--primary-color);
   color: var(--secondary-text-color);
 }
-img.avatar{
-  border-radius: 50%;
-  height: clamp(50px, 6vh, 25vh);
-  width: clamp(50px, 6vh, 25vh);
-  transition: ease-in-out 0.3s;
-}
-img.avatar:hover{
-  cursor: pointer;
-  transform: scale(1.1);
+.marked{
+  font-weight: 700;
+  
 }

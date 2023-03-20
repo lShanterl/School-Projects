@@ -1,6 +1,17 @@
 <?php
     include 'db.php';
-    
+
+    $available_movies = array();
+
+    $sql = "SELECT * FROM movies";
+    $result = mysqli_query($conn, $sql);
+    if(mysqli_num_rows($result) > 0)
+    {
+        while($row = mysqli_fetch_assoc($result))
+        {
+            $available_movies[] = $row;
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -39,15 +50,43 @@
             <div class="hero-text-wrapper">
                 <div class="hero-text">
                     <h1>FlowSpark</h1>
-                    <p>FlowSpark is a cinema near Ohio in which you can watch movies any time</p>
+                    <p> Hello<span class='marked'> <?php echo GetUserName();?></span>! What are you looking for today? <br> Let's check what's new down there.</p>
                 </div>
             </div>
         </div>
     </div>
+    <div class="wrap">
+        <h1>Popular movies</h1>
+        <div class="movies-wrapper">
+                <?php 
 
-    <div class="movies">
+                    $rand = array_rand($available_movies, 5);
 
+                    foreach($rand as $value)
+                    {
+                        $movie = $available_movies[$value];
+                        echo "<div class='card'>
+                                <img src=".$movie['image_path'].">
+                                <div class='descriptions'>
+                                    <h1>".$movie['title']."</h1>
+                                    <p>
+                                        ".$movie['short_summary']."
+                                    </p>
+                                    <a href=./movie.php?id=".$movie['id']."><button class='info'>more information</button></a>
+                                </div>
+                            </div>";
+                    }   
+                    // if(isset($_POST['load'])) {
+                    //     echo "amogus";
+                    // }              
+                ?>
+
+        </div>
+        <!-- <form action="" method='POST' id='load-more-form'>
+            <input type="number" name="load" id="load" style='visibility:hidden' value="1">
+            <button id="load-more" name='load-more' type='submit'>Load more</button>
+        </form> -->
     </div>
-
+    <!-- <script src='../js/form-handler.js'></script> -->
 </body>
 </html>

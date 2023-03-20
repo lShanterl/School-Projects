@@ -31,8 +31,7 @@
     backdrop-filter: blur(6px) grayscale(45%);
 }
 .hero .hero-text{
-    padding: 20vh clamp(12vh, 15vh, 25vh);
-
+    padding: 20vh 0;
 }
 .hero .hero-text-wrapper{
     display: flex;
@@ -41,6 +40,7 @@
     align-items: center; 
     background-color:rgba(0, 0, 0, 0.25);
     border-radius: 15px;
+    width: 100vw;
 }
 .hero h1{
     font-weight: 500;
@@ -55,5 +55,5 @@
     line-height: clamp(34px, 2.2vw, 160px);
     color: var(--secondary-text-color);
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 0px clamp(2px, 3px, 250px) rgba(0, 0, 0, 0.25);
 }

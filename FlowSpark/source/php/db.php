@@ -32,4 +32,23 @@
         }
         return "../../resources/user_images/default.jpg";
     }
+    function GetUsername()
+    {
+        global $conn;
+        if(isset($_COOKIE["email"]))
+        {
+            $em = $_COOKIE['email'];
+            $sql = "SELECT name from users where email='".$em."';";
+            $result = mysqli_query($conn, $sql);
+            $resultCheck = mysqli_num_rows($result);
+            if($resultCheck < 1)
+            {
+                return "User";
+            }
+            $row = mysqli_fetch_assoc($result);
+            $name = $row['name'];
+            return $name;
+        }
+        return "User";
+    }
 ?>
