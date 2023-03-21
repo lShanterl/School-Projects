@@ -85,6 +85,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    justify-content: center;
 }
 .wrap > h1{
     color: var(--secondary-text-color);

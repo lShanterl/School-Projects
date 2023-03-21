@@ -63,7 +63,7 @@
                             ?>
                         </p>
                         <div class="data_wrap">
-                            <div class="duration">1h 52m</div>
+                            <div class="duration"><?php echo $movie['length']?></div>
                             <div class='release_date'><?php echo $movie['release_date']?></div> 
                             <div class="rating"> <img src="../../resources/images/fullstar.svg" alt=""> <?php echo $movie['rating']?></div>
                         </div>
