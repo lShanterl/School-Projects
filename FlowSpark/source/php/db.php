@@ -21,6 +21,20 @@
         $sql = "SELECT isAdmin FROM users WHERE email like '".$_COOKIE['email']."';";
         $result = mysqli_query($conn, $sql);
         $admin = $result->fetch_assoc()['isAdmin'];
+        $sql = "SELECT auth_token FROM users WHERE email like '".$_COOKIE['email']."';";
+
+        $result = mysqli_query($conn, $sql);
+
+        $auth_token = $result->fetch_assoc()['auth_token'];
+
+        if($auth_token != $_COOKIE['auth_token'])
+        {
+            setcookie("email", "", time()-3600, '/');
+            setcookie("auth_token", "", time()-3600, '/');
+            unset($_COOKIE["email"]);
+            unset($_COOKIE["auth_token"]);
+            header("Location: ./index.php");
+        }
     }
     function GetIcon()
     {

@@ -25,6 +25,15 @@
         {
             // Verification success! User has logged-in!
 		    setcookie( "email", $email, time()+36000, "/", "", 0 );
+
+            $auth_token = uniqid();
+
+            setcookie( "auth_token", $auth_token, time()+36000, "/", "", 0 );
+
+            $sql = "UPDATE users SET auth_token = '".$auth_token."' WHERE email='".$email."';";
+
+            $result = mysqli_query($conn, $sql);
+
             // Setting cookies to last 10 hours
             header("Location: ./index.php");
             exit();
