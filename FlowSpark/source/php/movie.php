@@ -46,7 +46,7 @@
                 <?php } ?>
             </div>
     </nav>
-    <div class="hero-movie" style="background-image:url(<?php echo $movie['hero_path']?>)">
+    <div class="hero-movie" style="background-image:url(<?php echo $movie_path . $movie['hero_path']?>)">
         <div class="filter-movie">
             <div class="hero-text-wrapper-movie">
                 <div class="hero-text-movie">

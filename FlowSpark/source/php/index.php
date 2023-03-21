@@ -12,7 +12,7 @@
             $available_movies[] = $row;
         }
     }
-    $searchTerm = $_GET['search'];
+    //$searchTerm = $_GET['search'];
     
 ?>
 
@@ -72,13 +72,13 @@
         <div class="movies-wrapper">
                 <?php 
 
-                    $rand = array_rand($available_movies, 4);
+                    $rand = array_rand($available_movies, 10);
 
                     foreach($rand as $value)
                     {
                         $movie = $available_movies[$value];
                         echo "<div class='card'>
-                                <img src=".$movie['image_path'].">
+                                <img src=".$movie_path.$movie['image_path'].">
                                 <div class='descriptions'>
                                     <h1>".$movie['title']."</h1>
                                     <p>
