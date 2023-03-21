@@ -69,7 +69,7 @@
             <input type="reset" value="Reset">
             <div class='back_wrap'>
                 <a href="./index.php" class="create-login">Go back</a>
-                <a href="./signup.php" class="create-login">Sign up instead?</a>
+                <a href="./login.php" class="create-login">Sign in instead?</a>
             </div>
         </form>
     </div>
