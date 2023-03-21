@@ -11,7 +11,6 @@
     flex-direction: column;
     background: var(--primary-color);
     box-shadow: 0px 5px 0px rgba(0, 0, 0, 0.25);
-    margin-bottom:6px;
     object-fit: cover;
     background-repeat: no-repeat;
     background-size: cover;
