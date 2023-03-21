@@ -11,9 +11,7 @@
         {
             $available_movies[] = $row;
         }
-    }
-    //$searchTerm = $_GET['search'];
-    
+    } 
 ?>
 
 <!DOCTYPE html>
@@ -40,10 +38,10 @@
             <!-- Mobile navbar part -->
         </div>
         <div class="right">
-            <form action="" method='get' id='search'>
-                <input type="text" name="search" id="search-input" placeholder="Search..." onkeyup="showResult(this.value)">
-                <div id="livesearch"></div> 
-            </form>
+            <div>
+                <input type="text" id="search" placeholder="Search..." name='search'>
+                <div id="search-results"></div>
+            </div>
             <?php if($cookie){ ?>
                 <a href="./logout.php"><button class='login'>Log out</button></a>
                 <?php if($admin == 1){ ?>
@@ -92,5 +90,6 @@
         </div>
     </div>
 
+    <script src="../js/search_bar_handler.js"></script>
 </body>
 </html>

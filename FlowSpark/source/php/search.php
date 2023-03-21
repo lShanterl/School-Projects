@@ -1,20 +1,15 @@
 <?php
+include "db.php";
 
 if (isset($_GET['q'])) {
   $searchQuery = $_GET['q'];
-
-  $user = 'root';
-  $server = 'localhost';
-  $password = '';
-  $database = 'flowspark';
-  $conn = new mysqli($server, $user, $password, $database);
 
     if (!$conn) {
         die('Could not connect: ' . mysqli_error($conn));
     }
     if(strlen($searchQuery) > 2)
     {
-        $sql = "SELECT title from movies where title like '%$searchQuery%' limit 4";
+        $sql = "SELECT id, title from movies where title like '%$searchQuery%' limit 4";
 
         $result = mysqli_query($conn, $sql);
         $row;
@@ -23,7 +18,7 @@ if (isset($_GET['q'])) {
         {
             while($row = mysqli_fetch_assoc($result))
             {
-                echo '<li>' . $row['title'] . '</li>';
+                echo "<li><a href=./movie.php?id=".$row['id']."><button class='info'>".$row['title']."</button></a></li>";
             }
         }
         echo '</ul>';
