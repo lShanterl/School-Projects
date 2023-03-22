@@ -4,7 +4,7 @@ const searchResults = document.getElementById('search-results');
 searchInput.addEventListener('input', () => {
 const searchQuery = searchInput.value.trim();
 
-if (searchQuery.length > 0) {
+if (searchQuery.length > 1) {
 // Send AJAX request to server
 const xhr = new XMLHttpRequest();
 xhr.open('GET', `search.php?q=${searchQuery}`);

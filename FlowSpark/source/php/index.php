@@ -1,17 +1,6 @@
 <?php
     include 'db.php';
-
-    $available_movies = array();
-
-    $sql = "SELECT * FROM movies";
-    $result = mysqli_query($conn, $sql);
-    if(mysqli_num_rows($result) > 0)
-    {
-        while($row = mysqli_fetch_assoc($result))
-        {
-            $available_movies[] = $row;
-        }
-    } 
+    include 'fetch_movie.php';
 ?>
 
 <!DOCTYPE html>
@@ -65,71 +54,62 @@
             </div>
         </div>
     </div>
-    <div class="wrap">
+    <div class="filter-wrap">
         <div class="filters">
-            <form action="" method='post' class='filter-form'>
-                <div class="left">
-                    <span>
-                        <select name="genre" id="genre">
-                            <option value="all">All genres</option>
-                            <option value="action">Action</option>
-                            <option value="adventure">Adventure</option>
-                            <option value="comedy">Comedy</option>
-                            <option value="crime">Crime</option>
-                            <option value="drama">Drama</option>
-                            <option value="fantasy">Fantasy</option>
-                            <option value="horror">Horror</option>
-                            <option value="mystery">Mystery</option>
-                            <option value="romance">Romance</option>
-                            <option value="sci-fi">Sci-fi</option>
-                            <option value="thriller">Thriller</option>
-                            <option value="western">Western</option>
-                        </select>
-                    </span>
-                    <span>
-                        <select name="rating" id="rating">
-                            <option value="all">All</option>
-                            <option value="1">1+</option>
-                            <option value="2">2+</option>
-                            <option value="3">3+</option>
-                            <option value="4">4+</option>
-                            <option value="5">5+</option>
-                            <option value="6">6+</option>
-                            <option value="7">7+</option>
-                            <option value="8">8+</option>
-                            <option value="9">9+</option>
-                            <option value="10">10</option>
-                        </select>
-                    </span>
+                <div class='filter-form'>
+                    <div class="left">
+                        <span>
+                            <select name="genre" id="genre">
+                                <option value="all">All genres</option>
+                                <option value="action">Action</option>
+                                <option value="adventure">Adventure</option>
+                                <option value="comedy">Comedy</option>
+                                <option value="crime">Crime</option>
+                                <option value="drama">Drama</option>
+                                <option value="fantasy">Fantasy</option>
+                                <option value="horror">Horror</option>
+                                <option value="mystery">Mystery</option>
+                                <option value="romance">Romance</option>
+                                <option value="sci-fi">Sci-fi</option>
+                                <option value="thriller">Thriller</option>
+                                <option value="western">Western</option>
+                            </select>
+                        </span>
+                        <span>
+                            <select name="rating" id="rating">
+                                <option value="all">All</option>
+                                <option value="1">1+</option>
+                                <option value="2">2+</option>
+                                <option value="3">3+</option>
+                                <option value="4">4+</option>
+                                <option value="5">5+</option>
+                                <option value="6">6+</option>
+                                <option value="7">7+</option>
+                                <option value="8">8+</option>
+                                <option value="9">9+</option>
+                                <option value="10">10</option>
+                            </select>
+                        </span>
+                    </div>
+                    <div class="right">
+                        <input type="submit" value="apply filters" id='filter-submit'>
+                    </div>
                 </div>
-                <div class="right">
-                    <input type="submit" value="apply filters">
-                </div>
-            </form>
-        </div>
+            </div>
+    </div>
+    <div class="wrap">
+        
         <div class="movies-wrapper">
-                <?php 
+                <?php
+                    //perform default query so that the page is not empty
 
-                    $rand = array_rand($available_movies, 10);
-
-                    foreach($rand as $value)
-                    {
-                        $movie = $available_movies[$value];
-                        echo "<div class='card'>
-                                <img src=".$movie_path.$movie['image_path'].">
-                                <div class='descriptions'>
-                                    <h1>".$movie['title']."</h1>
-                                    <p>
-                                        ".$movie['short_summary']."
-                                    </p>
-                                    <a href=./movie.php?id=".$movie['id']."><button class='info'>more information</button></a>
-                                </div>
-                            </div>";
-                    }           
+                    fetch_movies();
+                    echo_movies($available_movies);
                 ?>
         </div>
     </div>
 
     <script src="../js/search_bar_handler.js"></script>
+    <script src="../js/movies_handler.js"></script>
 </body>
 </html>

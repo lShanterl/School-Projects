@@ -7,22 +7,20 @@ if (isset($_GET['q'])) {
     if (!$conn) {
         die('Could not connect: ' . mysqli_error($conn));
     }
-    if(strlen($searchQuery) > 2)
-    {
-        $sql = "SELECT id, title from movies where title like '%$searchQuery%' limit 4";
 
-        $result = mysqli_query($conn, $sql);
-        $row;
-        echo '<ul class="search-result">';
-        if(mysqli_num_rows($result) > 0)
+    $sql = "SELECT id, title from movies where title like '%$searchQuery%' limit 4";
+    $result = mysqli_query($conn, $sql);
+    $row;
+    echo '<ul class="search-result">';
+    if(mysqli_num_rows($result) > 0)
+    {
+        while($row = mysqli_fetch_assoc($result))
         {
-            while($row = mysqli_fetch_assoc($result))
-            {
-                echo "<li><a href=./movie.php?id=".$row['id']."><button class='info'>".$row['title']."</button></a></li>";
-            }
+            echo "<li><a href=./movie.php?id=".$row['id']."><button class='info'>".$row['title']."</button></a></li>";
         }
-        echo '</ul>';
     }
+    echo '</ul>';
+    
 }
 
 ?>
