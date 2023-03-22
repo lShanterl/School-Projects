@@ -91,3 +91,67 @@
     color: var(--secondary-text-color);
     margin: 10vh 0;
 }
+.filters{
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    margin: 6vh 0;
+    width: 80%;
+    background-color: rgba(0,0,0,.3);
+    padding: 14px;
+    border-radius: 5px;
+}
+.filter-form{
+    display:flex;
+    flex-direction: row;
+    margin: 0vh 5vh;
+    width: 100%;
+}
+.filter-form span{
+    color: var(--secondary-text-color);
+    font-size: 20px;
+    display:flex;
+    align-items: center;
+}
+.filter-form .left{
+    display:flex;
+    flex-direction:row;
+    gap: 4vh;
+    width:50%;
+}
+.filter-form .right{
+    display:flex;
+    flex-direction:row;
+    gap: 4vh;
+    width:50%;
+    justify-content: flex-end;
+    align-items: center;
+}
+.filter-form .right input[type='submit']
+{
+    padding: 10px 0px;
+    text-align: center;
+    width: 30%;
+    height: 40px;
+    cursor: pointer;
+    border-style: none;
+    background-color: var(--secondary-text-color);
+    color:#fff;
+    font-size: 15px;
+    outline: none;
+    box-shadow: 0px 2px 3px rgba(0,0,0,.4);
+    transition: all .5s ease-in-out;
+    border-radius: 5px;
+}
+.filter-form select{
+    background: var(--secondary-text-color);
+    border: none;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 15px;
+    outline: none;
+    border-radius: 5px;
+}
+.filter-form select:hover{
+    cursor:pointer;
+}

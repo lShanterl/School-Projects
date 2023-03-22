@@ -66,7 +66,47 @@
         </div>
     </div>
     <div class="wrap">
-        <h1>Popular movies</h1>
+        <div class="filters">
+            <form action="" method='post' class='filter-form'>
+                <div class="left">
+                    <span>
+                        <select name="genre" id="genre">
+                            <option value="all">All genres</option>
+                            <option value="action">Action</option>
+                            <option value="adventure">Adventure</option>
+                            <option value="comedy">Comedy</option>
+                            <option value="crime">Crime</option>
+                            <option value="drama">Drama</option>
+                            <option value="fantasy">Fantasy</option>
+                            <option value="horror">Horror</option>
+                            <option value="mystery">Mystery</option>
+                            <option value="romance">Romance</option>
+                            <option value="sci-fi">Sci-fi</option>
+                            <option value="thriller">Thriller</option>
+                            <option value="western">Western</option>
+                        </select>
+                    </span>
+                    <span>
+                        <select name="rating" id="rating">
+                            <option value="all">All</option>
+                            <option value="1">1+</option>
+                            <option value="2">2+</option>
+                            <option value="3">3+</option>
+                            <option value="4">4+</option>
+                            <option value="5">5+</option>
+                            <option value="6">6+</option>
+                            <option value="7">7+</option>
+                            <option value="8">8+</option>
+                            <option value="9">9+</option>
+                            <option value="10">10</option>
+                        </select>
+                    </span>
+                </div>
+                <div class="right">
+                    <input type="submit" value="apply filters">
+                </div>
+            </form>
+        </div>
         <div class="movies-wrapper">
                 <?php 
 
