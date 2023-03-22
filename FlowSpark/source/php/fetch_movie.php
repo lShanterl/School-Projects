@@ -33,15 +33,12 @@
                     </div>";
     }
 
-    function echo_movies($available_movies, $random = true)
+    function echo_movies($available_movies)
     {
         if(count($available_movies) > 1)
         {
-            if($random)
-            {
-                $rand = array_rand($available_movies, count($available_movies) > 10 ? 10 : count($available_movies));
-                shuffle($rand);
-            }
+            $rand = array_rand($available_movies, count($available_movies) > 10 ? 10 : count($available_movies));
+            shuffle($rand);
 
             foreach($rand as $value)
             {

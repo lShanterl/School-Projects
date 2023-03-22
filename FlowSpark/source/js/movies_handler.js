@@ -1,5 +1,6 @@
 const genre = document.getElementById('genre');
 const rating = document.getElementById('rating');
+const order = document.getElementById('order');
 const submitButton = document.getElementById('filter-submit');
 
 submitButton.addEventListener('click', () => {
