@@ -1,6 +1,6 @@
 <?php
     $available_movies = array();
-    $movies_left = array();
+    define("movie_path", "../../resources/movie_images/");
 
     function fetch_movies($condition = "")
     {
@@ -20,10 +20,9 @@
 
     function movie($value, $available_movies)
     {
-        global $movie_path;
         $movie = $available_movies[$value];
                 echo "<div class='card'>
-                        <img src=".$movie_path.$movie['image_path'].">
+                        <img src=".movie_path.$movie['image_path'].">
                         <div class='descriptions'>
                             <h1>".$movie['title']."</h1>
                             <p>
@@ -36,27 +35,24 @@
 
     function echo_movies($available_movies, $random = true)
     {
-        global $movies_left;
         if(count($available_movies) > 1)
         {
             if($random)
             {
                 $rand = array_rand($available_movies, count($available_movies) > 10 ? 10 : count($available_movies));
                 shuffle($rand);
-                $movies_left = $available_movies; //TODO add load more button and remove this
             }
 
             foreach($rand as $value)
             {
                 movie($value, $available_movies);
-            }  
+                unset($available_movies[$value]);
+            }
         }
         else if(count($available_movies) == 1){
             movie(0, $available_movies);
+            unset($available_movies[0]);
         }
-        else{
-            
-        }
-
+        $_SESSION['available_movies'] = $available_movies;
     }
 ?>

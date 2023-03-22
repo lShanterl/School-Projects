@@ -102,14 +102,17 @@
         <div class="movies-wrapper">
                 <?php
                     //perform default query so that the page is not empty
-
                     fetch_movies();
                     echo_movies($available_movies);
                 ?>
         </div>
+        <span class="load-more-wrap">
+            <input type="submit" value="Load more" id='load-more'>
+        </span>
     </div>
 
     <script src="../js/search_bar_handler.js"></script>
     <script src="../js/movies_handler.js"></script>
+    <script src="../js/load_more.js"></script>
 </body>
 </html>
