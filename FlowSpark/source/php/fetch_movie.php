@@ -28,6 +28,10 @@
                             <p>
                                 ".$movie['short_summary']."
                             </p>
+                            <div class='card-rating'>
+                                <p>Rating: ".$movie['rating']."</p>
+                                <p>Premiere: ".$movie['release_date']."</p>
+                            </div>
                             <a href=./movie.php?id=".$movie['id']."><button class='info'>more information</button></a>
                         </div>
                     </div>";
