@@ -109,6 +109,15 @@
         </span>
     </div>
 
+    <footer class='wrapper'>
+        <div class="footer">
+            <div class="left">
+                <h2>TODO</h2>
+            </div>
+        </div>
+
+    </footer>
+
     <script src="../js/search_bar_handler.js"></script>
     <script src="../js/movies_handler.js"></script>
     <script src="../js/load_more.js"></script>

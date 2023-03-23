@@ -21,6 +21,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin panel</title>
     <link rel="stylesheet" href="../css/app.css">
+    <link rel="stylesheet" href="../css/adminpanel.css">
 </head>
 <body>
     <nav class="navbar" > 
@@ -49,14 +50,42 @@
                 <?php } ?>
             </div>
     </nav>
-    <div class="hero-movie" style="background-image:url(<?php echo $movie_path . $movie['hero_path']?>)">
-        <div class="filter-movie">
-            <div class="hero-text-wrapper-movie">
-                <div class="hero-text-movie">
-                    
+
+    <div class="admin">
+        <h1>Admin panel</h1>
+            <div class="admin-panel-wrap">
+                <div class="admin-panel-data">
+                    <div class="buttons">
+                        <button>Show Users</button>
+                        <button>View tickets</button>
+                        <button>Add movie</button>
+                        <button>Show comments</button>
+                    </div>
+                    <form action="" class='add-movie'>
+                        <div class="column">
+                            <div class="row">
+                                <input type="file" name="" id="">
+                            </div>
+                            <div class="row">
+                                <input type="file" name="" id="">
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="row">
+                                <input type="text" name="title" id="title" placeholder="title">
+                            </div>
+                            <div class="row">
+                                <input type="text" name="description" id="description" placeholder="short summary">
+                            </div>
+                            <div class="row">
+                                <input type="text" name="genre" id="genre" placeholder="genres">
+                            </div>
+                            <div class="row">
+                                <input type="text" name="duration" id="duration" placeholder="duration">
+                        </div>
+                    </form>
                 </div>
             </div>
-        </div>
     </div>
 
 </body>

@@ -6,7 +6,7 @@
 
     if(count($available_movies) > 0)
     {
-        $rand = array_rand($available_movies, count($available_movies) > 10 ? 10 : count($available_movies));
+        $rand = array_rand($available_movies, count($available_movies) > 5 ? 5 : count($available_movies));
         foreach($rand as $value)
         {
             movie($value, $available_movies);
