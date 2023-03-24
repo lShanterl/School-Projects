@@ -90,7 +90,7 @@
                         </span>
                     </div>
                     <div class="right">
-                        <input type="submit" value="apply filters" id='filter-submit'>
+                        <input type="submit" value="Apply filters" id='filter-submit'>
                     </div>
                 </div>
             </div>

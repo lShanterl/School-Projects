@@ -10,7 +10,7 @@ const searchResults = document.querySelector('.movies-wrapper');
 const xhr = new XMLHttpRequest();
 xhr.open('GET', `refresh_movies.php?genre=${genre.value}&rating=${rating.value}`);
 xhr.onload = () => {
-    if (xhr.status === 200) {
+    if (xhr.status === 200 && xhr.responseText != 'false') {
         searchResults.innerHTML = xhr.responseText;
     }
 };

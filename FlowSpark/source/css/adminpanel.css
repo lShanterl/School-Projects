@@ -1,89 +1,65 @@
-.admin-panel-data{
-    display:flex;
-    justify-content: center;
-    flex-direction: column;
-    height:100%;
-    width:100%; 
+body{
+    background-color: #12171d;
 }
-.box-wrapper{
-    display:flex;
-    justify-content: center;
-    flex-direction: row;
-}
-.admin-panel-wrap{
+.admin-center{
+    height:100vh;
+    width:100%;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    background-color:rgba(0, 0, 0, 0.25);
-    border-radius: 15px;
-    width: 100vw;
-    padding: 5vh 0;
-    position: relative;
-}
-.admin-panel-data .left, .admin-panel-data .right{
-    display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 40%;
-}
-.admin{
-    height: 100vh auto;
-    min-height: 100vh;
-    color: var(--secondary-text-color);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    background: var(--primary-color);
-    box-shadow: 0px 5px 0px rgba(0, 0, 0, 0.25);
+    color: #fff;
     margin: 10vh 0;
 }
-.admin h1{
-    font-weight: 500;
-    font-size: clamp(36px, 5vw, 250px);
-    line-height: clamp(44px, 7vw, 260px);
-    color: #fff;
-    text-shadow: rgba(0,0,0,.25) 0px 8px 0px;
-    margin: 5vh 0;
-}
-.box{
+.admin-wrapper{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
+    color: #fff;
     width: 100%;
     height: 100%;
-    background-color: var(--primary-color);
-    border-radius: 15px;
-    padding: 10vh 0;
-    position: relative;
-    border-radius: 5px;
+    gap: 20px;
+    flex-wrap: wrap;
+    position:relative;
 }
-.admin-panel-data .buttons{
+.box{
+    width: 45%;
+    height: 60%;
+    background-color: var(--primary-color-dark);
+    border: 1px solid #fff;
+    border-radius: 5px;
+    position:relative;
+    padding: 20px;
+
+}
+.box h1{
+    font-size: 2.5rem;
+    text-align: center;
+    font-weight: 400;
+    margin-bottom:20px;
+}
+.user{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    justify-content: space-around;
-    gap: 5vw;
-    padding: 5vh 0;
-    background-color: aqua;
-}
-.admin-panel-data .buttons button{
-    background-color: var(--primary-color);
-    color: var(--secondary-text-color);
-    border: 1px solid var(--secondary-text-color);
-    border-radius: 5px;
     padding: 10px 20px;
-    font-size: 1.2rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    border: 1px solid #fff;
+    transition: ease-in-out 0.3s;
+    width:100%;
+    border-radius: 5px;   
+    gap: 5px;
+
 }
-form.add-movie{
+.users{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: calc(100% - 5.5rem);
+    overflow-y: auto;
+    overflow-x: hidden;
+    gap: 10px;
+
 }
+

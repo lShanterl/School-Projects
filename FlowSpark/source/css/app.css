@@ -2,7 +2,6 @@
 @import url('navbar.css');
 @import url('hero.css');
 @import url('popular_movies.css');
-@import url('movie.css');
 @import url('footer.css');
 
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800");
@@ -25,7 +24,8 @@ body{
   background: var(--primary-color);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--primary-color-dark);
+  background: var(--secondary-text-color);
+  border-radius: 10px;
 }
 ::selection {
   background: var(--primary-color);
@@ -33,5 +33,4 @@ body{
 }
 .marked{
   font-weight: 700;
-  
 }

@@ -1,16 +1,22 @@
 <?php
-    include "db.php";
-    $sql = "SELECT isAdmin FROM users WHERE email = '".$_COOKIE['email']."';";
+    include 'db.php';
+
+    $email = $_COOKIE["email"];
+
+    $sql = "SELECT * FROM users WHERE email like '$email'";
 
     $result = mysqli_query($conn, $sql);
-
-    if(mysqli_num_rows($result) > 0){
-        $row = mysqli_fetch_assoc($result);
-        $admin = $row['isAdmin'];
-        if($admin == 0){
-            header("Location: ../index.php");
-        }
+    
+    $row = mysqli_fetch_assoc($result);
+ 
+    if($row == null)
+    {
+        header("Location: ./index.php");
+        exit();
     }
+    $name = $row['name'];
+    $surname = $row['surname'];
+    $email = $row['email'];
 ?>
 
 <!DOCTYPE html>
@@ -19,12 +25,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin panel</title>
+    <title>Settings</title>
     <link rel="stylesheet" href="../css/app.css">
     <link rel="stylesheet" href="../css/adminpanel.css">
 </head>
 <body>
-    <nav class="navbar" > 
+    <nav class="navbar"> 
             <div class="left">
                 <a href="./index.php">FlowSpark</a>
                 <?php if($cookie){ ?>
@@ -43,49 +49,42 @@
                     <?php if($admin == 1){ ?>
                         <a href="./adminpanel.php"><button class='login'>Admin</button></a>
                     <?php } ?>
-                    <a href="./settings.php"><img class='avatar' src=<?php echo GetIcon()?> alt=""></a>
+                    <a href="./settings.php"><img class='avatar' src=<?php echo GetIcon() ?> alt=""></a>
                 <?php }else{ ?>
                     <a href="./login.php"><button class='login'>Log in</button></a>
                     <a href="./signup.php"><button class='login'>Sign up</button></a>
                 <?php } ?>
             </div>
     </nav>
-
-    <div class="admin">
-        <h1>Admin panel</h1>
-            <div class="admin-panel-wrap">
-                <div class="admin-panel-data">
-                    <div class="buttons">
-                        <button>Show Users</button>
-                        <button>View tickets</button>
-                        <button>Add movie</button>
-                        <button>Show comments</button>
-                    </div>
-                    <form action="" class='add-movie'>
-                        <div class="column">
-                            <div class="row">
-                                <input type="file" name="" id="">
-                            </div>
-                            <div class="row">
-                                <input type="file" name="" id="">
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="row">
-                                <input type="text" name="title" id="title" placeholder="title">
-                            </div>
-                            <div class="row">
-                                <input type="text" name="description" id="description" placeholder="short summary">
-                            </div>
-                            <div class="row">
-                                <input type="text" name="genre" id="genre" placeholder="genres">
-                            </div>
-                            <div class="row">
-                                <input type="text" name="duration" id="duration" placeholder="duration">
-                        </div>
-                    </form>
+    <div class="admin-center">
+        <div class="admin-wrapper">
+            <div class='box'>
+                <h1>Users</h1>
+                <div class="users">
+                    <?php 
+                        $sql = "SELECT * FROM users";
+                        $result = mysqli_query($conn, $sql);
+                        while($row = mysqli_fetch_assoc($result))
+                        {
+                            echo "<div class='user'>";
+                            echo "<p>".$row['name']." ".$row['surname']."</p>";
+                            echo "<p>".$row['email']."</p>";
+                            echo "</div>";
+                        }
+                    ?>
                 </div>
             </div>
+            
+            <div class="box">
+                
+            </div>
+            <div class="box">
+                
+            </div>
+            <div class="box">
+                
+            </div>
+        </div>
     </div>
 
 </body>

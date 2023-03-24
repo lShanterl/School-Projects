@@ -19,6 +19,9 @@ if (isset($_GET['q'])) {
             echo "<li><a href=./movie.php?id=".$row['id']."><button class='info'>".$row['title']."</button></a></li>";
         }
     }
+    else{
+        echo "<li><a><button class='info'>No Result Found</button></a></li>";
+    }
     echo '</ul>';
     
 }

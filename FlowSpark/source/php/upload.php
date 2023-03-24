@@ -1,7 +1,7 @@
 <?php
     include 'db.php';
 
-    if (!empty($_FILES) && isset($_FILES['avatar'])) {
+    if (isset($_FILES['avatar'])){
 
         $target = "../../resources/user_images/";
         $path = $_FILES['avatar']['name'];
