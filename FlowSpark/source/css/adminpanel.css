@@ -9,10 +9,10 @@ body{
     align-items: center;
     color: #fff;
     margin: 10vh 0;
+    
 }
 .admin-wrapper{
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
     color: #fff;
@@ -21,6 +21,7 @@ body{
     gap: 20px;
     flex-wrap: wrap;
     position:relative;
+    flex-direction: row-reverse;
 }
 .box{
     width: 45%;
@@ -29,7 +30,7 @@ body{
     border: 1px solid #fff;
     border-radius: 5px;
     position:relative;
-    padding: 20px;
+    padding: 25px;
 
 }
 .box h1{
@@ -38,7 +39,7 @@ body{
     font-weight: 400;
     margin-bottom:20px;
 }
-.user{
+.user, .mov{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -46,10 +47,8 @@ body{
     padding: 10px 20px;
     border: 1px solid #fff;
     transition: ease-in-out 0.3s;
-    width:100%;
+    width:90%;
     border-radius: 5px;   
-    gap: 5px;
-
 }
 .users{
     display: flex;
@@ -62,4 +61,117 @@ body{
     gap: 10px;
 
 }
-
+.user .buttons, .mov .buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+.user button{
+    color: var(--primary-color-dark);
+    border: 1px solid var(--primary-color-dark);
+    border-radius: 5px;
+    padding: 5px 20px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: var(--secondary-text-color);
+}
+.mov button{
+    color: var(--primary-color-dark);
+    border: 1px solid var(--primary-color-dark);
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: var(--secondary-text-color);
+}
+.user button:hover, .mov button:hover{
+    background: var(--primary-color);
+    color: var(--secondary-text-color);
+}
+.box input[type='text'], .box input[type='submit']{
+    border: 2px solid var(--secondary-text-color);
+    border-radius: 5px;
+    padding: 10px 10px;
+    font-weight: 400;
+    background-color: var(--primary-color-dark);
+    color: var(--secondary-text-color);
+    font-size: 1.2em;
+    text-align:center; 
+}
+.box input::file-selector-button{
+    border: 2px solid var(--secondary-text-color);
+    border-radius: 5px;
+    padding: 10px 10px;
+    font-weight: 400;
+    background-color: var(--primary-color-dark);
+    color: var(--secondary-text-color);
+    font-size: 1.2em;
+    text-align:center; 
+}
+.hidden{
+    display: none;
+    height: 0;
+    width: 0;
+    visibility: hidden;
+    opacity: 0;
+}
+.users form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width:90%;
+    height: 100%;
+    padding: 20px 0;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width:100%;
+    gap: 25px;
+}
+.users form .row input{
+    width: 100%;
+}
+.users form input{
+    width: 100%;
+}
+.users form textarea{
+    width: 100%;    
+}
+.users form .column{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    gap: 25px;
+}
+.users form textarea{
+    border: 2px solid var(--secondary-text-color);
+    border-radius: 5px;
+    font-weight: 400;
+    background-color: var(--primary-color-dark);
+    color: var(--secondary-text-color);
+    font-size: 1.2em;
+    height: 100%;
+    resize: none;
+}
+.users form .row > div{
+    text-align: center;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.user p{
+    text-align: center;
+}
