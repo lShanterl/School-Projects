@@ -4,7 +4,7 @@
     display: flex;
     position: fixed;
     justify-content: space-between;
-    height: clamp(50px, 10vh, 25vh);
+    height: 10vh;
     align-items: center;
     font-style: normal;
     font-weight: 500;
@@ -101,6 +101,7 @@ input[name="search"]
     padding: 10px 20px;
     background-color: var(--primary-color);
     border-radius: 0px 0px 15px 15px;
+    border-collapse: collapse;
 }
 .search-result li{
     list-style: none;

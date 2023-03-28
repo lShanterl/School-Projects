@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="../css/adminpanel.css">
 </head>
 <body>
-    <nav class="navbar sticky"> 
+    <nav class="navbar non-transparent"> 
             <div class="left">
                 <a href="./index.php">FlowSpark</a>
                 <?php if($cookie){ ?>
@@ -56,74 +56,68 @@
                 <?php } ?>
             </div>
     </nav>
-    <div class="admin-center">
-        <div class="admin-wrapper">
-            <div class='box'>
-                <div class="row"><h1>Movies</h1><h1>Search</h1></div>
-                <div class="users">
-                    <?php 
-                        $sql = "SELECT * FROM movies";
-                        $result = mysqli_query($conn, $sql);
-                        while($row = mysqli_fetch_assoc($result))
-                        {
-                            echo "<div class='mov'>";
-                            echo "<h2>".$row['title']."</h2>";
-                            echo "<div class='buttons'>";
-                            echo "<button class='edit'>Edit</button>";
-                            echo "<button class='delete'>Delete</button>";
-                            echo "</div></div>";
-                        }
-                        
-                    ?>
-                </div>
+    <div class="container">
+            <div class="sidebar">
+                <a href="">Users</a>
+                <a href="">Movies</a>
+                <a href="">Add movie</a>
+                <a href="">View tickets</a>
             </div>
-            <div class='box'>
-                <h1>Add movie</h1>
-                <div class="users">
-                    <form action="" method=''>
-                        <div class='row'>
-                            <input type="text" name="title" placeholder="Title">
-                            <input type="text" name="" placeholder="release date" title="yyyy-mm-dd">
-                        </div>
-                        <div class="row">
-                            <input type="text" name="" placeholder="rating" >
-                            <input type="text" name="" placeholder="duration" title="ex: 1h 52m">
-                        </div>
-                        <div class="row">
-                            <div>
-                                <input type="file" name="baner" >
-                            </div>
-                            <div>
-                                <input type="file" name="hero"  >
-                            </div>
-                        </div>
-                        <textarea name="short_summary" id="" placeholder="short summary" ></textarea>
-                        <input type="submit" value="Add">     
-                    </form>
-                </div>
-            </div>
-            <div class='box'>
-            <div class="row"><h1>Users</h1><h1>Search</h1></div>
-                <div class="users">
-                    <?php 
-                        $sql = "SELECT * FROM users";
-                        $result = mysqli_query($conn, $sql);
-                        while($row = mysqli_fetch_assoc($result))
-                        {
-                            echo "<div class='user'>";
-                            echo "<p>".$row['name']." ".$row['surname']."</p>";
-                            echo "<p>".$row['email']."</p>";
-                            echo "<div class='buttons'>";
-                            echo "<button class='edit'>Edit</button>";
-                            echo "<button class='delete'>Delete</button>";
-                            echo "</div>";
-                            echo "</div>";
-                        }
-                    ?>
-                </div>
-            </div>         
-        </div>
-    </div>
+            <div class="content">
+                <div class="searchbar-wrap">
+                    <div class="searchbar">
+                         <div class='filter-form'>
+                            <div class="left">
 
+                            </div>
+                            <div class="right">
+                                <span>Search</span>
+                                <input type="text" name="search" id="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="users-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Surname</th>
+                                <th>Email</th>
+                                <th>Admin</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <?php 
+                            $sql = "SELECT * FROM users";
+
+                            $result = mysqli_query($conn, $sql);
+                            while($row = mysqli_fetch_assoc($result))
+                            {
+                                echo "<tr>";
+                                echo "<td><span class='user'>".$row['id']."</span></td>";
+                                echo "<td><span class='user'>".$row['name']."</span></td>";
+                                echo "<td><span class='user'>".$row['surname']."</span></td>";
+                                echo "<td><span class='user'>".$row['email']."</span></td>";
+                                echo "<td><span class='user'>".$row['isAdmin']."</span></td>";
+                                echo "<td>";
+                                echo "<span class='buttons user'>";
+                                echo "<a href=''><button class='edit'>Edit</button></a>";
+                                echo "<a href=''><button class='delete'>Delete</button></a>";
+                                echo "</span>";
+                                echo "</td>";
+                                echo "</tr>";
+                            }
+                        ?>
+                    </table>
+                </div>
+                <div class="paginator">
+
+                </div>
+
+            </div>
+        </div>               
+    </div>
 </body>
 </html>

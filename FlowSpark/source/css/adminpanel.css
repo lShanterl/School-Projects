@@ -1,177 +1,168 @@
+@import url('variables.css');
 body{
-    background-color: #12171d;
-}
-.admin-center{
-    height:100vh;
-    width:100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    margin: 10vh 0;
-    
-}
-.admin-wrapper{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    width: 100%;
-    height: 100%;
-    gap: 20px;
-    flex-wrap: wrap;
-    position:relative;
-    flex-direction: row-reverse;
-}
-.box{
-    width: 45%;
-    height: 60%;
     background-color: var(--primary-color-dark);
-    border: 1px solid #fff;
-    border-radius: 5px;
-    position:relative;
-    padding: 25px;
+}
+.non-transparent{
+    background-color: -var(--primary-color-dark);
+    opacity: 1;
+    box-shadow: none;
+    backdrop-filter: none;
 
 }
-.box h1{
-    font-size: 2.5rem;
-    text-align: center;
-    font-weight: 400;
-    margin-bottom:20px;
-}
-.user, .mov{
+.container {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    border: 1px solid #fff;
+    height: 100vh;
+}
+.sidebar {
+  width: 300px;
+  height:100%;
+  background-color: var(--primary-color-dark);
+  position: sticky;
+  top: 0;
+  left: 0;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+.sidebar a{
+    text-decoration: none;
+    color: var(--secondary-text-color);
     transition: ease-in-out 0.3s;
-    width:90%;
-    border-radius: 5px;   
+    margin: 0 10px;
+    font-size: 1.5rem;
 }
-.users{
+.sidebar a:hover{
+    color: var(--button-color);
+}
+.container .content{
+    background-color: var(--primary-color);
+    width: 100%;
+    margin-top: 10vh;
+    height: 90%;
+    overflow: hidden;
+}
+.searchbar{
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    width: 100%;
+    height: 10vh;
+    background-color: rgba(0,0,0,.3);
+    border-bottom: 1px solid var(--secondary-text-color);
+}
+.filter-form{
+    display:flex;
+    flex-direction: row;
+    margin: 0vh 5vh;
+    width: 100%;
+}
+.filter-form span{
+    color: var(--secondary-text-color);
+    font-size: 20px;
+    display:flex;
+    align-items: center;
+}
+.filter-form .left{
+    display:flex;
+    flex-direction:row;
+    gap: 4vh;
+    width:50%;
+}
+.filter-form .right{
+    display:flex;
+    flex-direction:row;
+    gap: 4vh;
+    width:50%;
+    justify-content: flex-end;
+    align-items: center;
+}
+.filter-form .right input[type='submit']
+{
+    padding: 10px 0px;
+    text-align: center;
+    width: 30%;
+    height: 40px;
+    cursor: pointer;
+    border-style: none;
+    background-color: var(--secondary-text-color);
+    color:#fff;
+    font-size: 15px;
+    outline: none;
+    box-shadow: 0px 2px 3px rgba(0,0,0,.4);
+    transition: all .5s ease-in-out;
+    border-radius: 5px;
+}
+.filter-form select:hover{
+    cursor:pointer;
+}
+.searchbar-wrap{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+.users-wrapper{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 100%;
-    height: calc(100% - 5.5rem);
+    flex-wrap: wrap;
+    overflow:hidden;
     overflow-y: auto;
-    overflow-x: hidden;
+    height: 75%;
+    padding: 10px 20px;
+}
+.user{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 5vh;
+    background-color: rgba(0,0,0,.3);
+    transition: ease-in-out 0.3s;
+    margin: 10px 0px;
+}
+.user.buttons{
+    display: flex;
+    flex-direction: row;
     gap: 10px;
+}
+.user.buttons button{
+    padding: 10px 20px;
+    text-align: center;
+    cursor: pointer;
+    border-style: none;
+    background-color: var(--secondary-text-color);
+    color:#fff;
+    font-size: 15px;
+    outline: none;
+    box-shadow: 0px 2px 3px rgba(0,0,0,.4);
+    transition: all .5s ease-in-out;
+    border-radius: 5px;
+}
+thead{
+
+    background-color: var(--primary-color);
+    z-index: 1;
 
 }
-.user .buttons, .mov .buttons{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
+thead tr, thead th{
+    border:none;
 }
-.user button{
-    color: var(--primary-color-dark);
-    border: 1px solid var(--primary-color-dark);
-    border-radius: 5px;
-    padding: 5px 20px;
-    font-size: 1.2rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    background: var(--secondary-text-color);
+tr td:nth-child(1) span{
+    border-radius: 10px 0 0 10px;
 }
-.mov button{
-    color: var(--primary-color-dark);
-    border: 1px solid var(--primary-color-dark);
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    background: var(--secondary-text-color);
+tr td:nth-child(6) span{
+    border-radius: 0 10px 10px 0;
 }
-.user button:hover, .mov button:hover{
-    background: var(--primary-color);
-    color: var(--secondary-text-color);
-}
-.box input[type='text'], .box input[type='submit']{
-    border: 2px solid var(--secondary-text-color);
-    border-radius: 5px;
-    padding: 10px 10px;
-    font-weight: 400;
-    background-color: var(--primary-color-dark);
-    color: var(--secondary-text-color);
-    font-size: 1.2em;
-    text-align:center; 
-}
-.box input::file-selector-button{
-    border: 2px solid var(--secondary-text-color);
-    border-radius: 5px;
-    padding: 10px 10px;
-    font-weight: 400;
-    background-color: var(--primary-color-dark);
-    color: var(--secondary-text-color);
-    font-size: 1.2em;
-    text-align:center; 
-}
-.hidden{
-    display: none;
-    height: 0;
-    width: 0;
-    visibility: hidden;
-    opacity: 0;
-}
-.users form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    width:90%;
-    height: 100%;
-    padding: 20px 0;
-}
-.row{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    width:100%;
-    gap: 25px;
-}
-.users form .row input{
-    width: 100%;
-}
-.users form input{
-    width: 100%;
-}
-.users form textarea{
-    width: 100%;    
-}
-.users form .column{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width:100%;
-    gap: 25px;
-}
-.users form textarea{
-    border: 2px solid var(--secondary-text-color);
-    border-radius: 5px;
-    font-weight: 400;
-    background-color: var(--primary-color-dark);
-    color: var(--secondary-text-color);
-    font-size: 1.2em;
-    height: 100%;
-    resize: none;
-}
-.users form .row > div{
+
+table, th, td {
+    border-collapse: collapse;
     text-align: center;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    color: var(--secondary-text-color);
+    font-size: 1.2rem;
+
 }
-.user p{
-    text-align: center;
+table{
+    width: 100%;
+    height: 100%;
 }
