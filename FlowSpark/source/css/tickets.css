@@ -1,0 +1,43 @@
+body{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container{
+    display:flex;
+    flex-direction:column;
+    background: #fff;
+    width: 50vw;
+    height: 60vh;
+}
+.container .movie{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 10%;
+    background: #000;
+    margin: 25px;
+}
+.container .seats{
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    height: 80%;
+    background: #000;
+    margin: 25px;
+}
+.container .seats .seat{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    border-radius: 5px;
+    margin: 5px;
+}
+.row{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
