@@ -39,6 +39,7 @@ img.avatar{
     height: clamp(50px, 6vh, 25vh);
     width: clamp(50px, 6vh, 25vh);
     transition: ease-in-out 0.3s;
+    user-select: none;
 }
 img.avatar:hover{
   cursor: pointer;
@@ -54,6 +55,7 @@ img.avatar:hover{
 }
 .navbar button{
     padding: 10px 20px;
+    width:auto;
     background-color: var(--secondary-text-color);
     color: var(--primary-color);
     font-size: clamp(18px, 1.2vw, 150px);
@@ -110,4 +112,20 @@ input[name="search"]
 }
 .search-result button{
     width: 100%;
+}
+
+@media screen and (max-width: 1450px){
+    .navbar{
+        flex-direction: column;
+    }
+    .navbar .left, .navbar .right{
+        width: 100%;
+        justify-content: center;
+    }
+    .navbar .right:last-child{
+        margin-right: 0;
+    }
+    .navbar .left:first-child{
+        margin-left: 0;
+    }
 }
