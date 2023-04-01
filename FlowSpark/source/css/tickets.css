@@ -8,8 +8,14 @@ body{
 .container{
     display:flex;
     flex-direction:column;
-    background: #fff;
+    background: var(--primary-color);
     aspect-ratio: 9/6;
+    padding: 50px;
+    height: auto;
+    width: auto;
+    min-width: 900px;
+    min-height: 600px;
+
     /*transform:scale(2);*/
     
 }
@@ -17,21 +23,38 @@ body{
     display:flex;
     justify-content: center;
     align-items: center;
-    height: 10%;
-    background: #444144;
-    margin: 25px;
+    height: 15%;
+    background: var(--primary-color-dark);
+}
+.container .movie span{
+  color: var(--secondary-text-color);
+  font-size: 20px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container .movie{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
 }
 .container .seats-wrapper{
     display:flex;
     justify-content: center;
     align-items: center;
+    /*min-width: 100%;
+    min-height: 100%;*/
 }
 .container .seats{
     display: grid;
     height: 100%;
-    background: #4c3b3c;
+    background: var(--primary-color);
+
     gap: 10px;
-    padding: 50px;
+    padding: 25px;
 }
   .container input[type="checkbox"] {
     display: none;
@@ -53,28 +76,30 @@ body{
     align-items: center;
   } 
   .container input[type="checkbox"]:checked + label{
-    background-color: #d8315b;
+    background-color: #eec612;
   }
   .container input[type="checkbox"]:disabled + label{
     background-color: #737275;
+    cursor: auto;
   }
   span{
     display: block;
     height: 100%;
     width: 100%;
   }
-  button[type="submit"] {
+.buttons{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.buttons button{
     display: block;
-    margin: 20px auto 0;
     padding: 10px 20px;
+    width: 33%;
     font-size: 18px;
-    font-weight: bold;
-    border: none;
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  button[type="submit"]:hover {
-    background-color: #0062cc;
-  }
+    color:var(--black);
+    background-color: var(--secondary-text-color);
+    border: 2.5px solid var(--primary-color-dark);
+    border-radius: 5px;
+}

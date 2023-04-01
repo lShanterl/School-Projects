@@ -49,7 +49,7 @@
             <div class="hero-text-wrapper">
                 <div class="hero-text">
                     <h1>FlowSpark</h1>
-                    <p> Hello<span class='marked'> <?php echo GetUserName();?></span>! What are you looking for today? <br> Let's check what's new down there.</p>
+                    <p> Hello<span class='marked'> <?php echo GetUserName();?></span>! What are you looking for today?
                 </div>
             </div>
         </div>
