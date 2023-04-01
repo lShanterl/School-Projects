@@ -61,7 +61,6 @@
                 <a href="">Users</a>
                 <a href="">Movies</a>
                 <a href="">Add movie</a>
-                <a href="">View tickets</a>
             </div>
             <div class="content">
                 <div class="searchbar-wrap">
@@ -72,7 +71,7 @@
                             </div>
                             <div class="right">
                                 <span>Search</span>
-                                <input type="text" name="search" id="">
+                                <input type="text" name="search" id="search">
                             </div>
                         </div>
                     </div>

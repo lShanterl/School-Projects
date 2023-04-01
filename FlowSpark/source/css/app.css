@@ -4,12 +4,12 @@
 @import url('popular_movies.css');
 @import url('footer.css');
 
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800");
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto', sans-serif;
     scroll-behavior: smooth;
 }
 

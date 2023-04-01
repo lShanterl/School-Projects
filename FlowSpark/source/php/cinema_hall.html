@@ -1,134 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-.cinema-hall {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-}
+	<title>Cinema Seat Reservation</title>
+	<style>
+		.container {
+			max-width: 800px;
+			margin: 0 auto;
+			padding: 20px;
+		}
 
-h2 {
-  font-size: 28px;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
+		.row {
+			display: flex;
+			flex-wrap: wrap;
+			margin: 10px 0;
+		}
 
-.screen {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
+		.seat {
+			width: 30px;
+			height: 30px;
+			margin: 5px;
+			background-color: #eee;
+			border-radius: 5px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+		}
 
-table {
-  border-collapse: collapse;
-  margin: 0 auto;
-}
+		.seat-checkbox {
+			display: none;
+		}
 
-td {
-  padding: 10px;
-}
+		.seat-checkbox:checked + .seat {
+			background-color: #90ee90;
+			cursor: not-allowed;
+		}
 
-input[type="checkbox"] {
-  display: none;
-}
-
-label {
-  display: block;
-  height: 25px;
-  width: 25px;
-  border: 1px solid #ccc;
-  margin: 5px;
-  cursor: pointer;
-  position: relative;
-}
-
-label::before {
-  content: "";
-  display: block;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-label::after {
-  content: attr(data-seat-number);
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 14px;
-  color: #000;
-  pointer-events: none;
-}
-
-input[type="checkbox"]:checked + label::before {
-  background-color: #ff0;
-}
-
-button[type="submit"] {
-  display: block;
-  margin: 20px auto 0;
-  padding: 10px 20px;
-  font-size: 18px;
-  font-weight: bold;
-  border: none;
-  background-color: #007bff;
-  color: #fff;
-  cursor: pointer;
-}
-
-button[type="submit"]:hover {
-  background-color: #0062cc;
-}
-    </style>
+		.seat-label {
+			margin-left: 5px;
+		}
+	</style>
 </head>
 <body>
-    <div class="cinema-hall">
-  <h2>Select your seats:</h2>
-  <form class="seat-selection-form" method="post" action="process-reservation.php">
-    <div class="screen">SCREEN</div>
-    <table>
-      <tbody>
-        <tr>
-          <td><input type="checkbox" id="seat-1" name="seats[]" value="1"><label for="seat-1" data-seat-number="1"></label></td>
-          <td><input type="checkbox" id="seat-2" name="seats[]" value="2"><label for="seat-2"></label></td>
-          <td><input type="checkbox" id="seat-3" name="seats[]" value="3"><label for="seat-3"></label></td>
-          <td><input type="checkbox" id="seat-4" name="seats[]" value="4"><label for="seat-4"></label></td>
-          <td><input type="checkbox" id="seat-5" name="seats[]" value="5"><label for="seat-5"></label></td>
-        </tr>
-        <tr>
-          <td><input type="checkbox" id="seat-6" name="seats[]" value="6"><label for="seat-6"></label></td>
-          <td><input type="checkbox" id="seat-7" name="seats[]" value="7"><label for="seat-7"></label></td>
-          <td><input type="checkbox" id="seat-8" name="seats[]" value="8"><label for="seat-8"></label></td>
-          <td><input type="checkbox" id="seat-9" name="seats[]" value="9"><label for="seat-9"></label></td>
-          <td><input type="checkbox" id="seat-10" name="seats[]" value="10"><label for="seat-10"></label></td>
-        </tr>
-        <tr>
-          <td><input type="checkbox" id="seat-11" name="seats[]" value="11"><label for="seat-11"></label></td>
-          <td><input type="checkbox" id="seat-12" name="seats[]" value="12"><label for="seat-12"></label></td>
-          <td><input type="checkbox" id="seat-13" name="seats[]" value="13"><label for="seat-13"></label></td>
-          <td><input type="checkbox" id="seat-14" name="seats[]" value="14"><label for="seat-14"></label></td>
-          <td><input type="checkbox" id="seat-15" name="seats[]" value="15"><label for="seat-15"></label></td>
-        </tr>
-        <tr>
-            <td><input type="checkbox" id="seat-16" name="seats[]" value="16"><label for="seat-16"></label></td>
-            <td><input type="checkbox" id="seat-17" name="seats[]" value="17"><label for="seat-17"></label></td>
-            <td><input type="checkbox" id="seat-18" name="seats[]" value="18"><label for="seat-18"></label></td>
-            <td><input type="checkbox" id="seat-19" name="seats[]" value="19"><label for="seat-19"></label></td>
-            <td><input type="checkbox" id="seat-20" name="seats[]" value="20"><label for="seat-20"></label></td>
-          </tr>
-        </tbody>
-      </table>
-      <button type="submit">Reserve Seats</button>
-    </form>
-  </div>
-
+	<div class="container">
+		<h1>Cinema Seat Reservation</h1>
+		<form>
+			<div class="row">
+				<input type="checkbox" id="A1" class="seat-checkbox" />
+				<label for="A1" class="seat"><span class="seat-label">A1</span></label>
+				<input type="checkbox" id="A2" class="seat-checkbox" />
+				<label for="A2" class="seat"><span class="seat-label">A2</span></label>
+				<input type="checkbox" id="A3" class="seat-checkbox" />
+				<label for="A3" class="seat"><span class="seat-label">A3</span></label>
+				<input type="checkbox" id="A4" class="seat-checkbox" />
+				<label for="A4" class="seat"><span class="seat-label">A4</span></label>
+				<input type="checkbox" id="A5" class="seat-checkbox" />
+				<label for="A5" class="seat"><span class="seat-label">A5</span></label>
+			</div>
+			<div class="row">
+				<input type="checkbox" id="B1" class="seat-checkbox" />
+				<label for="B1" class="seat"><span class="seat-label">B1</span></label>
+				<input type="checkbox" id="B2" class="seat-checkbox" />
+				<label for="B2" class="seat"><span class="seat-label">B2</span></label>
+				<input type="checkbox" id="B3" class="seat-checkbox" />
+				<label for="B3" class="seat"><span class="seat-label">B3</span></label>
+				<input type="checkbox" id="B4" class="seat-checkbox" />
+				<label for="B4" class="seat"><span class="seat-label">B4</span></label>
+				<input type="checkbox" id="B5" class="seat-checkbox" />
+				<label for="B5" class="seat"><span class="seat-label">B5</span></label>
+			</div>
+			<!-- add more rows here -->
+		</form>
+	</div>
 </body>
 </html>

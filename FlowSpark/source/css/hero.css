@@ -3,7 +3,7 @@
 .hero{
     height: 100vh auto;
     min-height: 100vh;
-    color: var(--secondary-text-color);
+    color: var(--black);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -54,6 +54,6 @@
     font-size: clamp(25px, 2.2vw, 150px);
     line-height: clamp(34px, 2.2vw, 160px);
     color: var(--secondary-text-color);
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5)) contrast(1.5);
     text-shadow: 0px clamp(2px, 3px, 250px) rgba(0, 0, 0, 0.25);
 }

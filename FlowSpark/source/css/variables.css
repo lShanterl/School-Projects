@@ -1,9 +1,10 @@
 :root{
-    --primary-text-color: #fdfdfd;
-    --secondary-text-color: #D8315B;
-    --primary-color: #12171d;
-    --primary-color-dark: #0e0f16;
-    --button-color: #ba3c3a;
+    --primary-text-color: #f0f0f1;
+    --primary-color: #272727;
+    --primary-color-dark: #0f0e0e;
+    --secondary-text-color: #f0f0f1;
+    --button-color: #eb2626;
+    --black : #000000;
 
     /*! rgba */
     
