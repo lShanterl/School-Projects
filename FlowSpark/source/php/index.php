@@ -17,7 +17,7 @@
         <div class="left">
             <a href="./index.php">FlowSpark</a>
             <?php if($cookie){ ?>
-                    <a href="./tickets.php">Your Tickets</a>
+                    <a href="./ytickets.php">Your Tickets</a>
                 <?php } ?>
             <?php if($cookie){ ?>
                 <a href="./watchlist.php">Your Watchlist</a>
