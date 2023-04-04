@@ -19,14 +19,12 @@ include 'db.php';
     <link rel="stylesheet" href="../css/tickets.css">
 </head>
 <style>
-
     div{
         display:flex;
         font-size: 20px;
         align-items: center;
         justify-content: center;
-        white-space: nowrap;
-        
+        white-space: nowrap;   
     }
     h1{
         text-align: center;
@@ -83,7 +81,6 @@ include 'db.php';
     .mark{
         color: var(--button-color);
     }
-
 </style>
 <body>
 <nav class="navbar" > 

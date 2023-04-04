@@ -40,9 +40,7 @@
                     <a href="./watchlist.php">Your Watchlist</a>
                 <?php } ?>
             </div>
-            <div class="mid">
-                <!-- Mobile navbar part -->
-            </div>
+
             <div class="right">
                 <?php if($cookie){ ?>
                     <a href="./logout.php"><button class='login'>Log out</button></a>

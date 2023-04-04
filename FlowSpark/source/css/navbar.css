@@ -65,7 +65,6 @@ img.avatar:hover{
     border: none;
     border-radius: 5px;
     transition: ease-in-out 0.3s;
-    border: 2.5px solid var(--primary-color);
 }
 input[type="text"]#search{
     

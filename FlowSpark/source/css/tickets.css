@@ -82,7 +82,7 @@ body{
     background-color: #737275;
     cursor: auto;
   }
-  span{
+  span:not(".a"){
     display: block;
     height: 100%;
     width: 100%;
