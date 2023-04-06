@@ -12,7 +12,7 @@
 <div class="wrapper">
     <div class="logbox">
         
-        <h1>Sign Up</h1>
+        <h1>Sign in</h1>
         <form action="log_into_account.php" method="post">
 
             <?php if (isset($_GET['error'])) { ?>
