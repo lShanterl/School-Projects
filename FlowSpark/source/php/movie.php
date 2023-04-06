@@ -27,9 +27,6 @@
                 <?php if($cookie){ ?>
                     <a href="./tickets.php">Your Tickets</a>
                 <?php } ?>
-                <?php if($cookie){ ?>
-                    <a href="./watchlist.php">Your Watchlist</a>
-                <?php } ?>
             </div>
             <div class="mid">
                 <!-- Mobile navbar part -->
