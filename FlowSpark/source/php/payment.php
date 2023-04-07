@@ -25,6 +25,8 @@ include 'db.php';
         align-items: center;
         justify-content: center;
         white-space: nowrap;   
+        font-size: clamp(1rem, 2vw, 1.5rem);   
+
     }
     h1{
         text-align: center;
@@ -32,6 +34,7 @@ include 'db.php';
     .container{
         position:relative;
         gap: 35px;
+        height: auto;
     }
     .buttons{
         width:100%;
@@ -45,7 +48,6 @@ include 'db.php';
         border: none;
         background-color: var(--primary-color-dark);
         color: var(--secondary-text-color);
-        font-size: 1.2rem;
         font-weight: 500;
         border-radius: 5px;
         cursor: pointer;
@@ -63,9 +65,10 @@ include 'db.php';
         width: 100%;
         display: flex;
         justify-content: space-between;
+        align-items: stretch;
         color: var(--secondary-text-color);
-        font-size: 1.2rem;
         gap: 20px;
+        position: relative;
     }
     .data .box{
         width: 50%;
@@ -76,10 +79,30 @@ include 'db.php';
         background: var(--primary-color-dark);
         border-radius: 5px;
         padding: 25px 0px;
-        height: 100%;
     }
     .mark{
         color: var(--button-color);
+    }
+    
+    @media screen and (max-width: 600px){
+        .data .box{
+            width: 100%;
+            flex-direction: column;
+        }
+        .data{
+            flex-direction: column;
+            justify-content: center;
+        }
+        .buttons{
+            flex-direction: column;
+            width: 100%;
+        }
+        .buttons a{
+            width: 100%;
+        }
+        .container{
+            width: 90%;
+        }
     }
 </style>
 <body>

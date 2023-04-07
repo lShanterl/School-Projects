@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="../css/app.css">
 </head>
 <body>
-    <nav class="navbar"> 
+    <nav class="navbar sticky"> 
             <div class="left">
                 <a href="./index.php">FlowSpark</a>
                 <?php if($cookie){ ?>

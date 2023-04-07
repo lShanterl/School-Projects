@@ -18,6 +18,7 @@
 
         $sql = "UPDATE seats SET user_id=".$row['id'] ." WHERE id=$id";
         mysqli_query($conn, $sql);
+        header("Location: ./ytickets.php");
     }
 
 ?>

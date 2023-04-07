@@ -67,7 +67,12 @@ img.avatar:hover{
     transition: ease-in-out 0.3s;
 }
 input[type="text"]#search{
-    
+    padding: 10px 20px;
+    color: var(--primary-color);
+    background-color: var(--secondary-text-color);
+    border: none;
+    border-radius: 5px;
+    transition: ease-in-out 0.3s;
 }
 input[type="text"]#search:focus{
     outline: none;
@@ -129,5 +134,5 @@ input[name="search"]
     text-decoration: none;
     font-size: 22px;
     display: block;
-  }
+}
 

@@ -106,13 +106,17 @@
         </span>
     </div>
 
-    <footer class='wrapper'>
-        <div class="footer">
-            <div class="left">
-                <h2>TODO</h2>
+    <footer>
+        <div class="left">
+            <p>&#169; Flowspark 2023</p>
+        </div>
+        <div class="center">
+            <div class="socials">
+                <a href="">a</a>
+                <a href="">b</a>
+                <a href="">c</a>
             </div>
         </div>
-
     </footer>
 
     <script src="../js/search_bar_handler.js"></script>

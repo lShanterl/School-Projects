@@ -5,7 +5,7 @@
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
 
-    $sql = "SELECT * FROM seats INNER JOIN movie on seats.movie_id = movie.id INNER JOIN movies ON movie.movie_id = movies.id WHERE seats.user_id=".$row['id'];
+    $sql = "SELECT * FROM seats INNER JOIN movie on seats.movie_id = movie.id INNER JOIN movies ON movie.movie_id = movies.id WHERE seats.user_id=".$row['id']." ORDER BY play_date ASC";
     $result = mysqli_query($conn, $sql);
 ?>
 <!DOCTYPE html>
@@ -25,6 +25,13 @@
         span{
             background: var(--primary-color);
         }
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: auto;
+            width: 100%;
+        }
         .ticket{
             background-color: var(--primary-color-dark);
             color: var(--secondary-text-color);
@@ -42,7 +49,7 @@
             gap: 20px;
             overflow-y: auto;
             height: 700px;
-            width: 100%;
+            width: 60%;
         }
         .ticket{
     display: flex;
@@ -70,7 +77,7 @@ border:none;
 tr td:nth-child(1) span{
 border-radius: 10px 0 0 10px;
 }
-tr td:nth-child(6) span{
+tr td:nth-child(4) span{
 border-radius: 0 10px 10px 0;
 }
 
@@ -82,12 +89,45 @@ font-size: 1.2rem;
 
 }
 table{
-width: 100%;
+width: 90%;
 height: 100%;
+}
+
+@media screen and (max-width: 1124px){
+    .tickets{
+        width: 100%;
+    }
+}
+@media screen and (max-width: 768px){
+    thead{
+        display: none;
+    }
+    tbody tr{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    tbody tr td{
+        width: 100%; 
+    }
+    tbody tr td .ticket{
+        width: 100%;
+        border-radius: 0px;
+        margin: 0px 0px;
+    }
+    tbody tr td:nth-child(1) .ticket{
+        border-radius: 10px 10px 0 0;
+    }
+    tbody tr td:nth-child(4) .ticket{
+        border-radius: 0 0 10px 10px;
+        margin-bottom: 10px;
+    }
+
 }
     </style>
 <body>
-    <nav class="navbar sticky" > 
+    <nav class="navbar" > 
         <div class="left">
             <a href="./index.php">FlowSpark</a>
             <?php if($cookie){ ?>
@@ -107,7 +147,8 @@ height: 100%;
             <?php } ?>
         </div>
     </nav>
-    <div class="container">
+
+    <div class="container" style='padding-top:15vh;'>
     <div class="tickets">
                     <table>
                         <thead>
@@ -133,5 +174,17 @@ height: 100%;
                 </div>
         </div>
     </div>
+    <footer>
+        <div class="left">
+            <p>&#169; Flowspark 2023</p>
+        </div>
+        <div class="center">
+            <div class="socials">
+                <a href="">a</a>
+                <a href="">b</a>
+                <a href="">c</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

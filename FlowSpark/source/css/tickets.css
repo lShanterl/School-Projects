@@ -9,15 +9,9 @@ body{
     display:flex;
     flex-direction:column;
     background: var(--primary-color);
-    aspect-ratio: 9/6;
     padding: 50px;
-    height: auto;
-    width: auto;
-    min-width: 900px;
-    min-height: 600px;
-
-    /*transform:scale(2);*/
-    
+    height: calc( 100% - 25vh);
+    width: calc( 100% - 25vw);
 }
 .container .movie{
     display:flex;

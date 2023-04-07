@@ -67,7 +67,6 @@
                         </div>
                         <div class="buttons">
                             <a href="<?php echo $movie['trailer_link']?>" target='_blank'><button>Watch Trailer</button></a>
-                            <a href="addto_watchlist.php?id=<?php echo $movie['id']?>"><button>Add to Watchlist</button></a>
                             <a href="select_date.php?id=<?=$movie['id']?>"><button>Buy Tickets</button></a>
                         </div>
                     </div>
