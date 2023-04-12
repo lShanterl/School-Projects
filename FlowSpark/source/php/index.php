@@ -11,6 +11,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FlowSpark</title>
     <link rel="stylesheet" href="../css/app.css">
+    <style>
+    </style>
 </head>
 <body>
     <nav class="navbar" > 
@@ -21,7 +23,11 @@
                 <?php } ?>
         </div>
         <div class="mid">
-            <!-- Mobile navbar part -->
+            <button class="burger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
         </div>
         <div class="right">
             <div>
@@ -41,6 +47,22 @@
             
         </div>
     </nav>
+    <div class="wrap1">
+    <div class="burger_menu">
+        <ul>
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+            <li>d</li>
+            <li>e</li>
+            <li>f</li>
+        </ul>
+    </div>
+    </div>
+    
+
+
+
     <div class="hero">
         <div class="filter">
             <div class="hero-text-wrapper">
@@ -122,5 +144,13 @@
     <script src="../js/search_bar_handler.js"></script>
     <script src="../js/movies_handler.js"></script>
     <script src="../js/load_more.js"></script>
+    <script>
+        const burger_button = document.querySelector('.burger');
+        const burger_menu = document.querySelector('.burger_menu');
+
+        burger_button.addEventListener('click', () => {
+            
+        })
+    </script>
 </body>
 </html>
