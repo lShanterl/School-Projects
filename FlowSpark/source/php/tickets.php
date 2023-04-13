@@ -22,8 +22,10 @@
     <link rel="stylesheet" href="../css/app.css">
     <link rel="stylesheet" href="../css/tickets.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <style>
+    </style>
 </head>
+
 <body>
 <nav class="navbar" > 
         <div class="left">
@@ -63,7 +65,7 @@
             
     <div class="container">
             <div class="movie">
-                <span id='title'><?=$row['title']?></span><span id='date'><?=$row['play_date']?></span>
+                <span id='title'><?=$row['title']?> </span><span id='date'>&nbsp; <?=$row['play_date']?></span>
             </div>
                 <?php 
                     $sql = "SELECT * from movie where id = ".$_GET['id'];
@@ -141,5 +143,7 @@
     ?>      
     </div>  
     <script src="../js/tickets.js"></script>
+    <script>
+    </script>
 </body>
 </html>

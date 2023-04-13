@@ -11,8 +11,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FlowSpark</title>
     <link rel="stylesheet" href="../css/app.css">
-    <style>
-    </style>
 </head>
 <body>
     <nav class="navbar" > 
@@ -50,12 +48,11 @@
     <div class="wrap1">
     <div class="burger_menu">
         <ul>
-            <li>a</li>
-            <li>b</li>
-            <li>c</li>
-            <li>d</li>
-            <li>e</li>
-            <li>f</li>
+            <li><a href="./index.php">Flowspark</a></li>
+            <li>Your Tickets</li>
+            <li>Your Profile</li>
+            <li>Admin Panel</li>
+            <li>Searchbar</li>
         </ul>
     </div>
     </div>
@@ -149,6 +146,8 @@
         const burger_menu = document.querySelector('.burger_menu');
 
         burger_button.addEventListener('click', () => {
+            burger_button.classList.toggle('active');
+            burger_menu.classList.toggle('active');
             
         })
     </script>

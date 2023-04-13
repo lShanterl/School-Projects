@@ -37,7 +37,6 @@
                     <a href="./tickets.php">Your Tickets</a>
                 <?php } ?>
             </div>
-
             <div class="right">
                 <?php if($cookie){ ?>
                     <a href="./logout.php"><button class='login'>Log out</button></a>

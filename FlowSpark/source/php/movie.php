@@ -63,7 +63,7 @@
                         <div class="data_wrap">
                             <div class="duration"><?php echo $movie['length']?></div>
                             <div class='release_date'><?php echo $movie['release_date']?></div> 
-                            <div class="rating"> <img src="../../resources/images/fullstar.svg" alt=""> <?php echo $movie['rating']?></div>
+                            <div class="rating"> <?php echo $movie['rating']?>/10.0</div>
                         </div>
                         <div class="buttons">
                             <a href="<?php echo $movie['trailer_link']?>" target='_blank'><button>Watch Trailer</button></a>
