@@ -44,28 +44,59 @@
         <div class="left">
             <a href="./index.php">FlowSpark</a>
             <?php if($cookie){ ?>
-                    <a href="./tickets.php">Your Tickets</a>
+                    <a href="./ytickets.php">Your Tickets</a>
                 <?php } ?>
-        </div>    
+                <?php if($admin == 1){ ?>
+                        <a href="./adminpanel.php">Admin</a>
+                <?php } ?>
+        </div>
+        <div class="mid">
+            <button class="burger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
         <div class="right">
+            <div>
+                <input type="text" id="search" placeholder="Search..." name='search'>
+                <div id="search-results"></div>
+            </div>
             <?php if($cookie){ ?>
                 <a href="./logout.php"><button class='login'>Log out</button></a>
-                <?php if($admin == 1){ ?>
-                        <a href="./adminpanel.php"><button class='login'>Admin</button></a>
-                <?php } ?>
-                <a href="./settings.php"><img class='avatar' draggable="false" src=<?php echo GetIcon()?> alt=""></a>
+
+                <a href="./settings.php"><img class='avatar' src=<?php echo GetIcon()?> alt=""></a>
             <?php }else{ ?>
                 <a href="./login.php"><button class='login'>Log in</button></a>
                 <a href="./signup.php"><button class='login'>Sign up</button></a>
             <?php } ?>
-            <!-- <div className="menu-toggle">
-                        <div className="icon">
-                            <input type="checkbox" id='checknav'/>
-                            <i className="fa fa-bars"></i>
-                        </div>
-            </div> -->
+            
         </div>
-</nav>
+    </nav>
+    <div class="wrap1">
+        <div class="burger_menu">
+            <ul>
+                <li><a href="./index.php">Flowspark</a></li>
+                <li><a href="./ytickets.php">Your Tickets</a></li>
+                <?php if($cookie){ ?>
+                    <?php if($admin == 1){ ?>
+                        <li><a href="./logout.php">Admin</a></li>
+                        <?php } ?>
+                        <li><a href="./settings.php">Settings</a></li>
+                    <li><a href="./logout.php"><button class='login'>Log out</button></a></li>
+                <?php }else{ ?>
+                <li><a href="./login.php"><button class='login'>Log in</button></a></li>
+                <li><a href="./signup.php"><button class='login'>Sign up</button></a></li>
+                <?php } ?>
+                <li>
+                    <div>
+                        <input type="text" id="search" class='burger_input' placeholder="Search..." name='search' class='search'>
+                        <div id="search-results" class='burger_result'></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
 <div class="container">
     <div class="con">
     <div class="movie">
@@ -107,5 +138,7 @@
             
  
     </div>  
+    <script src="../js/burger_handler.js"></script>
+
 </body>
 </html>

@@ -155,15 +155,6 @@
     <script src="../js/search_bar_handler.js"></script>
     <script src="../js/movies_handler.js"></script>
     <script src="../js/load_more.js"></script>
-    <script>
-        const burger_button = document.querySelector('.burger');
-        const burger_menu = document.querySelector('.burger_menu');
-
-        burger_button.addEventListener('click', () => {
-            burger_button.classList.toggle('active');
-            burger_menu.classList.toggle('active');
-            
-        })
-    </script>
+    <script src="../js/burger_handler.js"></script>
 </body>
 </html>
