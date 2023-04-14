@@ -159,6 +159,18 @@ input[type='file']{
 }
 
 @media screen and (max-width: 1200px){
+    .settings input
+    {
+        font-size: 1.0em !important;
+        padding: 10px 10px !important;
+    }
+    .settings button{
+        font-size: 1.0em !important;
+    }
+    .settings label{
+        font-size: 1.0em !important;
+    }
+
     .settings-wrapper{
         justify-content: flex-end;
         height: auto;
