@@ -148,12 +148,15 @@
     .hero-text-movie .categories{
         display:flex;
         flex-direction: column;
+        align-items: center;
     }
     .hero-text-movie .categories .category{
         align-items: center;
         justify-content: center;
-        display:flex;        
+        display:flex;   
+        width: 80%;     
     }
+
     .hero-text-movie .categories .category::first-letter{
         text-transform: uppercase;
     }
@@ -173,4 +176,6 @@
         text-shadow: 0px clamp(2px, 3px, 250px) rgba(0, 0, 0, 0.25);
     }
 
+    .hero-text-movie .data_wrap div{
+    }
 }

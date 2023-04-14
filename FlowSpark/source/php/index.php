@@ -65,7 +65,11 @@
             <div class="hero-text-wrapper">
                 <div class="hero-text">
                     <h1>FlowSpark</h1>
-                    <p> Hello<span class='marked'> <?php echo GetUserName();?></span>! What are you looking for today?
+                    <p>
+                        <span>
+                            Hello<span class='marked'> <?php echo GetUserName();?></span>! What are you looking for today?
+                        </span> 
+                    </p>
                 </div>
             </div>
         </div>
