@@ -45,4 +45,12 @@ footer{
     text-decoration: none;
     transition: ease-in-out .3s;
 }
-
+@media screen and (max-width: 450px) {
+    footer{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2vh;
+    }
+    
+}
