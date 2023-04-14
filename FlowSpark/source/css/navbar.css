@@ -161,7 +161,7 @@ input[name="search"]
 } 
 .burger{
     display:none;
-    transition: ease-in-out 0.3s;
+    transition: ease-in-out 0.7s;
 }
 .wrap1{
     display:flex;
@@ -176,8 +176,10 @@ input[name="search"]
 
 }
 .burger.active{
-    transform: rotate(45deg);
-
+    transform: rotate(180deg);
+}
+.burger.active span{
+    background-color: var(--button-color);
 }
 .burger_menu ul li{
     margin: 10px;
