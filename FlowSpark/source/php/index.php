@@ -46,20 +46,21 @@
         </div>
     </nav>
     <div class="wrap1">
-    <div class="burger_menu">
-        <ul>
-            <li><a href="./index.php">Flowspark</a></li>
-            <li>Your Tickets</li>
-            <li>Your Profile</li>
-            <li>Admin Panel</li>
-            <li>Searchbar</li>
-        </ul>
+        <div class="burger_menu">
+            <ul>
+                <li><a href="./index.php">Flowspark</a></li>
+                <li><a href="./ytickets.php">Your Tickets</a></li>
+                <li><a href="./logout.php"><button class='login'>Log out</button></a></li>
+                <li><a href="./logout.php"><button class='login'>Admin</button></a></li>
+                <li>
+                <div>
+                <input type="text" id="search" placeholder="Search..." name='search'>
+                <div id="search-results"></div>
+            </div>
+                </li>
+            </ul>
+        </div>
     </div>
-    </div>
-    
-
-
-
     <div class="hero">
         <div class="filter">
             <div class="hero-text-wrapper">
