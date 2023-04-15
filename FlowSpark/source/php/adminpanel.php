@@ -28,6 +28,9 @@
     <title>Settings</title>
     <link rel="stylesheet" href="../css/app.css">
     <link rel="stylesheet" href="../css/adminpanel.css">
+    <style>
+
+    </style>
 </head>
 <body>
     <nav class="navbar non-transparent"> 
@@ -54,14 +57,13 @@
             <div class="sidebar">
                 <a href="">Users</a>
                 <a href="">Movies</a>
-                <a href="">Add movie</a>
             </div>
             <div class="content">
                 <div class="searchbar-wrap">
                     <div class="searchbar">
                          <div class='filter-form'>
                             <div class="left">
-
+                                <button class="add_user">Add user</button>
                             </div>
                             <div class="right">
                                 <span>Search</span>

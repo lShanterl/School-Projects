@@ -71,6 +71,8 @@ input[type="text"]#search:focus{
     flex-direction:row;
     gap: 4vh;
     width:50%;
+    justify-content: flex-start;
+    align-items: center;
 }
 .filter-form .right{
     display:flex;
@@ -80,13 +82,26 @@ input[type="text"]#search:focus{
     justify-content: flex-end;
     align-items: center;
 }
-.filter-form .right input[type='submit']
+.filter-form .left button{
+    padding: 10px 20px;
+    text-align: center;
+    height: 40px;
+    border-style: none;
+    background-color: var(--secondary-text-color);
+    color: var(--black);
+    font-size: 15px;
+    outline: none;
+    box-shadow: 0px 2px 3px rgba(0,0,0,.4);
+    transition: all .5s ease-in-out;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.filter-form .right input[type='text']
 {
     padding: 10px 0px;
     text-align: center;
     width: 30%;
     height: 40px;
-    cursor: pointer;
     border-style: none;
     background-color: var(--secondary-text-color);
     color:#fff;

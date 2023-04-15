@@ -1,6 +1,6 @@
-const reset_button = document.querySelector('.reset-button');
+const reset_button = document.querySelector('input[type="reset"]');
 
-const inputs = document.querySelectorAll('.resetable');
+const inputs = document.querySelectorAll('input[type="text"], input[type="email"]');
 
 reset_button.addEventListener('click', () => {
     inputs.forEach(input => {

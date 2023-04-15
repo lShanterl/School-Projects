@@ -6,7 +6,7 @@
     $pass   = '';
     $db     = 'flowspark';
 
-    $admin;
+    $admin = 0;
 
     $movie_path = "../../resources/movie_images/";
 

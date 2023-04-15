@@ -84,3 +84,13 @@ form input[type="submit"]:hover, form input[type="reset"]:hover{
         width: 300px;
     }
 }
+@media screen and (max-width: 325px)
+{
+    .wrapper .logbox{
+        width: 250px;
+    }
+    .wrapper{
+        height: 100%;
+    }
+}
+

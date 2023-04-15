@@ -88,6 +88,9 @@ include 'db.php';
         .data .box{
             width: 100%;
             flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
         .data{
             flex-direction: column;
@@ -103,6 +106,10 @@ include 'db.php';
         .container{
             width: 90%;
         }
+        div{
+            white-space: normal;
+        }
+        
     }
 </style>
 <body>

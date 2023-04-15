@@ -17,11 +17,11 @@
         <div class="left">
             <a href="./index.php">FlowSpark</a>
             <?php if($cookie){ ?>
-                    <a href="./ytickets.php">Your Tickets</a>
-                <?php } ?>
-                <?php if($admin == 1){ ?>
-                        <a href="./adminpanel.php">Admin</a>
-                <?php } ?>
+                <a href="./ytickets.php">Your Tickets</a>
+            <?php } ?>
+            <?php if($admin == 1){ ?>
+                <a href="./adminpanel.php">Admin</a>
+            <?php } ?>
         </div>
         <div class="mid">
             <button class="burger">
@@ -33,7 +33,7 @@
         <div class="right">
             <div>
                 <input type="text" id="search" placeholder="Search..." name='search'>
-                <div id="search-results"></div>
+                <div id="search-results" style='position: relative'></div>
             </div>
             <?php if($cookie){ ?>
                 <a href="./logout.php"><button class='login'>Log out</button></a>
