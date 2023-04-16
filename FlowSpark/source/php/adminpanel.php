@@ -29,6 +29,158 @@
     <link rel="stylesheet" href="../css/app.css">
     <link rel="stylesheet" href="../css/adminpanel.css">
     <style>
+        .modal{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            display: none;
+        }
+        .active{
+            display: flex;
+        }
+        .modal .modal_form input{
+            font-size: 1.5rem;
+        }
+        .modal .modal_form label{
+            font-size: 1.5rem;
+        }
+        .modal .modal_form input[type='submit']
+        {
+            width: 100%;
+            height: 50px;
+            border: none;
+            background-color: var(--primary-color-dark);
+            color: var(--secondary-text-color);
+            font-weight: 500;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: ease-in-out 0.2s;
+            border: 2.5px solid var(--secondary-text-color);
+            padding: 10px;
+        }
+        .modal .modal_form input[type='submit']:hover{
+            background-color: var(--secondary-text-color);
+            color: var(--primary-color-dark);
+        }
+        .modal button{
+            border: none;
+        }
+        .modal .close_button{
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: var(--primary-color-dark);
+            color: var(--secondary-text-color);
+            font-weight: 500;
+            cursor: pointer;
+            transition: ease-in-out 0.2s;
+            margin: 25px;  
+            display:flex;
+            align-items: center;
+            justify-content: center; 
+        }
+        .modal .modal_form{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 65vw;
+            height: 65vh;
+            background-color: var(--primary-color-dark);
+            color: var(--secondary-text-color);
+            font-weight: 500;
+            border-radius: 5px;
+            transition: ease-in-out 0.2s;
+            border: 2.5px solid var(--secondary-text-color);
+            display:flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px;
+            gap: 20px;
+        }
+        .row{
+            display:flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px;
+            gap: 30px;
+            width: 100%;
+        }
+        .modal .modal_form input, .modal .modal_form label.perm{
+            width: 100%;
+            height: 50px;
+            border: none;
+            background-color: var(--primary-color-dark);
+            color: var(--secondary-text-color);
+            font-weight: 500;
+            border-radius: 5px;
+            transition: ease-in-out 0.2s;
+            border: 2.5px solid var(--secondary-text-color);
+            padding: 10px;
+        }
+
+
+        .modal .modal_form .row:first-child{
+        }
+        .close {
+            display:flex;
+            align-items: center;
+            justify-content: center; 
+        }
+.close:hover {
+  opacity: 1;
+}
+.close:before, .close:after {
+  position: absolute;
+  content: ' ';
+  width: 2px;
+  height: 30px;
+  background-color: #333;
+  transform: translate(-50%, -50%);
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
+}
+.wrapp{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.column{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+.column label{
+    font-size: 1.5rem;
+}
+.hidden{
+    display:none;
+    width: 0px;
+    height: 0px;
+}
+input[type='radio']:checked +label {
+    background-color:  var(--secondary-text-color) !important;
+    color: var(--primary-color-dark) !important;
+    border: 2.5px solid var(--primary-color-dark) !important;
+}
+.perm{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
 
     </style>
 </head>
@@ -64,6 +216,57 @@
                          <div class='filter-form'>
                             <div class="left">
                                 <button class="add_user">Add user</button>
+                                <div class="modal">
+                                    <form action="" class="modal_form">
+                                        <div class="wrapp">
+                                            <div class="row">
+                                                <div class="column">
+                                                    <label for="name">Name</label>
+                                                    <input type="text" name="name" id="name">
+                                                </div>
+                                                <div class="column">
+                                                    <label for="surname">Surname</label>
+                                                    <input type="text" name="surname" id="surname">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="column">
+                                                    <label for="email">Email</label>
+                                                    <input type="text" name="email" id="email">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="column">
+                                                    <label for="password">Password</label>
+                                                    <input type="password" name="password" id="password">
+                                                </div>
+                                                <div class="column">
+                                                    <label for="password2">Repeat password</label>
+                                                    <input type="password" name="password2" id="password2">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="column">
+                                                    <label for="admin">Permissions</label>
+                                                    <div class="row" style='margin:0px'>
+                                                        <input type="radio" name="admin" id="user" value="0" class='hidden' checked>
+                                                        <label for="user" class='perm'>User</label>
+                                                        <input type="radio" name="admin" id="admin" value="1" class='hidden'>
+                                                        <label for="admin" class='perm'>Admin</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="column">
+                                                    <label for="">Submit</label>
+                                                    <input type="submit" value="Add">
+                                                </div>
+                                            </div>
+                                            <button class="close_button close">
+                                            </button>  
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                             <div class="right">
                                 <span>Search</span>
@@ -114,5 +317,19 @@
             </div>
         </div>               
     </div>
+    <script>
+        const add_button = document.querySelector('.add_user');
+        const modal = document.querySelector('.modal');
+        const close_button = document.querySelector('.close_button');
+
+        add_button.addEventListener('click', () => {
+            modal.classList.add('active');
+        });
+        close_button.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+        
+
+    </script>
 </body>
 </html>
