@@ -12,8 +12,8 @@ xhr.open('GET', `refresh_movies.php?genre=${genre.value}&rating=${rating.value}`
 xhr.onload = () => {
     if (xhr.status === 200 && xhr.responseText != 'false') {
         searchResults.innerHTML = xhr.responseText;
+        loadButton.style.display = 'block';
     }
 };
 xhr.send();
-
 });

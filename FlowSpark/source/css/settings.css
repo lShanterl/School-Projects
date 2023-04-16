@@ -159,6 +159,9 @@ input[type='file']{
 }
 
 @media screen and (max-width: 1200px){
+    .settings{
+        margin-top: 15vh;;
+    }
     .settings input
     {
         font-size: 1.0em !important;

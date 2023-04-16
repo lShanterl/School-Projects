@@ -7,6 +7,9 @@ loadButton.addEventListener('click', () => {
     xhr.onload = () => {
         if (xhr.status === 200) {
             moviesWrapper.innerHTML += xhr.responseText;
+            if(xhr.responseText === ''){
+                loadButton.style.display = 'none';
+            }
         }
     };
     xhr.send();

@@ -185,26 +185,53 @@ input[type='radio']:checked +label {
     </style>
 </head>
 <body>
-    <nav class="navbar non-transparent"> 
-            <div class="left">
-                <a href="./index.php">FlowSpark</a>
-                <?php if($cookie){ ?>
-                    <a href="./tickets.php">Your Tickets</a>
-                <?php } ?>
-            </div>
-            <div class="right">
-                <?php if($cookie){ ?>
-                    <a href="./logout.php"><button class='login'>Log out</button></a>
-                    <?php if($admin == 1){ ?>
-                        <a href="./adminpanel.php"><button class='login'>Admin</button></a>
-                    <?php } ?>
-                    <a href="./settings.php"><img class='avatar' src=<?php echo GetIcon() ?> alt=""></a>
-                <?php }else{ ?>
-                    <a href="./login.php"><button class='login'>Log in</button></a>
-                    <a href="./signup.php"><button class='login'>Sign up</button></a>
-                <?php } ?>
-            </div>
+<nav class="navbar" > 
+        <div class="left">
+            <a href="./index.php">FlowSpark</a>
+            <?php if($cookie){ ?>
+                <a href="./ytickets.php">Your Tickets</a>
+            <?php } ?>
+            <?php if($admin == 1){ ?>
+                <a href="./adminpanel.php">Admin</a>
+            <?php } ?>
+        </div>
+        <div class="mid">
+            <button class="burger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+        <div class="right">
+            <?php if($cookie){ ?>
+                <a href="./logout.php"><button class='login'>Log out</button></a>
+
+                <a href="./settings.php"><img class='avatar' src=<?php echo GetIcon()?> alt=""></a>
+            <?php }else{ ?>
+                <a href="./login.php"><button class='login'>Log in</button></a>
+                <a href="./signup.php"><button class='login'>Sign up</button></a>
+            <?php } ?>
+            
+        </div>
     </nav>
+    <div class="wrap1">
+        <div class="burger_menu">
+            <ul>
+                <li><a href="./index.php">Flowspark</a></li>
+                <li><a href="./ytickets.php">Your Tickets</a></li>
+                <?php if($cookie){ ?>
+                    <?php if($admin == 1){ ?>
+                        <li><a href="./adminpanel.php">Admin</a></li>
+                        <?php } ?>
+                        <li><a href="./settings.php">Settings</a></li>
+                    <li><a href="./logout.php"><button class='login'>Log out</button></a></li>
+                <?php }else{ ?>
+                <li><a href="./login.php"><button class='login'>Log in</button></a></li>
+                <li><a href="./signup.php"><button class='login'>Sign up</button></a></li>
+                <?php } ?>
+            </ul>
+        </div>
+    </div>
     <div class="container">
             <div class="sidebar">
                 <a href="">Users</a>
@@ -331,5 +358,6 @@ input[type='radio']:checked +label {
         
 
     </script>
+    <script src="../js/burger_handler.js"></script>
 </body>
 </html>

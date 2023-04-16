@@ -12,6 +12,7 @@
             movie($value, $available_movies);
             unset($available_movies[$value]);
         }
+
     }
     else{
     }

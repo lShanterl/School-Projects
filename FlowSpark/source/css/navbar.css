@@ -211,10 +211,11 @@ input[name="search"]
     border: none;
     border-radius: 5px;
     transition: ease-in-out 0.3s;
-    width: 60vw;
+    width: clamp(150px, 14vw, 20vw);
 }
 .burger_menu .search-result{
-    width: 60vw;
+    width: clamp(150px, 14vw, 20vw);
+
 }
 .burger_menu .search-result li a button{
     width: 45vw;
@@ -262,7 +263,8 @@ input[name="search"]
         border: none;
         border-radius: 5px;
         transition: ease-in-out 0.3s;
-        width: 60vw;
+        width: clamp(150px, 14vw, 20vw);
+
     }
 }
 

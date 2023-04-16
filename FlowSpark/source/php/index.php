@@ -53,7 +53,7 @@
                 <li><a href="./ytickets.php">Your Tickets</a></li>
                 <?php if($cookie){ ?>
                     <?php if($admin == 1){ ?>
-                        <li><a href="./logout.php">Admin</a></li>
+                        <li><a href="./adminpanel.php">Admin</a></li>
                         <?php } ?>
                         <li><a href="./settings.php">Settings</a></li>
                     <li><a href="./logout.php"><button class='login'>Log out</button></a></li>
