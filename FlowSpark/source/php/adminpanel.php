@@ -244,7 +244,7 @@ input[type='radio']:checked +label {
                             <div class="left">
                                 <button class="add_user">Add user</button>
                                 <div class="modal">
-                                    <form action="" class="modal_form">
+                                    <form action="./create_account.php" class="modal_form" method='POST'>
                                         <div class="wrapp">
                                             <div class="row">
                                                 <div class="column">
@@ -259,7 +259,7 @@ input[type='radio']:checked +label {
                                             <div class="row">
                                                 <div class="column">
                                                     <label for="email">Email</label>
-                                                    <input type="text" name="email" id="email">
+                                                    <input type="email" name="email" id="email">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -268,8 +268,8 @@ input[type='radio']:checked +label {
                                                     <input type="password" name="password" id="password">
                                                 </div>
                                                 <div class="column">
-                                                    <label for="password2">Repeat password</label>
-                                                    <input type="password" name="password2" id="password2">
+                                                    <label for="re_password">Repeat password</label>
+                                                    <input type="password" name="re_password" id="re_password">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -286,10 +286,10 @@ input[type='radio']:checked +label {
                                             <div class="row">
                                                 <div class="column">
                                                     <label for="">Submit</label>
-                                                    <input type="submit" value="Add">
+                                                    <button>Add</button>
                                                 </div>
                                             </div>
-                                            <button class="close_button close">
+                                            <button class="close_button close" type='button'>
                                             </button>  
                                         </div>
                                     </form>
@@ -328,8 +328,8 @@ input[type='radio']:checked +label {
                                 echo "<td><span class='user'>".$row['isAdmin']."</span></td>";
                                 echo "<td>";
                                 echo "<span class='buttons user'>";
-                                echo "<a href=''><button class='edit'>Edit</button></a>";
-                                echo "<a href=''><button class='delete'>Delete</button></a>";
+                                echo "<button class='edit'>Edit</button>";
+                                echo "<button class='delete'>Delete</button>";
                                 echo "</span>";
                                 echo "</td>";
                                 echo "</tr>";
@@ -348,6 +348,26 @@ input[type='radio']:checked +label {
         const add_button = document.querySelector('.add_user');
         const modal = document.querySelector('.modal');
         const close_button = document.querySelector('.close_button');
+        const modal_submit = document.querySelector('.modal_submit');
+        let delete_buttons = document.querySelectorAll('.delete');
+        let edit_buttons = document.querySelectorAll('.edit');
+
+        delete_buttons = Array.from(delete_buttons);
+
+        delete_buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const xhr = new XMLHttpRequest();
+                const id = button.parentNode.parentNode.parentNode.querySelector('.user').innerHTML;
+                xhr.open('POST', './delete_user.php');
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                xhr.onload = () => {
+                    if(xhr.status === 200){
+                        button.parentNode.parentNode.parentNode.remove();
+                    }
+                }
+                xhr.send(`id=${id}`);
+            })
+        });
 
         add_button.addEventListener('click', () => {
             modal.classList.add('active');
@@ -356,7 +376,6 @@ input[type='radio']:checked +label {
             modal.classList.remove('active');
         });
         
-
     </script>
     <script src="../js/burger_handler.js"></script>
 </body>

@@ -6,16 +6,21 @@
     $email = $_POST['email'];
     $password = $_POST['password'];
     $password2 = $_POST['re_password'];
+    $admin = 0;
+
+    if(isset($_POST['admin']))
+    {
+        $admin = 1;
+    }
 
     if (empty($name) || empty($surname) || empty($email) || empty($password) || empty($password2)) {
 
-        header("Location: ./signup.php?error=fill all fields &name=".$name."&surname=".$surname."&email=".$email);
+        $admin == 1 ? header("Location: ./adminpanel.php?error=empty fields &name=".$name."&surname=".$surname."&email=".$email."&admin=1") : header("Location: ./signup.php?error=empty fields &name=".$name."&surname=".$surname."&email=".$email);
         exit();
-        // We're checking if user provided us with all information
     }
     if($password != $password2)
     {
-        header("Location: ./signup.php?error=passwords do not match &name=".$name."&surname=".$surname."&email=".$email);
+        $admin == 1 ? header("Location: ./adminpanel.php?error=passwords do not match &name=".$name."&surname=".$surname."&email=".$email) : header("Location: ./signup.php?error=passwords do not match &name=".$name."&surname=".$surname."&email=".$email);
         exit();
     }
 
@@ -24,16 +29,15 @@
     $resultCheck = mysqli_num_rows($result);
 
     if ($resultCheck > 0) {
-        header("Location: ./signup.php?error=email already exists &name=".$name."&surname=".$surname."&email=".$email);
+        $admin == 1 ? header("Location: ./adminpanel.php?error=email already exists &name=".$name."&surname=".$surname."&email=".$email) : header("Location: ./signup.php?error=email already exists &name=".$name."&surname=".$surname."&email=".$email);
         exit();
-        // We're checking if user already exists
     }
 
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    $sql = "INSERT INTO users (name, surname, email, password) VALUES ('$name', '$surname', '$email', '$hashedPassword');";
+    $sql = "INSERT INTO users (name, surname, email, password, isAdmin) VALUES ('$name', '$surname', '$email', '$hashedPassword','$admin');";
     mysqli_query($conn, $sql);
 
-    header("Location: ./login.php?signup=success");
+    $admin == 1 ? header("Location: ./adminpanel.php?success=account created") : header("Location: ./index.php?success=account created");
 
 ?>
