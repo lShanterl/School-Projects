@@ -115,6 +115,17 @@
         </div>
 
     </div>
+    <script>
+        const files = document.querySelectorAll('input[type="file"]');
+
+        files.forEach(file => {
+            file.addEventListener('input' , () =>{
+                const label = file.nextElementSibling;
+                const fileName = file.files[0].name;
+                label.innerHTML = fileName;
+            });
+        });
+    </script>
     <script src='../js/change_settings.js'></script>
     <script src="../js/burger_handler.js"></script>
 

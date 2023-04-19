@@ -111,7 +111,7 @@
             gap: 30px;
             width: 100%;
         }
-        .modal .modal_form input, .modal .modal_form label.perm{
+        .modal .modal_form input, .modal .modal_form label.perm, .file{
             width: 100%;
             height: 50px;
             border: none;
@@ -180,9 +180,30 @@ input[type='radio']:checked +label {
     align-items: center;
     justify-content: center;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
-
-    </style>
+input[type=number] {
+  -moz-appearance: textfield;
+}
+input[type='file']{
+    height: 0% !important;
+    width: 0% !important;
+    opacity: 0 !important;
+}
+.hidden{
+    visibility: hidden;
+    opacity: 0;
+}
+.file{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+</style>
 </head>
 <body>
 <nav class="navbar" > 
@@ -242,45 +263,42 @@ input[type='radio']:checked +label {
                     <div class="searchbar">
                          <div class='filter-form'>
                             <div class="left">
-                                <button class="add_user">Add user</button>
+                                <button class="add_user">Add movie</button>
                                 <div class="modal">
-                                    <form action="./create_account.php" class="modal_form" method='POST'>
+                                    <form action="./create_movie.php" class="modal_form" method='POST'>
                                         <div class="wrapp">
                                             <div class="row">
                                                 <div class="column">
-                                                    <label for="name">Name</label>
-                                                    <input type="text" name="name" id="name">
+                                                    <label for="name">Title</label>
+                                                    <input type="text" name="title" id="title">
                                                 </div>
                                                 <div class="column">
-                                                    <label for="surname">Surname</label>
-                                                    <input type="text" name="surname" id="surname">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="column">
-                                                    <label for="email">Email</label>
-                                                    <input type="email" name="email" id="email">
+                                                    <label for="premiere">Release date</label>
+                                                    <input type="date" name="premiere" id="premiere">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="column">
-                                                    <label for="password">Password</label>
-                                                    <input type="password" name="password" id="password">
+                                                    <label for="rating">Rating</label>
+                                                    <input type="number" name="rating" id="rating" min='0.0' max='10.0'>
                                                 </div>
                                                 <div class="column">
-                                                    <label for="re_password">Repeat password</label>
-                                                    <input type="password" name="re_password" id="re_password">
+                                                    <label for="length">Movie Length</label>
+                                                    <input type="number" name="length" id="length">
                                                 </div>
+                                                
                                             </div>
                                             <div class="row">
                                                 <div class="column">
-                                                    <label for="admin">Permissions</label>
-                                                    <div class="row" style='margin:0px'>
-                                                        <input type="radio" name="admin" id="user" value="0" class='hidden' checked>
-                                                        <label for="user" class='perm'>User</label>
-                                                        <input type="radio" name="admin" id="admin" value="1" class='hidden'>
-                                                        <label for="admin" class='perm'>Admin</label>
-                                                    </div>
+                                                    <label for="baner">Baner Path</label>
+                                                    <input type="file" name='baner' id='baner' class='hidden'/>
+                                                    <label for="baner" class='file'>Choose file</label>
+
+                                                </div>
+                                                <div class="column">
+                                                    <label for="hero">Hero Path</label>
+                                                    <input type="file" name='hero' id='hero' class='hidden'/>
+                                                    <label for="hero" class='file'>Choose file</label>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -306,25 +324,25 @@ input[type='radio']:checked +label {
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Name</th>
-                                <th>Surname</th>
-                                <th>Email</th>
-                                <th>Admin</th>
+                                <th>Title</th>
+                                <th>Release date</th>
+                                <th>Rating</th>
+                                <th>Length</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <?php 
-                            $sql = "SELECT * FROM users";
+                            $sql = "SELECT * FROM movies";
 
                             $result = mysqli_query($conn, $sql);
                             while($row = mysqli_fetch_assoc($result))
                             {
                                 echo "<tr>";
                                 echo "<td><span class='user'>".$row['id']."</span></td>";
-                                echo "<td><span class='user'>".$row['name']."</span></td>";
-                                echo "<td><span class='user'>".$row['surname']."</span></td>";
-                                echo "<td><span class='user'>".$row['email']."</span></td>";
-                                echo "<td><span class='user'>".$row['isAdmin']."</span></td>";
+                                echo "<td><span class='user'>".$row['title']."</span></td>";
+                                echo "<td><span class='user'>".$row['release_date']."</span></td>";
+                                echo "<td><span class='user'>".$row['rating']."</span></td>";
+                                echo "<td><span class='user'>".$row['length']."</span></td>";
                                 echo "<td>";
                                 echo "<span class='buttons user'>";
                                 echo "<button class='edit'>Edit</button>";
@@ -357,7 +375,7 @@ input[type='radio']:checked +label {
             button.addEventListener('click', () => {
                 const xhr = new XMLHttpRequest();
                 const id = button.parentNode.parentNode.parentNode.querySelector('.user').innerHTML;
-                xhr.open('POST', './delete_user.php');
+                xhr.open('POST', './delete_movie.php');
                 xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                 xhr.onload = () => {
                     if(xhr.status === 200){
@@ -373,6 +391,16 @@ input[type='radio']:checked +label {
         });
         close_button.addEventListener('click', () => {
             modal.classList.remove('active');
+        });
+
+        const files = document.querySelectorAll('input[type="file"]');
+
+        files.forEach(file => {
+            file.addEventListener('input' , () =>{
+                const label = file.nextElementSibling;
+                const fileName = file.files[0].name;
+                label.innerHTML = fileName;
+            });
         });
         
     </script>
