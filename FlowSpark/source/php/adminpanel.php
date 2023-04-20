@@ -234,8 +234,9 @@ input[type='radio']:checked +label {
     </div>
     <div class="container">
             <div class="sidebar">
-                <a href="">Users</a>
-                <a href="">Movies</a>
+                <a href="./adminpanel.php">Users</a>
+                <a href="./adminpanel-movies.php">Movies</a>
+                <a href="./movie_entries.php">Entries</a>
             </div>
             <div class="content">
                 <div class="searchbar-wrap">
@@ -285,7 +286,7 @@ input[type='radio']:checked +label {
                                             </div>
                                             <div class="row">
                                                 <div class="column">
-                                                    <button>Add</button>
+                                                    <button class='add'>Add</button>
                                                 </div>
                                             </div>
                                             <button class="close_button close" type='button'>

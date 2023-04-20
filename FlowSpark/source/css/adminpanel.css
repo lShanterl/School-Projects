@@ -183,3 +183,9 @@ table{
     width: 100%;
     height: 100%;
 }
+
+.add{
+    font-size: 1.5rem !important;
+    height:auto !important;
+
+}

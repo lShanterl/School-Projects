@@ -81,6 +81,7 @@
             display:flex;
             align-items: center;
             justify-content: center; 
+            z-index: -1;
         }
         .modal .modal_form{
             position: absolute;
@@ -88,7 +89,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             width: 65vw;
-            height: 65vh;
+            height: 75vh;
             background-color: var(--primary-color-dark);
             color: var(--secondary-text-color);
             font-weight: 500;
@@ -117,11 +118,12 @@
             border: none;
             background-color: var(--primary-color-dark);
             color: var(--secondary-text-color);
-            font-weight: 500;
+            font-weight: 400;
             border-radius: 5px;
             transition: ease-in-out 0.2s;
             border: 2.5px solid var(--secondary-text-color);
             padding: 10px;
+
         }
 
 
@@ -175,6 +177,26 @@ input[type='radio']:checked +label {
     color: var(--primary-color-dark) !important;
     border: 2.5px solid var(--primary-color-dark) !important;
 }
+input[type='checkbox']:checked +label {
+    background-color:  var(--secondary-text-color) !important;
+    color: var(--primary-color-dark) !important;
+    border: 2.5px solid var(--primary-color-dark) !important;
+}
+textarea{
+    width: 100%;
+    height: 100px;
+    border: none;
+    background-color: var(--primary-color-dark);
+    color: var(--secondary-text-color);
+    font-weight: 500;
+    border-radius: 5px;
+    transition: ease-in-out 0.2s;
+    border: 2.5px solid var(--secondary-text-color);
+    padding: 10px;
+    resize: none;
+    font-size: 1.2rem;
+
+}
 .perm{
     display:flex;
     align-items: center;
@@ -203,6 +225,54 @@ input[type='file']{
     align-items: center;
     justify-content: center;
 }
+.filter-form .left button.category{
+    width: 100%;
+    text-align: center;
+    height: 55px;
+    border-style: none;
+    background-color: var(--primary-color-dark);
+    color: var(--secondary-text-color);
+    border: 2.5px solid var(--secondary-text-color);
+    font-size: 15px;
+    outline: none;
+    box-shadow: 0px 2px 3px rgba(0,0,0,.4);
+    transition: all .5s ease-in-out;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    z-index:5;
+}
+.modal{
+    font-size: 1.5rem;
+}
+.categories{
+    position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,1.0);
+            display: none;
+}
+.categories label{
+
+}
+.categories .row{
+}
+.categories.active{
+    display: flex;
+    justify-content: center;
+    padding-top: 10%;
+}
+button.activ{
+    background-color: var(--secondary-text-color) !important;
+    color: var(--primary-color-dark) !important;
+    border: 2.5px solid var(--primary-color-dark) !important;
+
+}
+.categories .column{
+}
+
 </style>
 </head>
 <body>
@@ -255,8 +325,9 @@ input[type='file']{
     </div>
     <div class="container">
             <div class="sidebar">
-                <a href="">Users</a>
-                <a href="">Movies</a>
+            <a href="./adminpanel.php">Users</a>
+                <a href="./adminpanel-movies.php">Movies</a>
+                <a href="./movie_entries.php">Entries</a>
             </div>
             <div class="content">
                 <div class="searchbar-wrap">
@@ -303,7 +374,73 @@ input[type='file']{
                                             </div>
                                             <div class="row">
                                                 <div class="column">
-                                                    <button>Add</button>
+                                                    <label for="description">Description</label>
+                                                    <textarea name="description" id="description" cols="30" rows="10"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="column">
+
+                                                    <button class='category' type='button'>Show categories</button>
+                                                    <div class="categories" >
+                                                        <div class="wrapp">
+                                                            <div class="row">
+                                                                <div class="column">
+                                                                    <input type="checkbox" name="drama" id="drama" class='hidden'>
+                                                                    <label for="drama" class='perm'>Drama</label>
+                                                                </div>
+                                                                <div class="column">
+                                                                    <input type="checkbox" name="thriller" id="thriller" class='hidden'>
+                                                                    <label for="thriller" class='perm'>Thriller</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="column">
+                                                                    <input type="checkbox" name="crime" id="crime" class='hidden'>
+                                                                    <label for="crime" class='perm'>Crime</label>
+                                                                </div>
+                                                                <div class="column">
+                                                                    <input type="checkbox" name="horror" id="horror" class='hidden'>
+                                                                    <label for="horror" class='perm'>Horror</label>
+                                                                </div>
+                                                            </div> 
+                                                            <div class="row">
+                                                                <div class="column">
+                                                                    <input type="checkbox" name="action" id="action" class='hidden'>
+                                                                    <label for="action" class='perm'>Action</label>
+                                                                </div>
+                                                                <div class="column">
+                                                                    <input type="checkbox" name="adventure" id="adventure" class='hidden'>
+                                                                    <label for="adventure" class='perm'>Adventure</label>
+                                                                </div>
+                                                            </div> 
+                                                            <div class="row">
+                                                                <div class="column">
+                                                                    <input type="checkbox" name="comedy" id="comedy" class='hidden'>
+                                                                    <label for="comedy" class='perm'>Comedy</label>
+                                                                </div>
+                                                                <div class="column">
+                                                                    <input type="checkbox" name="fantasy" id="fantasy" class='hidden'>
+                                                                    <label for="fantasy" class='perm'>Fantasy</label>
+                                                                </div>
+                                                            </div> 
+                                                            <div class="row">
+                                                                <div class="column">
+                                                                    <input type="checkbox" name="mystery" id="mystery" class='hidden'>
+                                                                    <label for="mystery" class='perm'>Mystery</label>
+                                                                </div>
+                                                                <div class="column">
+                                                                    <input type="checkbox" name="sci-fi" id="sci-fi" class='hidden'>
+                                                                    <label for="sci-fi" class='perm'>Sci-fi</label>
+                                                                </div>
+                                                            </div> 
+                                                        </div>  
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="column">
+                                                    <button class='add'>Add</button>
                                                 </div>
                                             </div>
                                             <button class="close_button close" type='button'>
@@ -402,7 +539,16 @@ input[type='file']{
                 label.innerHTML = fileName;
             });
         });
-        
+    </script>
+    <script>
+        const category_button = document.querySelector('.category');
+        const categories = document.querySelector('.categories');
+        category_button.addEventListener('click', () => {
+            categories.classList.toggle('active');
+            category_button.classList.toggle('activ');
+            
+        });
+
     </script>
     <script src="../js/burger_handler.js"></script>
 </body>
