@@ -41,7 +41,8 @@
             header("Location: ./adminpanel-movies.php?error=avatar");
         }
     }
-    $sql = "UPDATE users SET name = '$name', surname = '$surname', email = '$email', isAdmin = '$isAdmin'".(isset($avatar) ? ", image_path = $avatar" : ''). (!$password == null ? ",password = $password" : '')  ." WHERE id = $id";
+    $sql = "UPDATE users SET name = '$name', surname = '$surname', email = '$email', isAdmin = '$isAdmin'".(isset($avatar) ? ", image_path = '$avatar'" : ''). (!$password == null ? ", password = '$password'" : '')  ." WHERE id = $id";
+
 
     if(mysqli_query($conn, $sql)){
         header("Location: ./adminpanel.php?success=edit");
