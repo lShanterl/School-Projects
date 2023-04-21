@@ -336,7 +336,7 @@ button.activ{
                             <div class="left">
                                 <button class="add_user">Add movie</button>
                                 <div class="modal">
-                                    <form action="./create_movie.php" class="modal_form" method='POST'>
+                                    <form action="./create_movie.php" class="modal_form" method='POST' enctype="multipart/form-data">
                                         <div class="wrapp">
                                             <div class="row">
                                                 <div class="column">
@@ -351,7 +351,7 @@ button.activ{
                                             <div class="row">
                                                 <div class="column">
                                                     <label for="rating">Rating</label>
-                                                    <input type="number" name="rating" id="rating" min='0.0' max='10.0'>
+                                                    <input type="number" name="rating" id="rating" min='0.0' max='10.0' step='0.1'>
                                                 </div>
                                                 <div class="column">
                                                     <label for="length">Movie Length</label>
@@ -503,12 +503,13 @@ button.activ{
         const modal = document.querySelector('.modal');
         const close_button = document.querySelector('.close_button');
         const modal_submit = document.querySelector('.modal_submit');
-        let delete_buttons = document.querySelectorAll('.delete');
-        let edit_buttons = document.querySelectorAll('.edit');
 
-        delete_buttons = Array.from(delete_buttons);
+        const RefreshButtons = () =>{
+            let delete_buttons = document.querySelectorAll('.delete');
+            let edit_buttons = document.querySelectorAll('.edit');
+            delete_buttons = Array.from(delete_buttons);
 
-        delete_buttons.forEach(button => {
+            delete_buttons.forEach(button => {
             button.addEventListener('click', () => {
                 const xhr = new XMLHttpRequest();
                 const id = button.parentNode.parentNode.parentNode.querySelector('.user').innerHTML;
@@ -521,7 +522,12 @@ button.activ{
                 }
                 xhr.send(`id=${id}`);
             })
-        });
+        });};
+
+        RefreshButtons();
+
+        
+        
 
         add_button.addEventListener('click', () => {
             modal.classList.add('active');
@@ -548,6 +554,34 @@ button.activ{
             category_button.classList.toggle('activ');
             
         });
+
+    </script>
+    <script>
+
+        const search_bar = document.querySelector('#search');
+        const searchResults = document.querySelector('tbody');
+        search_bar.addEventListener('input', () => {
+            const searchQuery = search_bar.value.trim();
+
+
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', `admin_search.php?q=${searchQuery}`);
+            xhr.onload = () => {
+            if (xhr.status === 200) {
+                searchResults.innerHTML = xhr.responseText;
+            }
+        };
+xhr.send();
+
+});
+    </script>
+    <script>
+        const target = document.querySelector('tbody');
+        const observer = new MutationObserver(function(mutationsList, observer) {
+            RefreshButtons();
+        });
+    const config = { attributes: true, childList: true, subtree: true };
+    observer.observe(target, config);
 
     </script>
     <script src="../js/burger_handler.js"></script>

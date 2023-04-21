@@ -6,5 +6,5 @@
     $sql = "DELETE FROM movies WHERE id='$id'";
     mysqli_query($conn, $sql);
 
-    header("Location: ./adminpanel-movie.php?success=account deleted");
+    header("Location: ./adminpanel-movies.php?success=movie deleted");
 ?>

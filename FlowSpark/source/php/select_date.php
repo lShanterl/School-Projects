@@ -95,6 +95,13 @@
             {
                 $sql = "SELECT movies.title as title FROM movie inner join movies on movie.movie_id = movies.id WHERE movies.id = ".$_GET['id'];
                 $result = mysqli_query($conn, $sql);
+                if(mysqli_num_rows($result) == 0)
+                {
+                    echo "<div class='movie'>";
+                    echo "<span class='title'>No movies found</span>";
+                    echo "</div>";
+                    exit();
+                }
 
                 $row = mysqli_fetch_assoc($result);
                 echo "<span class='title'>".$row['title']."</span>";
