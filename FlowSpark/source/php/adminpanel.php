@@ -348,7 +348,8 @@ input[type='radio']:checked +label {
         const add_button = document.querySelector('.add_user');
         const modal = document.querySelector('.modal');
         const close_button = document.querySelector('.close_button');
-        const modal_submit = document.querySelector('.modal_submit');
+        const modal_form = document.querySelector('.modal_form');
+        const modal_submit = document.querySelector('.add');
         const RefreshButtons = () =>{
             let delete_buttons = document.querySelectorAll('.delete');
             let edit_buttons = document.querySelectorAll('.edit');
@@ -372,7 +373,7 @@ input[type='radio']:checked +label {
             edit_buttons.forEach(button => {
                 button.addEventListener('click', () => {
                 modal.classList.add('active');
-                modal_form.action = './edit_movie.php';
+                modal_form.action = './edit_user.php';
                 modal_submit.innerHTML = 'Edit';
                 modal_form.reset();
                 const xhr = new XMLHttpRequest();
@@ -380,18 +381,17 @@ input[type='radio']:checked +label {
                 modal_submit.value = id;
                 modal_submit.name = 'id';
 
-                xhr.open('POST', './retrieve_movie.php');
+                xhr.open('POST', './retrieve_user.php');
                 xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                 xhr.onload = () => {
                     if(xhr.status === 200){
                         const data = JSON.parse(xhr.responseText);
-                        title.value = data.title;
-                        release_date.value = data.release_date;
-                        rating.value = data.rating;
-                        description.value = data.short_summary;
-                        length.value = data.length;
-                        baner.nextElementSibling.innerHTML = data.baner;
-                        hero.nextElementSibling.innerHTML = data.hero;
+                        document.querySelector('#name').value = data.name;
+                        document.querySelector('#surname').value = data.surname;
+                        document.querySelector('#email').value = data.email;
+                        data.isAdmin == 1 ? document.querySelector('#admin').checked = true : document.querySelector('#user').checked = true;
+
+                        
                     }
                 }
                 xhr.send(`id=${id}`);
@@ -399,6 +399,7 @@ input[type='radio']:checked +label {
         };
         add_button.addEventListener('click', () => {
             modal.classList.add('active');
+            modal_form.action = './add_user.php';
         });
         close_button.addEventListener('click', () => {
             modal.classList.remove('active');
