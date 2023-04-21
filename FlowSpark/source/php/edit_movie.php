@@ -8,6 +8,8 @@
     $hero ;
     $description = $_POST['description'];
 
+    $id = $_POST['id'];
+
     $hours = floor($length / 60);
     $minutes = $length % 60;
     $categories = ['action', 'adventure','comedy', 'crime', 'drama', 'fantasy', 'horror','mystery', 'sci-fi', 'thriller'];
@@ -26,7 +28,8 @@
     $hours  = $hours . 'h';
     $minutes = $minutes . 'm';
 
-    if(isset($_FILES['baner'])){
+
+    if(isset($_FILES['baner']) && $_FILES['baner']['error'] === UPLOAD_ERR_OK){
         $target = "../../resources/movie_images/";
         $path = $_FILES['baner']['name'];
         $ext = pathinfo($path, PATHINFO_EXTENSION);
@@ -41,7 +44,7 @@
             header("Location: ./adminpanel-movies.php?error=baner");
         }
     }
-    if(isset($_FILES['hero'])){
+    if(isset($_FILES['hero']) && $_FILES['hero']['error'] === UPLOAD_ERR_OK){
         $target = "../../resources/movie_images/";
         $path = $_FILES['hero']['name'];
         $ext = pathinfo($path, PATHINFO_EXTENSION);
@@ -56,11 +59,12 @@
             header("Location: ./adminpanel-movies.php?error=hero");
         }        
     }
-
-    $sql = "INSERT INTO movies (title, release_date, rating, length, image_path, hero_path, short_summary, categories) VALUES ('$title', '$premiere', '$rating', '$hours $minutes', '$baner', '$hero', '$description', '$categories')";
-
+    $sql = "UPDATE movies SET ". (isset($baner) ? "image_path = '$baner', " : "" ). (isset($hero) ? "hero_path = '$hero', " : "") . "title = '$title', release_date = '$premiere', rating = '$rating', length = '$hours $minutes', short_summary = '$description', categories = '$categories' WHERE id = " . $id;
     $result = mysqli_query($conn, $sql);
     if ($result) {
+        header("Location: ./adminpanel-movies.php?success=edit");
+    } else {
+        header("Location: ./adminpanel-movies.php?error=edit");
     }
 
 ?>

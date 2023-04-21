@@ -12,6 +12,10 @@
                 unset($available_movies[$value]);
             }
         }
+        else{
+            movie($rand, $available_movies);
+            unset($available_movies[$rand]);
+        }
     } else {
         
     }

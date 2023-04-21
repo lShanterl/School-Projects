@@ -255,6 +255,7 @@ input[type='file']{
             display: none;
 }
 .categories label{
+    resize:none;
 
 }
 .categories .row{
@@ -494,15 +495,23 @@ button.activ{
                 <div class="paginator">
 
                 </div>
-
             </div>
         </div>               
     </div>
     <script>
         const add_button = document.querySelector('.add_user');
         const modal = document.querySelector('.modal');
+        const modal_form = document.querySelector('.modal_form');
         const close_button = document.querySelector('.close_button');
-        const modal_submit = document.querySelector('.modal_submit');
+        const modal_submit = document.querySelector('.add');
+        const title = document.querySelector('input[name="title"]');
+        const release_date = document.querySelector('input[name="premiere"]');
+        const rating = document.querySelector('input[name="rating"]');
+        const length = document.querySelector('input[name="length"]');
+        const description = document.querySelector('textarea[name="description"]');
+        const baner = document.querySelector('input[name="baner"]');
+        const hero = document.querySelector('input[name="hero"]');
+        const cat = document.querySelectorAll('input[type="checkbox"]');
 
         const RefreshButtons = () =>{
             let delete_buttons = document.querySelectorAll('.delete');
@@ -521,16 +530,59 @@ button.activ{
                     }
                 }
                 xhr.send(`id=${id}`);
-            })
-        });};
+            })});
+            edit_buttons = Array.from(edit_buttons);
 
+            edit_buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                modal.classList.add('active');
+                modal_form.action = './edit_movie.php';
+                modal_submit.innerHTML = 'Edit';
+                modal_form.reset();
+                const xhr = new XMLHttpRequest();
+                const id = button.parentNode.parentNode.parentNode.querySelector('.user').innerHTML;
+                modal_submit.value = id;
+                modal_submit.name = 'id';
+
+                xhr.open('POST', './retrieve_movie.php');
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                xhr.onload = () => {
+                    if(xhr.status === 200){
+                        const data = JSON.parse(xhr.responseText);
+                        title.value = data.title;
+                        release_date.value = data.release_date;
+                        rating.value = data.rating;
+                        description.value = data.short_summary;
+                        length.value = data.length;
+                        baner.nextElementSibling.innerHTML = data.baner;
+                        hero.nextElementSibling.innerHTML = data.hero;
+                        const cat = data.categories.split(',');
+                        cat.forEach(category => {
+                            category = category.trim();
+                            category = category.toLowerCase();
+                            const checkbox = document.querySelector(`${'#'+category}`);
+                            if(checkbox !== null)
+                                checkbox.checked = true;
+                            else{
+                                console.log(category);
+                            }
+                        });
+                    }
+                }
+                xhr.send(`id=${id}`);
+            })})
+        };
         RefreshButtons();
-
-        
-        
-
         add_button.addEventListener('click', () => {
             modal.classList.add('active');
+            modal_form.reset();
+            modal_form.action = './create_movie.php';
+            hero.nextElementSibling.innerHTML = 'Choose file';
+            baner.nextElementSibling.innerHTML = 'Choose file';
+            modal_submit.innerHTML = 'Add';
+            modal_submit.value = '';
+            modal_submit.name = '';
+
         });
         close_button.addEventListener('click', () => {
             modal.classList.remove('active');
@@ -562,8 +614,6 @@ button.activ{
         const searchResults = document.querySelector('tbody');
         search_bar.addEventListener('input', () => {
             const searchQuery = search_bar.value.trim();
-
-
             const xhr = new XMLHttpRequest();
             xhr.open('GET', `admin_search.php?q=${searchQuery}`);
             xhr.onload = () => {
@@ -575,15 +625,7 @@ xhr.send();
 
 });
     </script>
-    <script>
-        const target = document.querySelector('tbody');
-        const observer = new MutationObserver(function(mutationsList, observer) {
-            RefreshButtons();
-        });
-    const config = { attributes: true, childList: true, subtree: true };
-    observer.observe(target, config);
-
-    </script>
+    <script src="../js/observer.js"></script>
     <script src="../js/burger_handler.js"></script>
 </body>
 </html>

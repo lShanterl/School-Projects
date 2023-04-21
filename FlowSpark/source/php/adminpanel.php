@@ -349,12 +349,12 @@ input[type='radio']:checked +label {
         const modal = document.querySelector('.modal');
         const close_button = document.querySelector('.close_button');
         const modal_submit = document.querySelector('.modal_submit');
-        let delete_buttons = document.querySelectorAll('.delete');
-        let edit_buttons = document.querySelectorAll('.edit');
+        const RefreshButtons = () =>{
+            let delete_buttons = document.querySelectorAll('.delete');
+            let edit_buttons = document.querySelectorAll('.edit');
+            delete_buttons = Array.from(delete_buttons);
 
-        delete_buttons = Array.from(delete_buttons);
-
-        delete_buttons.forEach(button => {
+            delete_buttons.forEach(button => {
             button.addEventListener('click', () => {
                 const xhr = new XMLHttpRequest();
                 const id = button.parentNode.parentNode.parentNode.querySelector('.user').innerHTML;
@@ -366,17 +366,65 @@ input[type='radio']:checked +label {
                     }
                 }
                 xhr.send(`id=${id}`);
-            })
-        });
+            })});
+            edit_buttons = Array.from(edit_buttons);
 
+            edit_buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                modal.classList.add('active');
+                modal_form.action = './edit_movie.php';
+                modal_submit.innerHTML = 'Edit';
+                modal_form.reset();
+                const xhr = new XMLHttpRequest();
+                const id = button.parentNode.parentNode.parentNode.querySelector('.user').innerHTML;
+                modal_submit.value = id;
+                modal_submit.name = 'id';
+
+                xhr.open('POST', './retrieve_movie.php');
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                xhr.onload = () => {
+                    if(xhr.status === 200){
+                        const data = JSON.parse(xhr.responseText);
+                        title.value = data.title;
+                        release_date.value = data.release_date;
+                        rating.value = data.rating;
+                        description.value = data.short_summary;
+                        length.value = data.length;
+                        baner.nextElementSibling.innerHTML = data.baner;
+                        hero.nextElementSibling.innerHTML = data.hero;
+                    }
+                }
+                xhr.send(`id=${id}`);
+            })})
+        };
         add_button.addEventListener('click', () => {
             modal.classList.add('active');
         });
         close_button.addEventListener('click', () => {
             modal.classList.remove('active');
         });
+        RefreshButtons();
+
+
         
     </script>
+    <script>
+        const search_bar = document.querySelector('#search');
+        const searchResults = document.querySelector('tbody');
+        search_bar.addEventListener('input', () => {
+            const searchQuery = search_bar.value.trim();
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', `admin_search_user.php?q=${searchQuery}`);
+            xhr.onload = () => {
+            if (xhr.status === 200) {
+                searchResults.innerHTML = xhr.responseText;
+            }
+        };
+        xhr.send();
+    });
+
+    </script>
+    <script src="../js/observer.js"></script>
     <script src="../js/burger_handler.js"></script>
 </body>
 </html>
