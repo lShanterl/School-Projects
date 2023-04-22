@@ -19,8 +19,6 @@
         $minutes = '';
     }
 
-    
-
     $categories = ['action', 'adventure','comedy', 'crime', 'drama', 'fantasy', 'horror','mystery', 'sci-fi', 'thriller'];
     $categories_array = function() use ($categories){
         $array = [];
@@ -33,7 +31,6 @@
     };
 
     $categories = implode(", ", $categories_array());
-
 
     if(isset($_FILES['baner'])){
         $target = "../../resources/movie_images/";
