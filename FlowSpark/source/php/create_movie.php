@@ -8,8 +8,19 @@
     $hero ;
     $description = $_POST['description'];
 
-    $hours = floor($length / 60);
-    $minutes = $length % 60;
+    if(is_numeric($length)){
+        $hours = floor($length / 60);
+        $minutes = $length % 60;
+        $hours  = $hours . 'h';
+        $minutes = $minutes . 'm';
+    }
+    else{
+        $hours = "Unknown";
+        $minutes = '';
+    }
+
+    
+
     $categories = ['action', 'adventure','comedy', 'crime', 'drama', 'fantasy', 'horror','mystery', 'sci-fi', 'thriller'];
     $categories_array = function() use ($categories){
         $array = [];
@@ -23,8 +34,6 @@
 
     $categories = implode(", ", $categories_array());
 
-    $hours  = $hours . 'h';
-    $minutes = $minutes . 'm';
 
     if(isset($_FILES['baner'])){
         $target = "../../resources/movie_images/";
