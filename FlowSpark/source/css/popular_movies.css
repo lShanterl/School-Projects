@@ -144,6 +144,10 @@
     transition: all .5s ease-in-out;
     border-radius: 5px;
 }
+.filter-form .right input[type='submit']:hover{
+    cursor:pointer;
+    background-color: var(--button-color);
+}
 .filter-form select{
     background: var(--secondary-text-color);
     border: none;

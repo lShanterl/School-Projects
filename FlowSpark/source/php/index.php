@@ -64,11 +64,12 @@
                 <li>
                     <div>
                         <input type="text" id="search" class='burger_input' placeholder="Search..." name='search' class='search'>
-                        <div id="search-results" class='burger_result'></div>
                     </div>
                 </li>
             </ul>
+            <div id="search-results" class='burger_result'></div>
         </div>
+
     </div>
     <div class="hero">
         <div class="filter">

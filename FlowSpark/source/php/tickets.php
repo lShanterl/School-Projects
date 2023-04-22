@@ -40,6 +40,20 @@
                 height: auto;
             }
         }
+        .buttons button{
+            border: none;
+            background-color: var(--primary-color-dark);
+            color: var(--secondary-text-color);
+            font-weight: 500;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: ease-in-out 0.2s;
+        }
+        .buttons button:hover{
+            color: var(--primary-color);
+            background-color: var(--secondary-text-color);
+            cursor:pointer;
+        }
     </style>
 </head>
 
@@ -123,10 +137,10 @@
     </div>
     <div class="buttons">
             <button class="deselect">
-                <span>Deselect all</span>
+                Deselect all
             </button>
             <button class="next">
-                <span>Next</span>
+                Next
             </button>
         </div>
     <?php
