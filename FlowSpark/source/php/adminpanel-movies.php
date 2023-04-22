@@ -125,10 +125,6 @@
             padding: 10px;
 
         }
-
-
-        .modal .modal_form .row:first-child{
-        }
         .close {
             display:flex;
             align-items: center;
@@ -256,9 +252,6 @@ input[type='file']{
 }
 .categories label{
     resize:none;
-
-}
-.categories .row{
 }
 .categories.active{
     display: flex;
@@ -269,11 +262,7 @@ button.activ{
     background-color: var(--secondary-text-color) !important;
     color: var(--primary-color-dark) !important;
     border: 2.5px solid var(--primary-color-dark) !important;
-
 }
-.categories .column{
-}
-
 </style>
 </head>
 <body>
@@ -328,7 +317,7 @@ button.activ{
             <div class="sidebar">
             <a href="./adminpanel.php">Users</a>
                 <a href="./adminpanel-movies.php">Movies</a>
-                <a href="./movie_entries.php">Entries</a>
+                <a href="./adminpanel_movie_entries.php">Entries</a>
             </div>
             <div class="content">
                 <div class="searchbar-wrap">
@@ -339,6 +328,9 @@ button.activ{
                                 <div class="modal">
                                     <form action="./create_movie.php" class="modal_form" method='POST' enctype="multipart/form-data">
                                         <div class="wrapp">
+                                            <div class="row">
+                                                
+                                            </div>
                                             <div class="row">
                                                 <div class="column">
                                                     <label for="name">Title</label>
@@ -451,8 +443,7 @@ button.activ{
                                 </div>
                             </div>
                             <div class="right">
-                                <span>Search</span>
-                                <input type="text" name="search" id="search">
+                                <input type="text" name="search" id="search" placeholder="Search..." style='text-align:left;'>
                             </div>
                         </div>
                     </div>

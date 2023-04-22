@@ -123,6 +123,19 @@
             border: 2.5px solid var(--secondary-text-color);
             padding: 10px;
         }
+        button.perm{
+            width: 100% !important;
+            height: 50px !important;
+            border: none !important;
+            background-color: var(--primary-color-dark) !important;
+            color: var(--secondary-text-color) !important;
+            font-weight: 500 !important;
+            border-radius: 5px !important;
+            transition: ease-in-out 0.2s !important;
+            border: 2.5px solid var(--secondary-text-color) !important;
+            padding: 10px !important;
+            font-size: 1.5rem !important;
+        }
         .close {
             display:flex;
             align-items: center;
@@ -176,9 +189,25 @@ input[type='radio']:checked +label {
     align-items: center;
     justify-content: center;
 }
+tr td:nth-child(1) span{
+    border-radius: 10px 0 0 10px;
+}
+tr td:nth-child(5) span{
+    border-radius: 0 10px 10px 0;
+}
 
+tr td:nth-child(6) span{
+    border-radius: 0px;
+}
+.search-result{
+    width: 100%;
+}
+.hidden{
+    width: 0px !important;
+    height: 0px !important;
+}
 
-    </style>
+</style>
 </head>
 <body>
 <nav class="navbar" > 
@@ -240,45 +269,26 @@ input[type='radio']:checked +label {
                     <div class="searchbar">
                          <div class='filter-form'>
                             <div class="left">
-                                <button class="add_user">Add user</button>
+                                <button class="add_user">Add Entry</button>
                                 <div class="modal">
-                                    <form action="./create_account.php" class="modal_form" method='POST'>
+                                    <form action="./create_entry.php" class="modal_form" method='POST'>
                                         <div class="wrapp">
-                                            <div class="row">
-                                                <div class="column">
-                                                    <label for="name">Name</label>
-                                                    <input type="text" name="name" id="name">
+                                            <div class="row" style='align-items:center;'>
+                                                <div class="column" style='gap:0px;'>
+                                                    <label for="title" style='margin-bottom:10px'>Title TBA</label>
+                                                    <input type="text" id="title" placeholder="Search..." name='title'>
+                                                    <div id="results-title" style='position: relative'></div>
                                                 </div>
-                                                <div class="column">
-                                                    <label for="surname">Surname</label>
-                                                    <input type="text" name="surname" id="surname">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="column">
-                                                    <label for="email">Email</label>
-                                                    <input type="email" name="email" id="email">
+                                                <div class="column" style='gap:0px;'>
+                                                <label for="hall" style='margin-bottom:10px'>Cinema Hall</label>
+                                                    <input type="text" id="hall" placeholder="Search..." name='hall'>
+                                                    <div id="results-hall" style='position: relative'></div>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="column">
-                                                    <label for="password">Password</label>
-                                                    <input type="password" name="password" id="password">
-                                                </div>
-                                                <div class="column">
-                                                    <label for="re_password">Repeat password</label>
-                                                    <input type="password" name="re_password" id="re_password">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="column">
-                                                    <label for="admin">Permissions</label>
-                                                    <div class="row" style='margin:0px'>
-                                                        <input type="radio" name="admin" id="user" value="0" class='hidden' checked>
-                                                        <label for="user" class='perm'>User</label>
-                                                        <input type="radio" name="admin" id="admin" value="1" class='hidden'>
-                                                        <label for="admin" class='perm'>Admin</label>
-                                                    </div>
+                                                    <label for="dat">Date</label>
+                                                    <input type="datetime-local" name="dat" id="dat">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -303,25 +313,23 @@ input[type='radio']:checked +label {
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Name</th>
-                                <th>Surname</th>
-                                <th>Email</th>
-                                <th>Admin</th>
+                                <th>Title</th>
+                                <th>Date</th>
+                                <th>Cinema Hall</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <?php 
-                            $sql = "SELECT * FROM users";
+                            $sql = "SELECT *, movie.id as id_main FROM movie inner join cinema_hall on movie.cinema_hall_id = cinema_hall.id inner join movies on movie.movie_id = movies.id ORDER BY movie.id";
 
                             $result = mysqli_query($conn, $sql);
                             while($row = mysqli_fetch_assoc($result))
                             {
                                 echo "<tr>";
-                                echo "<td><span class='user'>".$row['id']."</span></td>";
+                                echo "<td><span class='user'>".$row['id_main']."</span></td>";
+                                echo "<td><span class='user'>".$row['title']."</span></td>";
+                                echo "<td><span class='user'>".$row['play_date']."</span></td>";
                                 echo "<td><span class='user'>".$row['name']."</span></td>";
-                                echo "<td><span class='user'>".$row['surname']."</span></td>";
-                                echo "<td><span class='user'>".$row['email']."</span></td>";
-                                echo "<td><span class='user'>".$row['isAdmin']."</span></td>";
                                 echo "<td>";
                                 echo "<span class='buttons user'>";
                                 echo "<button class='edit'>Edit</button>";
@@ -355,7 +363,7 @@ input[type='radio']:checked +label {
             button.addEventListener('click', () => {
                 const xhr = new XMLHttpRequest();
                 const id = button.parentNode.parentNode.parentNode.querySelector('.user').innerHTML;
-                xhr.open('POST', './delete_user.php');
+                xhr.open('POST', './delete_entry.php');
                 xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                 xhr.onload = () => {
                     if(xhr.status === 200){
@@ -369,7 +377,7 @@ input[type='radio']:checked +label {
             edit_buttons.forEach(button => {
                 button.addEventListener('click', () => {
                 modal.classList.add('active');
-                modal_form.action = './edit_user.php';
+                modal_form.action = './edit_entry.php';
                 modal_submit.innerHTML = 'Edit';
                 modal_form.reset();
                 const xhr = new XMLHttpRequest();
@@ -377,17 +385,14 @@ input[type='radio']:checked +label {
                 modal_submit.value = id;
                 modal_submit.name = 'id';
 
-                xhr.open('POST', './retrieve_user.php');
+                xhr.open('POST', './retrieve_entry.php');
                 xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                 xhr.onload = () => {
                     if(xhr.status === 200){
                         const data = JSON.parse(xhr.responseText);
-                        document.querySelector('#name').value = data.name;
-                        document.querySelector('#surname').value = data.surname;
-                        document.querySelector('#email').value = data.email;
-                        data.isAdmin == 1 ? document.querySelector('#admin').checked = true : document.querySelector('#user').checked = true;
-
-                        
+                        document.querySelector('#hall').value = data.name;
+                        document.querySelector('#dat').value = data.play_date;
+                        document.querySelector('#title').value = data.title;  
                     }
                 }
                 xhr.send(`id=${id}`);
@@ -395,16 +400,14 @@ input[type='radio']:checked +label {
         };
         add_button.addEventListener('click', () => {
             modal.classList.add('active');
-            modal_form.action = './create_account.php';
+            modal_form.action = './create_entry.php';
+            modal_submit.innerHTML = 'Add';
             modal_form.reset();
         });
         close_button.addEventListener('click', () => {
             modal.classList.remove('active');
         });
         RefreshButtons();
-
-
-        
     </script>
     <script>
         const search_bar = document.querySelector('#search');
@@ -412,7 +415,7 @@ input[type='radio']:checked +label {
         search_bar.addEventListener('input', () => {
             const searchQuery = search_bar.value.trim();
             const xhr = new XMLHttpRequest();
-            xhr.open('GET', `admin_search_user.php?q=${searchQuery}`);
+            xhr.open('GET', `admin_search_entry.php?q=${searchQuery}`);
             xhr.onload = () => {
             if (xhr.status === 200) {
                 searchResults.innerHTML = xhr.responseText;
@@ -422,10 +425,66 @@ input[type='radio']:checked +label {
     });
 
     </script>
+    <script>
+        const search_title = document.getElementById('title');
+        const search_hall = document.getElementById('hall');
+
+        const searchResults_title = document.getElementById('results-title');
+        const searchResults_hall = document.getElementById('results-hall');
+
+        search_title.addEventListener('input', () => {
+            const searchQuery = search_title.value.trim();
+
+            if(searchQuery.length == 0)
+            {
+                searchResults_title.innerHTML = "";
+                return;
+            }
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', `admin_search_title.php?q=${searchQuery}`);
+            xhr.onload = () => {
+            if (xhr.status === 200) {
+                searchResults_title.innerHTML = xhr.responseText;
+            }
+        };
+        xhr.send();
+    });
+
+    search_hall.addEventListener('input', () => {
+            const searchQuery = search_hall.value.trim();
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', `admin_search_hall.php?q=${searchQuery}`);
+            xhr.onload = () => {
+            if (xhr.status === 200) {
+                searchResults_hall.innerHTML = xhr.responseText;
+            }
+        };
+        xhr.send();
+    });
+
+
+
+    </script>
+
+
     <?php if (isset($_GET['error'])) { 
         echo "<script>alert('".$_GET['error']."')</script>";
     }?>
     <script src="../js/observer.js"></script>
+    <script>
+    function selectTitle(title)
+    {
+        const clicked_button = event.target.innerHTML;
+        document.getElementById('title').value = clicked_button;
+        document.getElementById('results-title').innerHTML = "";
+    }
+    function selectHall(hall)
+    {
+        const clicked_button = event.target.innerHTML;
+        document.getElementById('hall').value = clicked_button;
+        document.getElementById('results-hall').innerHTML = "";
+    }
+    </script>
     <script src="../js/burger_handler.js"></script>
 </body>
 </html>

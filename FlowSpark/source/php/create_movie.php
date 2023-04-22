@@ -61,6 +61,7 @@
 
     $result = mysqli_query($conn, $sql);
     if ($result) {
+        header("Location: ./adminpanel-movies.php?success=movie_created");
     }
 
 ?>

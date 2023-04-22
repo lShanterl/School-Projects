@@ -5,7 +5,7 @@
     $rating = $_POST['rating'];
     $length = $_POST['length'];
     $baner;
-    $hero ;
+    $hero;
     $description = $_POST['description'];
 
     $id = $_POST['id'];
@@ -59,11 +59,14 @@
             header("Location: ./adminpanel-movies.php?error=hero");
         }        
     }
+    $description = mysqli_real_escape_string($conn, $_POST['description']);
+
     $sql = "UPDATE movies SET ". (isset($baner) ? "image_path = '$baner', " : "" ). (isset($hero) ? "hero_path = '$hero', " : "") . "title = '$title', release_date = '$premiere', rating = '$rating', length = '$hours $minutes', short_summary = '$description', categories = '$categories' WHERE id = " . $id;
-    $result = mysqli_query($conn, $sql);
-    if ($result) {
+
+    try {
+        mysqli_query($conn, $sql);
         header("Location: ./adminpanel-movies.php?success=edit");
-    } else {
+    } catch (mysqli_sql_exception $e) {
         header("Location: ./adminpanel-movies.php?error=edit");
     }
 
