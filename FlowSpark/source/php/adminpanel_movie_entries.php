@@ -275,7 +275,7 @@ tr td:nth-child(6) span{
                                         <div class="wrapp">
                                             <div class="row" style='align-items:center;'>
                                                 <div class="column" style='gap:0px;'>
-                                                    <label for="title" style='margin-bottom:10px'>Title TBA</label>
+                                                    <label for="title" style='margin-bottom:10px'>Title</label>
                                                     <input type="text" id="title" placeholder="Search..." name='title'>
                                                     <div id="results-title" style='position: relative'></div>
                                                 </div>
@@ -332,7 +332,7 @@ tr td:nth-child(6) span{
                                 echo "<td><span class='user'>".$row['name']."</span></td>";
                                 echo "<td>";
                                 echo "<span class='buttons user'>";
-                                echo "<button class='edit'>Edit</button>";
+                                //echo "<button class='edit'>Edit</button>";
                                 echo "<button class='delete'>Delete</button>";
                                 echo "</span>";
                                 echo "</td>";
