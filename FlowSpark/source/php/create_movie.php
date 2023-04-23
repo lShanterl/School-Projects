@@ -8,6 +8,11 @@
     $hero ;
     $description = $_POST['description'];
 
+    if (empty($title) || empty($premiere) || empty($rating) || empty($length) || empty($description)) {
+        header("Location: ./adminpanel-movies.php?error=empty fields");
+        exit();
+    }
+
     if(is_numeric($length)){
         $hours = floor($length / 60);
         $minutes = $length % 60;

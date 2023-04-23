@@ -616,6 +616,9 @@ xhr.send();
 
 });
     </script>
+        <?php if (isset($_GET['error'])) { 
+        echo "<script>alert('".$_GET['error']."')</script>";
+    }?>
     <script src="../js/observer.js"></script>
     <script src="../js/burger_handler.js"></script>
 </body>

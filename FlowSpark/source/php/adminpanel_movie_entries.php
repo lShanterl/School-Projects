@@ -485,6 +485,9 @@ tr td:nth-child(6) span{
         document.getElementById('results-hall').innerHTML = "";
     }
     </script>
+        <?php if (isset($_GET['error'])) { 
+        echo "<script>alert('".$_GET['error']."')</script>";
+    }?>
     <script src="../js/burger_handler.js"></script>
 </body>
 </html>

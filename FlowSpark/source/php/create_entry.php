@@ -8,6 +8,11 @@
     $movie_id;
     $entry_id;
 
+    if (empty($title) || empty($play_date) || empty($hall)) {
+        header("Location: ./adminpanel_movie_entries.php?error=empty fields");
+        exit();
+    }
+
     $sql = "SELECT * from movies where title = '$title'";
     $result = mysqli_query($conn, $sql);
     if(mysqli_num_rows($result) < 0)
