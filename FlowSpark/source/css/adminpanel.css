@@ -156,6 +156,9 @@ input[type="text"]#search:focus{
     transition: all .5s ease-in-out;
     border-radius: 5px;
 }
+.modal{
+    z-index: 101;
+}
 thead{
 
     background-color: var(--primary-color);

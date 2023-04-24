@@ -89,9 +89,9 @@
             left: 50%;
             transform: translate(-50%, -50%);
             width: 65vw;
-            height: 85vh;
-            margin-top:4vh;
-            padding: 50px !important;
+            height: 85vh auto;
+            min-height: 85vh;
+            z-index: 1000;
             background-color: var(--primary-color-dark);
             color: var(--secondary-text-color);
             font-weight: 500;

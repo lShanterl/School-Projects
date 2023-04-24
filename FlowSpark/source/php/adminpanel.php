@@ -89,7 +89,6 @@
             left: 50%;
             transform: translate(-50%, -50%);
             width: 65vw;
-            height: 65vh;
             background-color: var(--primary-color-dark);
             color: var(--secondary-text-color);
             font-weight: 500;
