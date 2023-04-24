@@ -89,7 +89,9 @@
             left: 50%;
             transform: translate(-50%, -50%);
             width: 65vw;
-            height: 75vh;
+            height: 80vh;
+            margin-top:4vh;
+            padding: 50px !important;
             background-color: var(--primary-color-dark);
             color: var(--secondary-text-color);
             font-weight: 500;
@@ -369,6 +371,12 @@ button.activ{
                                                 <div class="column">
                                                     <label for="description">Description</label>
                                                     <textarea name="description" id="description" cols="30" rows="10"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="column">
+                                                    <label for="trailer">Trailer Link</label>
+                                                    <input type="text" name="trailer" id="trailer">
                                                 </div>
                                             </div>
                                             <div class="row">

@@ -57,6 +57,7 @@ body{
     width: 100%;
     cursor: pointer;
     background-color: #34ad49;
+    transition: ease-in-out 0.1s !important;
   }
   
   .container label::before {
