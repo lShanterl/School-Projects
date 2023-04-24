@@ -36,11 +36,7 @@
             width: 100%;
             height: 100vh;
         }
-        @media screen and (max-width: 1200px){
-            .body_wrap{
-                height: auto;
-            }
-        }
+
         .buttons button{
             border: none;
             background-color: var(--primary-color-dark);
@@ -49,11 +45,35 @@
             border-radius: 5px;
             cursor: pointer;
             transition: ease-in-out 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .buttons button:hover{
             color: var(--primary-color);
             background-color: var(--secondary-text-color);
             cursor:pointer;
+        }
+
+        @media screen and (max-width: 1200px){
+            .container .seats{
+                gap:1px;
+            }
+            .buttons{
+                flex-direction: column;
+            }
+            .buttons button{
+                width: 100%;
+            }
+        }
+        @media screen and (max-width: 800px){
+            .container .seats{
+                gap:0px;
+            }
+            .container .seats span{
+                width: 20px;
+                height: 20px;
+            }
         }
     </style>
 </head>

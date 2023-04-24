@@ -12,6 +12,11 @@
     <title>FlowSpark</title>
     <link rel="icon" href="../../resources/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/app.css">
+    <style>
+        a{
+            text-decoration: none !important;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar" > 

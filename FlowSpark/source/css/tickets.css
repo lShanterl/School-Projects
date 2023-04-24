@@ -35,6 +35,23 @@ body{
   align-items: center;
   padding: 10px;
 }
+
+@media screen and (max-width: 600px){
+  .container .movie{
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: auto;
+  }
+  .container .movie span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+}
 .container .seats-wrapper{
     display:flex;
     justify-content: center;
