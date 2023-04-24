@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FlowSpark</title>
+    <link rel="icon" href="../../resources/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/app.css">
     <link rel="stylesheet" href="../css/sign.css">
 </head>
@@ -12,7 +13,7 @@
 <div class="wrapper">
     <div class="logbox">
         
-        <h1>Sign Up</h1>
+        <h1>Sign up</h1>
         <form action="create_account.php" method="post">
 
             <?php if (isset($_GET['error'])) { ?>
@@ -23,12 +24,12 @@
           <?php if (isset($_GET['name'])) { ?>
                <input type="text" 
                       name="name" 
-                      placeholder="Name"
+                      placeholder="name"
                       value="<?php echo $_GET['name']; ?>">
           <?php }else{ ?>
                <input type="text" 
                       name="name" 
-                      placeholder="Name">
+                      placeholder="name">
           <?php }?>
 
           <label>Surname</label>
@@ -58,14 +59,14 @@
      	<label>Password</label>
      	<input type="password" 
                  name="password" 
-                 placeholder="Password">
+                 placeholder="password">
 
           <label>Re Password</label>
           <input type="password" 
                  name="re_password" 
-                 placeholder="Password">
+                 placeholder="password">
 
-            <input type="submit" value="Sign Up">
+            <input type="submit" value="Sign up">
             <input type="reset" value="Reset">
             <div class='back_wrap'>
                 <a href="./index.php" class="create-login">Go back</a>

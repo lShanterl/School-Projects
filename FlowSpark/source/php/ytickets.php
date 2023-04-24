@@ -5,7 +5,7 @@
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
 
-    $sql = "SELECT * FROM seats INNER JOIN movie on seats.movie_id = movie.id INNER JOIN movies ON movie.movie_id = movies.id WHERE seats.user_id=".$row['id']." ORDER BY play_date ASC";
+    $sql = "SELECT * FROM seats INNER JOIN movie on seats.movie_id = movie.id INNER JOIN movies ON movie.movie_id = movies.id  INNER JOIN cinema_hall on movie.cinema_hall_id = cinema_hall.id WHERE seats.user_id=".$row['id']." ORDER BY play_date ASC";
     $result = mysqli_query($conn, $sql);
 ?>
 <!DOCTYPE html>
@@ -14,7 +14,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Tickets</title>
+    <title>FlowSpark</title>
+    <link rel="icon" href="../../resources/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/app.css">
     <link rel="stylesheet" href="../css/tickets.css">
 </head>
@@ -77,7 +78,7 @@ border:none;
 tr td:nth-child(1) span{
 border-radius: 10px 0 0 10px;
 }
-tr td:nth-child(4) span{
+tr td:nth-child(5) span{
 border-radius: 0 10px 10px 0;
 }
 
@@ -119,7 +120,7 @@ height: 100%;
     tbody tr td:nth-child(1) .ticket{
         border-radius: 10px 10px 0 0;
     }
-    tbody tr td:nth-child(4) .ticket{
+    tbody tr td:nth-child(5) .ticket{
         border-radius: 0 0 10px 10px;
         margin-bottom: 10px;
     }
@@ -183,6 +184,7 @@ height: 100%;
                                 <th>Date</th>
                                 <th>Row</th>
                                 <th>Number</th>
+                                <th>Cinema Hall</th>
                             </tr>
                         </thead>
                         <?php 
@@ -193,6 +195,7 @@ height: 100%;
                                 echo "<td><span class='ticket'>".$row['play_date']."</span></td>";
                                 echo "<td><span class='ticket'>".$row['row_number']."</span></td>";
                                 echo "<td><span class='ticket'>".$row['seat_number']."</span></td>";
+                                echo "<td><span class='ticket'>".$row['name']."</span></td>";
                                 echo "</tr>";
                             }
                         ?>

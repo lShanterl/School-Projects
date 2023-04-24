@@ -187,5 +187,7 @@ table{
 .add{
     font-size: 1.5rem !important;
     height:auto !important;
-
+}
+*:focus{
+    outline: none;
 }

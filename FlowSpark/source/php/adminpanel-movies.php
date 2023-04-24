@@ -25,8 +25,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Settings</title>
-    <link rel="stylesheet" href="../css/app.css">
+    <title>FlowSpark</title>
+    <link rel="icon" href="../../resources/images/favicon.ico" type="image/x-icon">    <link rel="stylesheet" href="../css/app.css">
     <link rel="stylesheet" href="../css/adminpanel.css">
     <style>
         .modal{
@@ -89,7 +89,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             width: 65vw;
-            height: 80vh;
+            height: 85vh;
             margin-top:4vh;
             padding: 50px !important;
             background-color: var(--primary-color-dark);
@@ -103,7 +103,7 @@
             justify-content: space-around;
             align-items: center;
             padding: 20px;
-            gap: 20px;
+            gap: 15px;
         }
         .row{
             display:flex;
@@ -159,7 +159,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 10px;
+    gap: 4px;
     width: 100%;
 }
 .column label{
