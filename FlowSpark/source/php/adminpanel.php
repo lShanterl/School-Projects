@@ -325,7 +325,8 @@ input[type='radio']:checked +label {
                                 echo "<td>";
                                 echo "<span class='buttons user'>";
                                 echo "<button class='edit'>Edit</button>";
-                                echo "<button class='delete'>Delete</button>";
+                                if($row['email'] != $_COOKIE['email'])
+                                    echo "<button class='delete'>Delete</button>";
                                 echo "</span>";
                                 echo "</td>";
                                 echo "</tr>";
