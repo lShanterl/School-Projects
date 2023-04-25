@@ -23,7 +23,6 @@
         $hashed_password = $resultCheck['password'];
         if(password_verify($password, $hashed_password))
         {
-            // Verification success! User has logged-in!
 		    setcookie( "email", $email, time()+36000, "/", "", 0 );
 
             $auth_token = uniqid();
@@ -34,7 +33,6 @@
 
             $result = mysqli_query($conn, $sql);
 
-            // Setting cookies to last 10 hours
             header("Location: ./index.php");
             exit();
         }

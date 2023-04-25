@@ -157,6 +157,9 @@ input[type='file']{
 .menu{
 
 }
+input:focus{
+    outline: none !important;
+}
 
 @media screen and (max-width: 1200px){
     .settings{

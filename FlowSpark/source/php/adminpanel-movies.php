@@ -132,6 +132,9 @@
             align-items: center;
             justify-content: center; 
         }
+        label.file:hover{
+    cursor:pointer;
+}
 .close:hover {
   opacity: 1;
 }

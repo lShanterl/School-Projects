@@ -162,9 +162,9 @@
     font-size: 1.5rem;
 }
 .hidden{
-    display:none;
-    width: 0px;
-    height: 0px;
+    display:none !important;
+    width: 0px !important;
+    height: 0px !important;
 }
 input[type='radio']:checked +label {
     background-color:  var(--secondary-text-color) !important;
@@ -176,7 +176,12 @@ input[type='radio']:checked +label {
     align-items: center;
     justify-content: center;
 }
-
+.perm:hover{
+    cursor:pointer;
+}
+label.file:hover{
+    cursor:pointer;
+}
 
     </style>
 </head>
@@ -274,7 +279,7 @@ input[type='radio']:checked +label {
                                                 <div class="column">
                                                     <label for="admin">Permissions</label>
                                                     <div class="row" style='margin:0px'>
-                                                        <input type="radio" name="admin" id="user" value="0" class='hidden' checked>
+                                                        <input type="radio" name="admin" id="user" value="0" class='hidden'>
                                                         <label for="user" class='perm'>User</label>
                                                         <input type="radio" name="admin" id="admin" value="1" class='hidden'>
                                                         <label for="admin" class='perm'>Admin</label>
@@ -387,8 +392,6 @@ input[type='radio']:checked +label {
                         document.querySelector('#surname').value = data.surname;
                         document.querySelector('#email').value = data.email;
                         data.isAdmin == 1 ? document.querySelector('#admin').checked = true : document.querySelector('#user').checked = true;
-
-                        
                     }
                 }
                 xhr.send(`id=${id}`);

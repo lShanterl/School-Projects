@@ -8,7 +8,7 @@
     $password;
     $re_password;
 
-    if(isset($_POST['password']) && isset($_POST['re_password'])){
+    if(isset($_POST['password']) && isset($_POST['re_password']) && $_POST['password'] != '' && $_POST['re_password'] != ''){
         $password = $_POST['password'];
         $re_password = $_POST['re_password'];
         if($password == $re_password){
@@ -26,22 +26,17 @@
 
     $id = $_POST['id'];
 
-    if(isset($_FILES['avatar']) && $_FILES['avatar']['error'] === UPLOAD_ERR_OK){
-        $target = "../../resources/movie_images/";
-        $path = $_FILES['avatar']['name'];
-        $ext = pathinfo($path, PATHINFO_EXTENSION);
-        $filename = basename($path);
+    $sql2 = "SELECT email FROM users WHERE id = $id";
+    $result = mysqli_query($conn, $sql2);
+    $row = mysqli_fetch_assoc($result);
 
-        $target = $target . $filename;
-
-        if (move_uploaded_file($_FILES['avatar']['tmp_name'], $target)){
-            $avatar = $filename;
-        } 
-        else {
-            header("Location: ./adminpanel-movies.php?error=avatar");
-        }
+    if($row['email'] == $_COOKIE['email'])
+    {
+        setcookie( "email", $email, time()+36000, "/", "", 0 );
+        $isAdmin = 1;
     }
-    $sql = "UPDATE users SET name = '$name', surname = '$surname', email = '$email', isAdmin = '$isAdmin'".(isset($avatar) ? ", image_path = '$avatar'" : ''). (!$password == null ? ", password = '$password'" : '')  ." WHERE id = $id";
+
+    $sql = "UPDATE users SET name = '$name', surname = '$surname', email = '$email', isAdmin = '$isAdmin'".(isset($avatar) ? ", image_path = '$avatar'" : ''). ($password != null ? ", password = '$password'" : '')  ." WHERE id = $id";
 
     if(mysqli_query($conn, $sql)){
         header("Location: ./adminpanel.php?success=edit");
