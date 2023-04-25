@@ -129,6 +129,8 @@
                 {          
                     $sql = "SELECT movie.* FROM movie inner join movies on movie.movie_id = movies.id WHERE movies.id = ".$_GET['id'];      
                     $result = mysqli_query($conn, $sql);
+
+
                     while($row = mysqli_fetch_assoc($result))
                     {
                         if(date_diff(date_create($row['play_date']), date_create(date("Y-m-d")))->format("%R%a") <= 0)
