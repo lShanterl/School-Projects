@@ -325,6 +325,14 @@ tr td:nth-child(6) span{
                             $result = mysqli_query($conn, $sql);
                             while($row = mysqli_fetch_assoc($result))
                             {
+                                if(date_diff(date_create($row['play_date']), date_create(date("Y-m-d")))->format("%R%a") <= 0)
+                                {
+                                }
+                                else{
+                                    $sql2 = "DELETE FROM movie WHERE id = ".$row['id_main'];
+                                    mysqli_query($conn, $sql2);
+                                    continue;
+                                }
                                 echo "<tr>";
                                 echo "<td><span class='user'>".$row['id_main']."</span></td>";
                                 echo "<td><span class='user'>".$row['title']."</span></td>";
