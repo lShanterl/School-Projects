@@ -332,6 +332,7 @@ tr td:nth-child(6) span{
                                     $sql2 = "DELETE FROM movie WHERE id = ".$row['id_main'];
                                     mysqli_query($conn, $sql2);
                                     $sql2 = "DELETE FROM seats WHERE id = ".$row['id_main'];
+                                    mysqli_query($conn, $sql2);
                                     continue;
                                 }
                                 echo "<tr>";

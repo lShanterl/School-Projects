@@ -143,6 +143,7 @@
                             $sql = "DELETE FROM movie WHERE id = $row[id]";
                             mysqli_query($conn, $sql);
                             $sql2 = "DELETE FROM seats WHERE id = ".$row['id_main'];
+                            mysqli_query($conn, $sql2);
                         }
 
                     }
