@@ -1,57 +1,74 @@
 <?php
-    include 'db.php';
 
-    $title = $_POST['title'];
-    $play_date = $_POST['dat'];
-    $hall = $_POST['hall'];
-    $cinema_hall_id;
-    $movie_id;
-    $entry_id;
+include 'db.php';
+verify_csrf();
 
-    if (empty($title) || empty($play_date) || empty($hall)) {
-        header("Location: ./adminpanel_movie_entries.php?error=empty fields");
-        exit();
+if (!$cookie || $admin !== 1) {
+    header('Location: ./index.php');
+    exit();
+}
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: ./adminpanel_movie_entries.php');
+    exit();
+}
+
+$title     = trim($_POST['title'] ?? '');
+$play_date = trim($_POST['dat']   ?? '');
+$hall      = trim($_POST['hall']  ?? '');
+
+if (empty($title) || empty($play_date) || empty($hall)) {
+    header('Location: ./adminpanel_movie_entries.php?error=' . urlencode('All fields are required.'));
+    exit();
+}
+
+if (!preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/', $play_date)) {
+    header('Location: ./adminpanel_movie_entries.php?error=' . urlencode('Invalid date format.'));
+    exit();
+}
+
+$stmt = $conn->prepare('SELECT id FROM movies WHERE title = ? LIMIT 1');
+$stmt->bind_param('s', $title);
+$stmt->execute();
+$stmt->bind_result($movie_id);
+if (!$stmt->fetch()) {
+    $stmt->close();
+    header('Location: ./adminpanel_movie_entries.php?error=' . urlencode('Movie not found.'));
+    exit();
+}
+$stmt->close();
+
+$stmt = $conn->prepare(
+    'SELECT id, total_rows, seats_per_row FROM cinema_hall WHERE name = ? LIMIT 1'
+);
+$stmt->bind_param('s', $hall);
+$stmt->execute();
+$stmt->bind_result($cinema_hall_id, $total_rows, $seats_per_row);
+if (!$stmt->fetch()) {
+    $stmt->close();
+    header('Location: ./adminpanel_movie_entries.php?error=' . urlencode('Cinema hall not found.'));
+    exit();
+}
+$stmt->close();
+
+$stmt = $conn->prepare(
+    'INSERT INTO movie (cinema_hall_id, movie_id, play_date) VALUES (?, ?, ?)'
+);
+$stmt->bind_param('iis', $cinema_hall_id, $movie_id, $play_date);
+$stmt->execute();
+$entry_id = (int)$conn->insert_id;
+$stmt->close();
+
+$stmt = $conn->prepare(
+    'INSERT INTO seats (cinema_hall_id, row_number, seat_number, movie_id) VALUES (?, ?, ?, ?)'
+);
+for ($row = 0; $row < $total_rows; $row++) {
+    for ($seat = 0; $seat < $seats_per_row; $seat++) {
+        $stmt->bind_param('iiii', $cinema_hall_id, $row, $seat, $entry_id);
+        $stmt->execute();
     }
+}
+$stmt->close();
 
-    $sql = "SELECT * from movies where title = '$title'";
-    $result = mysqli_query($conn, $sql);
-    if(mysqli_num_rows($result) < 0)
-    {
-        header("Location: ./adminpanel_movie_entries.php?error=movie");
-    }
-    else {
-        $movie_id = mysqli_fetch_assoc($result)['id'];
-        $sql = "SELECT * from cinema_hall where name = '$hall'";
-        $result = mysqli_query($conn, $sql);
-        if(mysqli_num_rows($result) < 0)
-        {
-            header("Location: ./adminpanel_movie_entries.php?error=hall");
-        }
-        else {
-            $row = mysqli_fetch_assoc($result);
-            $cinema_hall_id = $row['id'];
-            $total_rows = $row['total_rows'];
-            $seats_per_row = $row['seats_per_row'];
-
-            $sql = "INSERT INTO movie(cinema_hall_id, movie_id, play_date) VALUES ('$cinema_hall_id', '$movie_id', '$play_date')";
-            $result = mysqli_query($conn, $sql);
-
-            $sql = "SELECT * from movie where cinema_hall_id = '$cinema_hall_id' and movie_id = '$movie_id' and play_date = '$play_date'";
-            $result = mysqli_query($conn, $sql);
-            $entry_id = mysqli_fetch_assoc($result)['id'];
-
-            for($i = 0; $i < $total_rows; $i++)
-            {
-                for($j = 0; $j < $seats_per_row; $j++)
-                {
-                    $sql = "INSERT INTO seats(cinema_hall_id, row_number, seat_number, movie_id) VALUES ('$cinema_hall_id', '$i', '$j', '$entry_id')";
-                    $result = mysqli_query($conn, $sql);
-                }
-            }
-
-
-            header("Location: ./adminpanel_movie_entries.php?success=movie");
-        }
-    }
-    
-?>
+header('Location: ./adminpanel_movie_entries.php?success=' . urlencode('Entry created.'));
+exit();

@@ -1,35 +1,48 @@
 <?php
-include "db.php";
 
-if (isset($_GET['q'])) {
-  $searchQuery = $_GET['q'];
+include 'db.php';
 
-    if (!$conn) {
-        die('Could not connect: ' . mysqli_error($conn));
-    }
-
-    $sql = "SELECT * from movies where title like '%$searchQuery%'";
-    $result = mysqli_query($conn, $sql);
-    $row;
-    if(mysqli_num_rows($result) > 0)
-    {
-        while($row = mysqli_fetch_assoc($result))
-        {
-            echo "<tr>";
-            echo "<td><span class='user'>".$row['id']."</span></td>";
-            echo "<td><span class='user'>".$row['title']."</span></td>";
-            echo "<td><span class='user'>".$row['release_date']."</span></td>";
-            echo "<td><span class='user'>".$row['rating']."</span></td>";
-            echo "<td><span class='user'>".$row['length']."</span></td>";
-            echo "<td>";
-            echo "<span class='buttons user'>";
-            echo "<button class='edit'>Edit</button>";
-            echo "<button class='delete'>Delete</button>";
-            echo "</span>";
-            echo "</td>";
-            echo '</tr>';
-        }
-    }   
+if (!$cookie || $admin !== 1) {
+    http_response_code(403);
+    exit();
 }
 
-?>
+if (!isset($_GET['q'])) {
+    exit();
+}
+
+$search = '%' . $_GET['q'] . '%';
+
+$stmt = $conn->prepare(
+    'SELECT id, title, release_date, rating, `length`
+     FROM movies
+     WHERE title LIKE ?
+     ORDER BY id'
+);
+$stmt->bind_param('s', $search);
+$stmt->execute();
+$result = $stmt->get_result();
+
+while ($row = $result->fetch_assoc()) {
+    $id           = htmlspecialchars($row['id'],           ENT_QUOTES, 'UTF-8');
+    $title        = htmlspecialchars($row['title'],        ENT_QUOTES, 'UTF-8');
+    $release_date = htmlspecialchars($row['release_date'], ENT_QUOTES, 'UTF-8');
+    $rating       = htmlspecialchars($row['rating'],       ENT_QUOTES, 'UTF-8');
+    $length       = htmlspecialchars($row['length'],       ENT_QUOTES, 'UTF-8');
+
+    echo "<tr>
+        <td><span class='user'>{$id}</span></td>
+        <td><span class='user'>{$title}</span></td>
+        <td><span class='user'>{$release_date}</span></td>
+        <td><span class='user'>{$rating}</span></td>
+        <td><span class='user'>{$length}</span></td>
+        <td>
+            <span class='buttons user'>
+                <button class='edit'>Edit</button>
+                <button class='delete'>Delete</button>
+            </span>
+        </td>
+    </tr>";
+}
+
+$stmt->close();

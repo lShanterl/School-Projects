@@ -1,34 +1,52 @@
 <?php
-include "db.php";
 
-if (isset($_GET['q'])) {
-  $searchQuery = $_GET['q'];
+include 'db.php';
 
-    if (!$conn) {
-        die('Could not connect: ' . mysqli_error($conn));
-    }
-    $sql = "SELECT * FROM users where name like '%$searchQuery%' or surname like '%$searchQuery%' or email like '%$searchQuery%'";
-    $result = mysqli_query($conn, $sql);
-    $row;
-    if(mysqli_num_rows($result) > 0)
-    {
-        while($row = mysqli_fetch_assoc($result))
-        {
-            echo "<tr>";
-            echo "<td><span class='user'>".$row['id']."</span></td>";
-            echo "<td><span class='user'>".$row['name']."</span></td>";
-            echo "<td><span class='user'>".$row['surname']."</span></td>";
-            echo "<td><span class='user'>".$row['email']."</span></td>";
-            echo "<td><span class='user'>".$row['isAdmin']."</span></td>";
-            echo "<td>";
-            echo "<span class='buttons user'>";
-            echo "<button class='edit'>Edit</button>";
-            echo "<button class='delete'>Delete</button>";
-            echo "</span>";
-            echo "</td>";
-            echo "</tr>";
-        }
-    }   
+if (!$cookie || $admin !== 1) {
+    http_response_code(403);
+    exit();
 }
 
-?>
+if (!isset($_GET['q'])) {
+    exit();
+}
+
+$search = '%' . $_GET['q'] . '%';
+
+$stmt = $conn->prepare(
+    'SELECT id, name, surname, email, isAdmin
+     FROM users
+     WHERE name LIKE ? OR surname LIKE ? OR email LIKE ?
+     ORDER BY id'
+);
+$stmt->bind_param('sss', $search, $search, $search);
+$stmt->execute();
+$result = $stmt->get_result();
+
+while ($row = $result->fetch_assoc()) {
+    $id      = htmlspecialchars($row['id'],      ENT_QUOTES, 'UTF-8');
+    $name    = htmlspecialchars($row['name'],    ENT_QUOTES, 'UTF-8');
+    $surname = htmlspecialchars($row['surname'], ENT_QUOTES, 'UTF-8');
+    $email   = htmlspecialchars($row['email'],   ENT_QUOTES, 'UTF-8');
+    $isAdmin = htmlspecialchars($row['isAdmin'], ENT_QUOTES, 'UTF-8');
+
+    $delete_btn = ($row['email'] !== ($_COOKIE['email'] ?? ''))
+        ? "<button class='delete'>Delete</button>"
+        : '';
+
+    echo "<tr>
+        <td><span class='user'>{$id}</span></td>
+        <td><span class='user'>{$name}</span></td>
+        <td><span class='user'>{$surname}</span></td>
+        <td><span class='user'>{$email}</span></td>
+        <td><span class='user'>{$isAdmin}</span></td>
+        <td>
+            <span class='buttons user'>
+                <button class='edit'>Edit</button>
+                {$delete_btn}
+            </span>
+        </td>
+    </tr>";
+}
+
+$stmt->close();

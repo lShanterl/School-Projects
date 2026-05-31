@@ -1,10 +1,21 @@
 <?php
-    include 'db.php';
+include 'db.php';
+verify_csrf();
 
-    $id = $_POST['id'];
+if (!$cookie || $admin !== 1) {
+    http_response_code(403);
+    exit();
+}
 
-    $sql = "DELETE FROM movies WHERE id='$id'";
-    mysqli_query($conn, $sql);
+$id = (int)($_POST['id'] ?? 0);
+if ($id <= 0) {
+    http_response_code(400);
+    exit();
+}
 
-    header("Location: ./adminpanel-movies.php?success=movie deleted");
-?>
+$stmt = $conn->prepare('DELETE FROM movies WHERE id = ?');
+$stmt->bind_param('i', $id);
+$stmt->execute();
+$stmt->close();
+
+http_response_code(200);

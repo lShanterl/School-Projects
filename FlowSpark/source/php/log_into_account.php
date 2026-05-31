@@ -1,47 +1,49 @@
 <?php
-    include "db.php";
 
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+include 'db.php';
+verify_csrf();
 
-    if (empty($email) || empty($password)) {
-        header("Location: ./login.php?error=fill all fields");
-        exit();
-    }
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: ./login.php');
+    exit();
+}
 
-    $sql = "SELECT password FROM users WHERE email='".$email."'";
+$email    = trim($_POST['email']    ?? '');
+$password = trim($_POST['password'] ?? '');
 
-    $result = mysqli_query($conn, $sql);
-    $resultCheck = mysqli_fetch_assoc($result);
-    if($resultCheck < 1)
-    {
-        header("Location: ./login.php?error=wrong email");
-        exit();
-    }
-    else
-    {
-        $hashed_password = $resultCheck['password'];
-        if(password_verify($password, $hashed_password))
-        {
-		    setcookie( "email", $email, time()+36000, "/", "", 0 );
+if (empty($email) || empty($password)) {
+    header('Location: ./login.php?error=' . urlencode('Please fill in all fields.'));
+    exit();
+}
 
-            $auth_token = uniqid();
+$stmt = $conn->prepare(
+    'SELECT password FROM users WHERE email = ? LIMIT 1'
+);
+$stmt->bind_param('s', $email);
+$stmt->execute();
+$stmt->bind_result($hashed_password);
 
-            setcookie( "auth_token", $auth_token, time()+36000, "/", "", 0 );
+if (!$stmt->fetch() || !password_verify($password, $hashed_password)) {
+    $stmt->close();
+    header('Location: ./login.php?error=' . urlencode('Invalid email or password.'));
+    exit();
+}
+$stmt->close();
 
-            $sql = "UPDATE users SET auth_token = '".$auth_token."' WHERE email='".$email."';";
+session_regenerate_id(true);
 
-            $result = mysqli_query($conn, $sql);
+$auth_token = bin2hex(random_bytes(32));
 
-            header("Location: ./index.php");
-            exit();
-        }
-        else
-        {
-            header("Location: ./login.php?error=Wrong password&email=".$email);
-            exit();
-        }
-    }
+$stmt = $conn->prepare(
+    'UPDATE users SET auth_token = ? WHERE email = ?'
+);
+$stmt->bind_param('ss', $auth_token, $email);
+$stmt->execute();
+$stmt->close();
 
+$expires = time() + 36000;
+setcookie('email',      $email,      $expires, '/', '', false, true);
+setcookie('auth_token', $auth_token, $expires, '/', '', false, true);
 
-?>
+header('Location: ./index.php');
+exit();

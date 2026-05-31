@@ -1,26 +1,36 @@
 <?php
-    include 'db.php';
-    $id = $_POST['id'];
-    $sql = "SELECT * from users where id = $id";
 
-    $result = mysqli_query($conn, $sql);
+include 'db.php';
 
-    if(mysqli_num_rows($result) > 0)
-    {
-        $row = mysqli_fetch_assoc($result);
+if (!$cookie || $admin !== 1) {
+    http_response_code(403);
+    exit();
+}
 
-        $arr = array(
-            'id' => $row['id'],
-            'name' => $row['name'],
-            'surname' => $row['surname'],
-            'email' => $row['email'],
-            'isAdmin' => $row['isAdmin'],
-            'image_path' => $row['image_path'],
-        );
-        echo json_encode($arr);
-    }
+$id = (int)($_POST['id'] ?? 0);
+if ($id <= 0) {
+    http_response_code(400);
+    exit();
+}
 
+$stmt = $conn->prepare(
+    'SELECT id, name, surname, email, isAdmin FROM users WHERE id = ? LIMIT 1'
+);
+$stmt->bind_param('i', $id);
+$stmt->execute();
+$result = $stmt->get_result();
 
+if ($row = $result->fetch_assoc()) {
+    header('Content-Type: application/json');
+    echo json_encode([
+        'id'      => (int)$row['id'],
+        'name'    => $row['name'],
+        'surname' => $row['surname'],
+        'email'   => $row['email'],
+        'isAdmin' => (int)$row['isAdmin'],
+    ]);
+} else {
+    http_response_code(404);
+}
 
-
-?>
+$stmt->close();

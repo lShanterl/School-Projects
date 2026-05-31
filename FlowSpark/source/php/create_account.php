@@ -1,43 +1,68 @@
 <?php
-    include 'db.php';
 
-    $name = $_POST['name'];
-    $surname = $_POST['surname'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $password2 = $_POST['re_password'];
-    $admin = 0;
+include 'db.php';
+verify_csrf();
 
-    if(isset($_POST['admin']))
-    {
-        $admin = 1;
-    }
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: ./signup.php');
+    exit();
+}
 
-    if (empty($name) || empty($surname) || empty($email) || empty($password) || empty($password2)) {
+$name      = trim($_POST['name']       ?? '');
+$surname   = trim($_POST['surname']    ?? '');
+$email     = trim($_POST['email']      ?? '');
+$password  = $_POST['password']        ?? '';
+$password2 = $_POST['re_password']     ?? '';
 
-        $admin == 1 ? header("Location: ./adminpanel.php?error=empty fields &name=".$name."&surname=".$surname."&email=".$email."&admin=1") : header("Location: ./signup.php?error=empty fields &name=".$name."&surname=".$surname."&email=".$email);
-        exit();
-    }
-    if($password != $password2)
-    {
-        $admin == 1 ? header("Location: ./adminpanel.php?error=passwords do not match &name=".$name."&surname=".$surname."&email=".$email) : header("Location: ./signup.php?error=passwords do not match &name=".$name."&surname=".$surname."&email=".$email);
-        exit();
-    }
+$from_admin = ($admin === 1);
+$is_admin_flag = ($from_admin && isset($_POST['admin'])) ? 1 : 0;
 
-    $sql = "SELECT email FROM users WHERE email='$email'";
-    $result = mysqli_query($conn, $sql);
-    $resultCheck = mysqli_num_rows($result);
+$redirect_base = $from_admin ? './adminpanel.php' : './signup.php';
 
-    if ($resultCheck > 0) {
-        $admin == 1 ? header("Location: ./adminpanel.php?error=email already exists &name=".$name."&surname=".$surname."&email=".$email) : header("Location: ./signup.php?error=email already exists &name=".$name."&surname=".$surname."&email=".$email);
-        exit();
-    }
+if (empty($name) || empty($surname) || empty($email) || empty($password) || empty($password2)) {
+    header('Location: ' . $redirect_base . '?error=' . urlencode('All fields are required.'));
+    exit();
+}
 
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    header('Location: ' . $redirect_base . '?error=' . urlencode('Invalid email address.'));
+    exit();
+}
 
-    $sql = "INSERT INTO users (name, surname, email, password, isAdmin) VALUES ('$name', '$surname', '$email', '$hashedPassword','$admin');";
-    mysqli_query($conn, $sql);
+if (strlen($password) < 8) {
+    header('Location: ' . $redirect_base . '?error=' . urlencode('Password must be at least 8 characters.'));
+    exit();
+}
 
-    $admin == 1 ? header("Location: ./adminpanel.php?success=account created") : header("Location: ./index.php?success=account created");
+if ($password !== $password2) {
+    header('Location: ' . $redirect_base . '?error=' . urlencode('Passwords do not match.'));
+    exit();
+}
 
-?>
+$stmt = $conn->prepare('SELECT id FROM users WHERE email = ? LIMIT 1');
+$stmt->bind_param('s', $email);
+$stmt->execute();
+$stmt->store_result();
+
+if ($stmt->num_rows > 0) {
+    $stmt->close();
+    header('Location: ' . $redirect_base . '?error=' . urlencode('Email address is already registered.'));
+    exit();
+}
+$stmt->close();
+
+$hashed = password_hash($password, PASSWORD_DEFAULT);
+
+$stmt = $conn->prepare(
+    'INSERT INTO users (name, surname, email, password, isAdmin) VALUES (?, ?, ?, ?, ?)'
+);
+$stmt->bind_param('ssssi', $name, $surname, $email, $hashed, $is_admin_flag);
+
+if ($stmt->execute()) {
+    $stmt->close();
+    header('Location: ' . ($from_admin ? './adminpanel.php' : './index.php'));
+} else {
+    $stmt->close();
+    header('Location: ' . $redirect_base . '?error=' . urlencode('Registration failed. Please try again.'));
+}
+exit();

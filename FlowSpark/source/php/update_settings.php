@@ -1,14 +1,28 @@
 <?php
-    include 'db.php';
 
-    $name = isset($_POST['name']) ? $_POST['name'] : '';
-    $surname = isset($_POST['surname']) ? $_POST['surname'] : '';
-    
-    $email = $_COOKIE['email'];
+include 'db.php';
+verify_csrf();
 
-    $sql = "UPDATE users SET name='$name', surname='$surname' WHERE email='$email'";
+if (!$cookie) {
+    header('Location: ./login.php');
+    exit();
+}
 
-    mysqli_query($conn, $sql);
+$name    = trim($_POST['name']    ?? '');
+$surname = trim($_POST['surname'] ?? '');
+$email   = $_COOKIE['email'];
 
-    header("Location: ./settings.php?update=success");
-?>
+if (empty($name) || empty($surname)) {
+    header('Location: ./settings.php?error=' . urlencode('Name and surname cannot be empty.'));
+    exit();
+}
+
+$stmt = $conn->prepare(
+    'UPDATE users SET name = ?, surname = ? WHERE email = ?'
+);
+$stmt->bind_param('sss', $name, $surname, $email);
+$stmt->execute();
+$stmt->close();
+
+header('Location: ./settings.php?update=success');
+exit();

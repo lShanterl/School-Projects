@@ -136,7 +136,6 @@
         
         <div class="movies-wrapper">
                 <?php
-                    //perform default query so that the page is not empty
                     fetch_movies();
                     echo_movies($available_movies);
                 ?>
